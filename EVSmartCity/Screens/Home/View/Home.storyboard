@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Charge-->
+        <scene sceneID="Lxq-jQ-ajl">
+            <objects>
+                <viewController id="nki-fV-6MF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qnz-MS-VEm">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="OPj-gl-H1y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Charge" image="ev.charger" catalog="system" id="ddK-L6-cdh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nWt-bL-sGs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1482" y="18"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="qU8-T3-JMq">
+            <objects>
+                <viewController id="fDr-yJ-WUS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vT2-5S-b4o">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="HFh-ex-wRa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="pBp-BI-rsl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WR7-Lw-ypI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-572" y="44"/>
+        </scene>
+        <!--Station-->
+        <scene sceneID="XOH-xi-rHG">
+            <objects>
+                <viewController id="eus-r1-rwA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RHi-LK-n7i">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vGQ-Ta-ZyI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Station" image="logo.playstation" catalog="system" id="4Ek-kD-eM6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8lB-UT-yes" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2389" y="18"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="5fo-sy-OFt">
+            <objects>
+                <tabBarController storyboardIdentifier="CustomeTabBarViewController" id="Fpj-Bc-Fd6" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qKG-5D-jVt">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="viewControllers" id="EEr-b1-ybN"/>
+                        <segue destination="eus-r1-rwA" kind="relationship" relationship="viewControllers" id="n0p-1V-WWD"/>
+                        <segue destination="nki-fV-6MF" kind="relationship" relationship="viewControllers" id="4tY-d0-SIO"/>
+                        <segue destination="fDr-yJ-WUS" kind="relationship" relationship="viewControllers" id="6vR-9f-mXB"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rc7-vf-GY6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1318" y="-765"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="EVSmartCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="Yuv-20-Hnd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3370" y="18"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ev.charger" catalog="system" width="128" height="120"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="logo.playstation" catalog="system" width="128" height="93"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
