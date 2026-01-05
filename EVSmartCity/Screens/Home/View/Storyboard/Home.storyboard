@@ -43,7 +43,7 @@
         <!--Station-->
         <scene sceneID="XOH-xi-rHG">
             <objects>
-                <viewController id="eus-r1-rwA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EVMapViewController" id="eus-r1-rwA" customClass="EVMapViewController" customModule="EVSmartCity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RHi-LK-n7i">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,7 +157,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rc7-vf-GY6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1318" y="-765"/>
+            <point key="canvasLocation" x="-1917" y="-743"/>
         </scene>
         <!--Home-->
         <scene sceneID="s0d-6b-0kx">
