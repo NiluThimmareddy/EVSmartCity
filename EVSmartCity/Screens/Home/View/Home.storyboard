@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,11 +50,94 @@
                         <viewLayoutGuide key="safeArea" id="vGQ-Ta-ZyI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Station" image="logo.playstation" catalog="system" id="4Ek-kD-eM6"/>
+                    <tabBarItem key="tabBarItem" title="Station" image="playstation.logo" catalog="system" id="4Ek-kD-eM6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lB-UT-yes" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2389" y="18"/>
+        </scene>
+        <!--Plan Trip View Controller-->
+        <scene sceneID="xsk-pZ-szn">
+            <objects>
+                <viewController storyboardIdentifier="PlanTripViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zO2-Uj-xEt" customClass="PlanTripViewController" customModule="EVSmartCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Yd-Zm-IFU">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzP-PS-mYp">
+                                <rect key="frame" x="0.0" y="59" width="393" height="40"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="DqJ-3d-BuX"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system" title="Where are you going?" imagePadding="10"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXf-ZX-VjK">
+                                <rect key="frame" x="10" y="109" width="373" height="150"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Drop location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7rI-zr-urb">
+                                        <rect key="frame" x="30" y="80" width="313" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="mqE-qd-10V"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="current location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lJw-qz-S29">
+                                        <rect key="frame" x="30" y="20" width="313" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="gC3-KC-zZO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="lJw-qz-S29" firstAttribute="top" secondItem="EXf-ZX-VjK" secondAttribute="top" constant="20" id="Dzq-SE-Ftg"/>
+                                    <constraint firstItem="lJw-qz-S29" firstAttribute="leading" secondItem="EXf-ZX-VjK" secondAttribute="leading" constant="30" id="Mpq-MO-VfO"/>
+                                    <constraint firstItem="7rI-zr-urb" firstAttribute="leading" secondItem="EXf-ZX-VjK" secondAttribute="leading" constant="30" id="OrH-Nr-IAD"/>
+                                    <constraint firstItem="7rI-zr-urb" firstAttribute="top" secondItem="lJw-qz-S29" secondAttribute="bottom" constant="20" id="ayJ-b7-Up1"/>
+                                    <constraint firstAttribute="trailing" secondItem="7rI-zr-urb" secondAttribute="trailing" constant="30" id="hMw-wR-oMI"/>
+                                    <constraint firstAttribute="trailing" secondItem="lJw-qz-S29" secondAttribute="trailing" constant="30" id="xDa-wq-u0c"/>
+                                    <constraint firstAttribute="height" constant="150" id="xQw-Ml-xOh"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mP2-by-VJl">
+                                <rect key="frame" x="10" y="269" width="373" height="539"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="zO2-Uj-xEt" id="2x2-yA-BRP"/>
+                                    <outlet property="delegate" destination="zO2-Uj-xEt" id="lGA-FU-LNQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pkv-AE-pgd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pkv-AE-pgd" firstAttribute="bottom" secondItem="mP2-by-VJl" secondAttribute="bottom" constant="10" id="0Xs-2a-sP1"/>
+                            <constraint firstItem="mP2-by-VJl" firstAttribute="top" secondItem="EXf-ZX-VjK" secondAttribute="bottom" constant="10" id="7xk-wK-V8s"/>
+                            <constraint firstItem="EXf-ZX-VjK" firstAttribute="leading" secondItem="pkv-AE-pgd" secondAttribute="leading" constant="10" id="Bvt-yh-FDG"/>
+                            <constraint firstItem="mzP-PS-mYp" firstAttribute="top" secondItem="pkv-AE-pgd" secondAttribute="top" id="Cpt-M9-i4N"/>
+                            <constraint firstItem="mP2-by-VJl" firstAttribute="leading" secondItem="pkv-AE-pgd" secondAttribute="leading" constant="10" id="HD0-Hw-GGt"/>
+                            <constraint firstItem="EXf-ZX-VjK" firstAttribute="top" secondItem="mzP-PS-mYp" secondAttribute="bottom" constant="10" id="c8b-Mr-7zw"/>
+                            <constraint firstItem="pkv-AE-pgd" firstAttribute="trailing" secondItem="EXf-ZX-VjK" secondAttribute="trailing" constant="10" id="ctb-jr-6OR"/>
+                            <constraint firstItem="mzP-PS-mYp" firstAttribute="leading" secondItem="pkv-AE-pgd" secondAttribute="leading" id="eXh-tG-qEM"/>
+                            <constraint firstItem="pkv-AE-pgd" firstAttribute="trailing" secondItem="mP2-by-VJl" secondAttribute="trailing" constant="10" id="o9b-bd-RPR"/>
+                            <constraint firstItem="pkv-AE-pgd" firstAttribute="trailing" secondItem="mzP-PS-mYp" secondAttribute="trailing" id="r4m-n7-OrY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="destinationTextField" destination="7rI-zr-urb" id="YRu-xz-2dF"/>
+                        <outlet property="locationTableView" destination="mP2-by-VJl" id="S0b-Y4-6lR"/>
+                        <outlet property="sourceTextField" destination="lJw-qz-S29" id="v0f-Qc-DP1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cd8-Tg-Qlk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2394.6564885496182" y="823.94366197183103"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5fo-sy-OFt">
@@ -96,8 +179,15 @@
     <resources>
         <image name="ev.charger" catalog="system" width="128" height="120"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
-        <image name="logo.playstation" catalog="system" width="128" height="93"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="playstation.logo" catalog="system" width="128" height="93"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
