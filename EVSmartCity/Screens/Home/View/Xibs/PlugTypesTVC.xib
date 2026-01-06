@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PlugTypesTVC" customModule="EVSmartCity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chE-21-BuI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kC4-jz-hbu">
+                                <rect key="frame" x="5" y="5" width="39" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Plug" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TF3-xI-VrZ">
+                                <rect key="frame" x="274" y="5" width="41" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="kC4-jz-hbu" secondAttribute="bottom" constant="5" id="2KL-MV-Ilw"/>
+                            <constraint firstAttribute="trailing" secondItem="TF3-xI-VrZ" secondAttribute="trailing" constant="5" id="aAV-Rj-mfC"/>
+                            <constraint firstItem="TF3-xI-VrZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kC4-jz-hbu" secondAttribute="trailing" constant="5" id="dwX-FW-fy6"/>
+                            <constraint firstAttribute="bottom" secondItem="TF3-xI-VrZ" secondAttribute="bottom" constant="5" id="fYC-Ed-jPQ"/>
+                            <constraint firstItem="kC4-jz-hbu" firstAttribute="leading" secondItem="chE-21-BuI" secondAttribute="leading" constant="5" id="inU-UF-4F9"/>
+                            <constraint firstItem="TF3-xI-VrZ" firstAttribute="top" secondItem="chE-21-BuI" secondAttribute="top" constant="5" id="nT0-ds-8vQ"/>
+                            <constraint firstItem="kC4-jz-hbu" firstAttribute="top" secondItem="chE-21-BuI" secondAttribute="top" constant="5" id="vhg-vQ-KNa"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="chE-21-BuI" secondAttribute="trailing" id="CFx-fY-xOW"/>
+                    <constraint firstItem="chE-21-BuI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ekq-Vo-tm0"/>
+                    <constraint firstAttribute="bottom" secondItem="chE-21-BuI" secondAttribute="bottom" id="FL8-ML-Ds6"/>
+                    <constraint firstItem="chE-21-BuI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KeC-eY-Fof"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="backView" destination="chE-21-BuI" id="MHu-ma-Q1k"/>
+                <outlet property="plugTypeLabel" destination="kC4-jz-hbu" id="3IS-14-f3j"/>
+                <outlet property="plugsCountLabel" destination="TF3-xI-VrZ" id="gJB-I2-VcI"/>
+            </connections>
+            <point key="canvasLocation" x="60" y="-11"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

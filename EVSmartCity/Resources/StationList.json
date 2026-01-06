@@ -7,11 +7,18 @@
       "state": "Karnataka",
       "latitude": 12.9716,
       "longitude": 77.6412,
+      "distance_km": 4.2,
       "charger_types": ["AC", "DC"],
-      "power_kw": 60,
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 60, "status": "Available" },
+        { "type": "Type 2", "plugs": 2, "power_kw": 22, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 4,
-      "address": "100 Feet Road, Indiranagar"
+      "pricing_per_kwh": 18,
+      "operator": "BESCOM",
+      "address": "100 Feet Road, Indiranagar",
+      "last_updated": "2026-01-05T10:30:00Z"
     },
     {
       "station_id": "EV002",
@@ -20,11 +27,18 @@
       "state": "Karnataka",
       "latitude": 12.9698,
       "longitude": 77.7500,
+      "distance_km": 18.5,
       "charger_types": ["DC"],
-      "power_kw": 120,
+      "connectors": [
+        { "type": "CCS2", "plugs": 4, "power_kw": 120, "status": "Available" },
+        { "type": "CHAdeMO", "plugs": 2, "power_kw": 100, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 6,
-      "address": "ITPL Main Road, Whitefield"
+      "pricing_per_kwh": 22,
+      "operator": "Tata Power",
+      "address": "ITPL Main Road, Whitefield",
+      "last_updated": "2026-01-05T09:50:00Z"
     },
     {
       "station_id": "EV003",
@@ -33,11 +47,17 @@
       "state": "Karnataka",
       "latitude": 12.8456,
       "longitude": 77.6603,
+      "distance_km": 22.8,
       "charger_types": ["AC"],
-      "power_kw": 22,
+      "connectors": [
+        { "type": "Type 2", "plugs": 1, "power_kw": 22, "status": "Busy" }
+      ],
       "status": "Busy",
       "available_ports": 1,
-      "address": "Phase 1, Electronic City"
+      "pricing_per_kwh": 15,
+      "operator": "Ather Grid",
+      "address": "Phase 1, Electronic City",
+      "last_updated": "2026-01-05T10:10:00Z"
     },
     {
       "station_id": "EV004",
@@ -46,11 +66,18 @@
       "state": "Karnataka",
       "latitude": 13.1007,
       "longitude": 77.5963,
+      "distance_km": 16.4,
       "charger_types": ["AC", "DC"],
-      "power_kw": 50,
+      "connectors": [
+        { "type": "CCS2", "plugs": 1, "power_kw": 50, "status": "Available" },
+        { "type": "Type 2", "plugs": 2, "power_kw": 22, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 3,
-      "address": "New Town, Yelahanka"
+      "pricing_per_kwh": 17,
+      "operator": "ChargeZone",
+      "address": "New Town, Yelahanka",
+      "last_updated": "2026-01-05T10:00:00Z"
     },
     {
       "station_id": "EV005",
@@ -59,11 +86,18 @@
       "state": "Karnataka",
       "latitude": 13.0358,
       "longitude": 77.5970,
+      "distance_km": 9.6,
       "charger_types": ["DC"],
-      "power_kw": 100,
+      "connectors": [
+        { "type": "CCS2", "plugs": 3, "power_kw": 100, "status": "Available" },
+        { "type": "CHAdeMO", "plugs": 2, "power_kw": 50, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 5,
-      "address": "Outer Ring Road, Hebbal"
+      "pricing_per_kwh": 21,
+      "operator": "Reliance BP",
+      "address": "Outer Ring Road, Hebbal",
+      "last_updated": "2026-01-05T10:05:00Z"
     },
     {
       "station_id": "EV006",
@@ -72,11 +106,18 @@
       "state": "Karnataka",
       "latitude": 12.2958,
       "longitude": 76.6394,
+      "distance_km": 145,
       "charger_types": ["DC"],
-      "power_kw": 120,
+      "connectors": [
+        { "type": "CCS2", "plugs": 3, "power_kw": 120, "status": "Available" },
+        { "type": "CHAdeMO", "plugs": 1, "power_kw": 100, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 4,
-      "address": "Ring Road, Mysuru"
+      "pricing_per_kwh": 23,
+      "operator": "Tata Power",
+      "address": "Ring Road, Mysuru",
+      "last_updated": "2026-01-05T09:40:00Z"
     },
     {
       "station_id": "EV007",
@@ -85,11 +126,17 @@
       "state": "Karnataka",
       "latitude": 12.5218,
       "longitude": 76.8951,
+      "distance_km": 98,
       "charger_types": ["AC"],
-      "power_kw": 30,
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 30, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 2,
-      "address": "NH 275, Mandya"
+      "pricing_per_kwh": 14,
+      "operator": "KPTCL",
+      "address": "NH 275, Mandya",
+      "last_updated": "2026-01-05T09:20:00Z"
     },
     {
       "station_id": "EV008",
@@ -98,11 +145,18 @@
       "state": "Karnataka",
       "latitude": 13.3392,
       "longitude": 77.1139,
+      "distance_km": 70,
       "charger_types": ["AC", "DC"],
-      "power_kw": 50,
+      "connectors": [
+        { "type": "CCS2", "plugs": 1, "power_kw": 50, "status": "Busy" },
+        { "type": "Type 2", "plugs": 1, "power_kw": 22, "status": "Busy" }
+      ],
       "status": "Busy",
       "available_ports": 1,
-      "address": "B.H Road, Tumakuru"
+      "pricing_per_kwh": 16,
+      "operator": "ChargeZone",
+      "address": "B.H Road, Tumakuru",
+      "last_updated": "2026-01-05T10:15:00Z"
     },
     {
       "station_id": "EV009",
@@ -111,11 +165,17 @@
       "state": "Karnataka",
       "latitude": 13.0072,
       "longitude": 76.0962,
+      "distance_km": 185,
       "charger_types": ["AC"],
-      "power_kw": 25,
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 25, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 2,
-      "address": "BM Road, Hassan"
+      "pricing_per_kwh": 13,
+      "operator": "KPTCL",
+      "address": "BM Road, Hassan",
+      "last_updated": "2026-01-05T08:50:00Z"
     },
     {
       "station_id": "EV010",
@@ -124,13 +184,18 @@
       "state": "Karnataka",
       "latitude": 14.2251,
       "longitude": 76.3980,
+      "distance_km": 205,
       "charger_types": ["DC"],
-      "power_kw": 60,
+      "connectors": [
+        { "type": "CCS2", "plugs": 3, "power_kw": 60, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 3,
-      "address": "NH 48, Chitradurga"
+      "pricing_per_kwh": 20,
+      "operator": "Tata Power",
+      "address": "NH 48, Chitradurga",
+      "last_updated": "2026-01-05T09:10:00Z"
     },
-
     {
       "station_id": "EV011",
       "name": "Hosur EV Charging",
@@ -138,11 +203,18 @@
       "state": "Tamil Nadu",
       "latitude": 12.7409,
       "longitude": 77.8253,
+      "distance_km": 40,
       "charger_types": ["DC"],
-      "power_kw": 90,
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 90, "status": "Available" },
+        { "type": "CHAdeMO", "plugs": 2, "power_kw": 50, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 4,
-      "address": "Industrial Area, Hosur"
+      "pricing_per_kwh": 21,
+      "operator": "Zeon Charging",
+      "address": "Industrial Area, Hosur",
+      "last_updated": "2026-01-05T09:35:00Z"
     },
     {
       "station_id": "EV012",
@@ -151,11 +223,17 @@
       "state": "Tamil Nadu",
       "latitude": 11.6643,
       "longitude": 78.1460,
+      "distance_km": 215,
       "charger_types": ["DC"],
-      "power_kw": 120,
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 120, "status": "Busy" }
+      ],
       "status": "Busy",
       "available_ports": 2,
-      "address": "NH 44, Salem"
+      "pricing_per_kwh": 24,
+      "operator": "Tata Power",
+      "address": "NH 44, Salem",
+      "last_updated": "2026-01-05T08:30:00Z"
     },
     {
       "station_id": "EV013",
@@ -164,11 +242,17 @@
       "state": "Karnataka",
       "latitude": 13.1367,
       "longitude": 78.1290,
+      "distance_km": 65,
       "charger_types": ["AC"],
-      "power_kw": 22,
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 22, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 2,
-      "address": "MG Road, Kolar"
+      "pricing_per_kwh": 14,
+      "operator": "BESCOM",
+      "address": "MG Road, Kolar",
+      "last_updated": "2026-01-05T09:00:00Z"
     },
     {
       "station_id": "EV014",
@@ -177,11 +261,17 @@
       "state": "Karnataka",
       "latitude": 12.7224,
       "longitude": 77.2800,
+      "distance_km": 55,
       "charger_types": ["AC"],
-      "power_kw": 30,
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 30, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 2,
-      "address": "NH 275, Ramanagara"
+      "pricing_per_kwh": 14,
+      "operator": "KPTCL",
+      "address": "NH 275, Ramanagara",
+      "last_updated": "2026-01-05T09:15:00Z"
     },
     {
       "station_id": "EV015",
@@ -190,13 +280,18 @@
       "state": "Karnataka",
       "latitude": 14.4644,
       "longitude": 75.9218,
+      "distance_km": 265,
       "charger_types": ["DC"],
-      "power_kw": 60,
+      "connectors": [
+        { "type": "CCS2", "plugs": 3, "power_kw": 60, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 3,
-      "address": "PB Road, Davangere"
+      "pricing_per_kwh": 20,
+      "operator": "ChargeZone",
+      "address": "PB Road, Davangere",
+      "last_updated": "2026-01-05T08:45:00Z"
     },
-
     {
       "station_id": "EV016",
       "name": "Nelamangala EV Stop",
@@ -204,11 +299,18 @@
       "state": "Karnataka",
       "latitude": 13.0991,
       "longitude": 77.3930,
+      "distance_km": 32,
       "charger_types": ["AC", "DC"],
-      "power_kw": 50,
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 50, "status": "Available" },
+        { "type": "Type 2", "plugs": 2, "power_kw": 22, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 4,
-      "address": "NH 48, Nelamangala"
+      "pricing_per_kwh": 18,
+      "operator": "Reliance BP",
+      "address": "NH 48, Nelamangala",
+      "last_updated": "2026-01-05T09:55:00Z"
     },
     {
       "station_id": "EV017",
@@ -217,11 +319,17 @@
       "state": "Karnataka",
       "latitude": 12.5467,
       "longitude": 77.4204,
+      "distance_km": 72,
       "charger_types": ["AC"],
-      "power_kw": 25,
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 25, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 2,
-      "address": "Main Road, Kanakapura"
+      "pricing_per_kwh": 13,
+      "operator": "KPTCL",
+      "address": "Main Road, Kanakapura",
+      "last_updated": "2026-01-05T09:05:00Z"
     },
     {
       "station_id": "EV018",
@@ -230,11 +338,17 @@
       "state": "Karnataka",
       "latitude": 12.6514,
       "longitude": 77.2067,
+      "distance_km": 62,
       "charger_types": ["AC"],
-      "power_kw": 30,
+      "connectors": [
+        { "type": "Type 2", "plugs": 1, "power_kw": 30, "status": "Busy" }
+      ],
       "status": "Busy",
       "available_ports": 1,
-      "address": "Toy Town Road, Channapatna"
+      "pricing_per_kwh": 14,
+      "operator": "Ather Grid",
+      "address": "Toy Town Road, Channapatna",
+      "last_updated": "2026-01-05T10:20:00Z"
     },
     {
       "station_id": "EV019",
@@ -243,11 +357,18 @@
       "state": "Tamil Nadu",
       "latitude": 12.5270,
       "longitude": 78.2145,
+      "distance_km": 95,
       "charger_types": ["DC"],
-      "power_kw": 100,
+      "connectors": [
+        { "type": "CCS2", "plugs": 3, "power_kw": 100, "status": "Available" },
+        { "type": "CHAdeMO", "plugs": 1, "power_kw": 50, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 4,
-      "address": "NH 44, Krishnagiri"
+      "pricing_per_kwh": 22,
+      "operator": "Zeon Charging",
+      "address": "NH 44, Krishnagiri",
+      "last_updated": "2026-01-05T09:25:00Z"
     },
     {
       "station_id": "EV020",
@@ -256,12 +377,638 @@
       "state": "Karnataka",
       "latitude": 12.7950,
       "longitude": 77.4246,
+      "distance_km": 38,
       "charger_types": ["AC"],
-      "power_kw": 22,
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 22, "status": "Available" }
+      ],
       "status": "Available",
       "available_ports": 2,
-      "address": "Industrial Area, Bidadi"
+      "pricing_per_kwh": 14,
+      "operator": "BESCOM",
+      "address": "Industrial Area, Bidadi",
+      "last_updated": "2026-01-05T09:45:00Z"
+    },
+    {
+      "station_id": "EV021",
+      "name": "JP Nagar EV Hub",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 12.9077,
+      "longitude": 77.5855,
+      "distance_km": 8.5,
+      "charger_types": ["AC","DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 1, "power_kw": 50, "status": "Available" },
+        { "type": "Type 2", "plugs": 2, "power_kw": 22, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 3,
+      "pricing_per_kwh": 18,
+      "operator": "Ather Grid",
+      "address": "JP Nagar 7th Phase",
+      "last_updated": "2026-01-05T10:40:00Z"
+    },
+    {
+      "station_id": "EV022",
+      "name": "BTM Layout EV Point",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 12.9166,
+      "longitude": 77.6101,
+      "distance_km": 6.2,
+      "charger_types": ["AC"],
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 22, "status": "Busy" }
+      ],
+      "status": "Busy",
+      "available_ports": 2,
+      "pricing_per_kwh": 15,
+      "operator": "BESCOM",
+      "address": "BTM 2nd Stage",
+      "last_updated": "2026-01-05T10:35:00Z"
+    },
+    {
+      "station_id": "EV023",
+      "name": "Marathahalli Fast Charge",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 12.9591,
+      "longitude": 77.6974,
+      "distance_km": 11.4,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 4, "power_kw": 120, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 4,
+      "pricing_per_kwh": 23,
+      "operator": "Tata Power",
+      "address": "Outer Ring Road",
+      "last_updated": "2026-01-05T10:20:00Z"
+    },
+    {
+      "station_id": "EV024",
+      "name": "Bellandur EV Station",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 12.9304,
+      "longitude": 77.6784,
+      "distance_km": 10.1,
+      "charger_types": ["AC","DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 60, "status": "Available" },
+        { "type": "Type 2", "plugs": 2, "power_kw": 22, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 4,
+      "pricing_per_kwh": 19,
+      "operator": "ChargeZone",
+      "address": "Eco Space Road",
+      "last_updated": "2026-01-05T10:10:00Z"
+    },
+    {
+      "station_id": "EV025",
+      "name": "Sarjapur Road EV Hub",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 12.9121,
+      "longitude": 77.7058,
+      "distance_km": 14.8,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 3, "power_kw": 100, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 3,
+      "pricing_per_kwh": 22,
+      "operator": "Reliance BP",
+      "address": "Sarjapur Main Road",
+      "last_updated": "2026-01-05T09:55:00Z"
+    },
+    {
+      "station_id": "EV026",
+      "name": "KR Puram EV Charge",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 13.0077,
+      "longitude": 77.6952,
+      "distance_km": 13.2,
+      "charger_types": ["AC"],
+      "connectors": [
+        { "type": "Type 2", "plugs": 3, "power_kw": 22, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 3,
+      "pricing_per_kwh": 16,
+      "operator": "BESCOM",
+      "address": "Old Madras Road",
+      "last_updated": "2026-01-05T09:45:00Z"
+    },
+    {
+      "station_id": "EV027",
+      "name": "Hoskote EV Station",
+      "city": "Hoskote",
+      "state": "Karnataka",
+      "latitude": 13.0707,
+      "longitude": 77.7981,
+      "distance_km": 30.4,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 60, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 2,
+      "pricing_per_kwh": 20,
+      "operator": "Tata Power",
+      "address": "NH 75, Hoskote",
+      "last_updated": "2026-01-05T09:30:00Z"
+    },
+    {
+      "station_id": "EV028",
+      "name": "Devanahalli Airport EV Hub",
+      "city": "Devanahalli",
+      "state": "Karnataka",
+      "latitude": 13.1986,
+      "longitude": 77.7066,
+      "distance_km": 34.7,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 6, "power_kw": 150, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 6,
+      "pricing_per_kwh": 25,
+      "operator": "BIAL",
+      "address": "Kempegowda Airport",
+      "last_updated": "2026-01-05T10:00:00Z"
+    },
+    {
+      "station_id": "EV029",
+      "name": "Chikkaballapur EV Point",
+      "city": "Chikkaballapur",
+      "state": "Karnataka",
+      "latitude": 13.4352,
+      "longitude": 77.7277,
+      "distance_km": 58,
+      "charger_types": ["AC"],
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 30, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 2,
+      "pricing_per_kwh": 14,
+      "operator": "KPTCL",
+      "address": "MG Road",
+      "last_updated": "2026-01-05T09:10:00Z"
+    },
+    {
+      "station_id": "EV030",
+      "name": "Gowribidanur EV Station",
+      "city": "Gowribidanur",
+      "state": "Karnataka",
+      "latitude": 13.6111,
+      "longitude": 77.5167,
+      "distance_km": 86,
+      "charger_types": ["AC"],
+      "connectors": [
+        { "type": "Type 2", "plugs": 1, "power_kw": 22, "status": "Busy" }
+      ],
+      "status": "Busy",
+      "available_ports": 1,
+      "pricing_per_kwh": 13,
+      "operator": "BESCOM",
+      "address": "Town Center",
+      "last_updated": "2026-01-05T10:25:00Z"
+    },
+    {
+      "station_id": "EV031",
+      "name": "Malleshwaram EV Hub",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 13.0067,
+      "longitude": 77.5711,
+      "distance_km": 5.8,
+      "charger_types": ["AC", "DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 60, "status": "Available" },
+        { "type": "Type 2", "plugs": 3, "power_kw": 22, "status": "Busy" }
+      ],
+      "status": "Available",
+      "available_ports": 4,
+      "pricing_per_kwh": 18,
+      "operator": "BESCOM",
+      "address": "Sampige Road",
+      "last_updated": "2026-01-05T10:45:00Z"
+    },
+    {
+      "station_id": "EV032",
+      "name": "Basavanagudi EV Point",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 12.9436,
+      "longitude": 77.5731,
+      "distance_km": 3.2,
+      "charger_types": ["AC"],
+      "connectors": [
+        { "type": "Type 2", "plugs": 4, "power_kw": 22, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 4,
+      "pricing_per_kwh": 15,
+      "operator": "Ather Grid",
+      "address": "Bull Temple Road",
+      "last_updated": "2026-01-05T10:50:00Z"
+    },
+    {
+      "station_id": "EV033",
+      "name": "Shivajinagar EV Station",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 12.9828,
+      "longitude": 77.6028,
+      "distance_km": 2.8,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 4, "power_kw": 120, "status": "Available" },
+        { "type": "CHAdeMO", "plugs": 2, "power_kw": 50, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 6,
+      "pricing_per_kwh": 24,
+      "operator": "Tata Power",
+      "address": "Central Street",
+      "last_updated": "2026-01-05T10:55:00Z"
+    },
+    {
+      "station_id": "EV034",
+      "name": "Majestic EV Hub",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 12.9773,
+      "longitude": 77.5712,
+      "distance_km": 3.5,
+      "charger_types": ["AC", "DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 6, "power_kw": 150, "status": "Busy" },
+        { "type": "Type 2", "plugs": 4, "power_kw": 22, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 8,
+      "pricing_per_kwh": 20,
+      "operator": "ChargeZone",
+      "address": "Kempegowda Bus Station",
+      "last_updated": "2026-01-05T11:00:00Z"
+    },
+    {
+      "station_id": "EV035",
+      "name": "Yeshwanthpur EV Station",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 13.0254,
+      "longitude": 77.5461,
+      "distance_km": 8.2,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 3, "power_kw": 100, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 3,
+      "pricing_per_kwh": 22,
+      "operator": "Reliance BP",
+      "address": "Tumkur Road",
+      "last_updated": "2026-01-05T10:40:00Z"
+    },
+    {
+      "station_id": "EV036",
+      "name": "Bangalore University EV Point",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 13.0662,
+      "longitude": 77.5123,
+      "distance_km": 12.5,
+      "charger_types": ["AC"],
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 30, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 2,
+      "pricing_per_kwh": 14,
+      "operator": "BESCOM",
+      "address": "Jnana Bharathi Campus",
+      "last_updated": "2026-01-05T09:55:00Z"
+    },
+    {
+      "station_id": "EV037",
+      "name": "HAL Airport EV Hub",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 12.9549,
+      "longitude": 77.6681,
+      "distance_km": 9.8,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 4, "power_kw": 120, "status": "Available" },
+        { "type": "CHAdeMO", "plugs": 2, "power_kw": 100, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 6,
+      "pricing_per_kwh": 25,
+      "operator": "Tata Power",
+      "address": "Old Airport Road",
+      "last_updated": "2026-01-05T10:30:00Z"
+    },
+    {
+      "station_id": "EV038",
+      "name": "CV Raman Nagar EV Station",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 12.9916,
+      "longitude": 77.6581,
+      "distance_km": 7.4,
+      "charger_types": ["AC", "DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 60, "status": "Available" },
+        { "type": "Type 2", "plugs": 2, "power_kw": 22, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 4,
+      "pricing_per_kwh": 19,
+      "operator": "ChargeZone",
+      "address": "ITI Colony",
+      "last_updated": "2026-01-05T10:25:00Z"
+    },
+    {
+      "station_id": "EV039",
+      "name": "Bannerghatta EV Point",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 12.8003,
+      "longitude": 77.5776,
+      "distance_km": 18.2,
+      "charger_types": ["AC"],
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 25, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 2,
+      "pricing_per_kwh": 14,
+      "operator": "KPTCL",
+      "address": "Bannerghatta Road",
+      "last_updated": "2026-01-05T10:15:00Z"
+    },
+    {
+      "station_id": "EV040",
+      "name": "Jalahalli EV Station",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "latitude": 13.0652,
+      "longitude": 77.5514,
+      "distance_km": 10.8,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 3, "power_kw": 100, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 3,
+      "pricing_per_kwh": 21,
+      "operator": "Reliance BP",
+      "address": "Jalahalli Cross",
+      "last_updated": "2026-01-05T10:10:00Z"
+    },
+    {
+      "station_id": "EV041",
+      "name": "Vijayawada EV Hub",
+      "city": "Vijayawada",
+      "state": "Andhra Pradesh",
+      "latitude": 16.5062,
+      "longitude": 80.6480,
+      "distance_km": 650,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 4, "power_kw": 120, "status": "Available" },
+        { "type": "CHAdeMO", "plugs": 2, "power_kw": 100, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 6,
+      "pricing_per_kwh": 24,
+      "operator": "Tata Power",
+      "address": "Benz Circle",
+      "last_updated": "2026-01-05T09:00:00Z"
+    },
+    {
+      "station_id": "EV042",
+      "name": "Chennai Central EV Hub",
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "latitude": 13.0827,
+      "longitude": 80.2707,
+      "distance_km": 350,
+      "charger_types": ["AC", "DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 6, "power_kw": 150, "status": "Busy" },
+        { "type": "Type 2", "plugs": 4, "power_kw": 22, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 8,
+      "pricing_per_kwh": 26,
+      "operator": "ChargeZone",
+      "address": "Park Town",
+      "last_updated": "2026-01-05T08:30:00Z"
+    },
+    {
+      "station_id": "EV043",
+      "name": "Hyderabad Hi-Tech EV",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "latitude": 17.3850,
+      "longitude": 78.4867,
+      "distance_km": 575,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 4, "power_kw": 120, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 4,
+      "pricing_per_kwh": 23,
+      "operator": "Reliance BP",
+      "address": "HITEC City",
+      "last_updated": "2026-01-05T07:45:00Z"
+    },
+    {
+      "station_id": "EV044",
+      "name": "Coimbatore EV Station",
+      "city": "Coimbatore",
+      "state": "Tamil Nadu",
+      "latitude": 11.0168,
+      "longitude": 76.9558,
+      "distance_km": 410,
+      "charger_types": ["AC", "DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 60, "status": "Available" },
+        { "type": "Type 2", "plugs": 3, "power_kw": 22, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 5,
+      "pricing_per_kwh": 20,
+      "operator": "Zeon Charging",
+      "address": "Gandhipuram",
+      "last_updated": "2026-01-05T08:15:00Z"
+    },
+    {
+      "station_id": "EV045",
+      "name": "Mangaluru EV Hub",
+      "city": "Mangaluru",
+      "state": "Karnataka",
+      "latitude": 12.9141,
+      "longitude": 74.8560,
+      "distance_km": 355,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 3, "power_kw": 100, "status": "Available" },
+        { "type": "CHAdeMO", "plugs": 1, "power_kw": 50, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 4,
+      "pricing_per_kwh": 22,
+      "operator": "Tata Power",
+      "address": "Light House Hill",
+      "last_updated": "2026-01-05T07:30:00Z"
+    },
+    {
+      "station_id": "EV046",
+      "name": "Hubballi EV Station",
+      "city": "Hubballi",
+      "state": "Karnataka",
+      "latitude": 15.3647,
+      "longitude": 75.1240,
+      "distance_km": 410,
+      "charger_types": ["AC", "DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 60, "status": "Available" },
+        { "type": "Type 2", "plugs": 2, "power_kw": 22, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 4,
+      "pricing_per_kwh": 19,
+      "operator": "BESCOM",
+      "address": "Club Road",
+      "last_updated": "2026-01-05T07:50:00Z"
+    },
+    {
+      "station_id": "EV047",
+      "name": "Belagavi EV Point",
+      "city": "Belagavi",
+      "state": "Karnataka",
+      "latitude": 15.8497,
+      "longitude": 74.4977,
+      "distance_km": 510,
+      "charger_types": ["AC"],
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 30, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 2,
+      "pricing_per_kwh": 16,
+      "operator": "KPTCL",
+      "address": "Khanapur Road",
+      "last_updated": "2026-01-05T07:20:00Z"
+    },
+    {
+      "station_id": "EV048",
+      "name": "Kalaburagi EV Hub",
+      "city": "Kalaburagi",
+      "state": "Karnataka",
+      "latitude": 17.3297,
+      "longitude": 76.8343,
+      "distance_km": 620,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 60, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 2,
+      "pricing_per_kwh": 21,
+      "operator": "ChargeZone",
+      "address": "Sedam Road",
+      "last_updated": "2026-01-05T06:45:00Z"
+    },
+    {
+      "station_id": "EV049",
+      "name": "Shivamogga EV Station",
+      "city": "Shivamogga",
+      "state": "Karnataka",
+      "latitude": 13.9299,
+      "longitude": 75.5681,
+      "distance_km": 280,
+      "charger_types": ["AC"],
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 25, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 2,
+      "pricing_per_kwh": 15,
+      "operator": "KPTCL",
+      "address": "Nehru Road",
+      "last_updated": "2026-01-05T08:10:00Z"
+    },
+    {
+      "station_id": "EV050",
+      "name": "Madikeri EV Point",
+      "city": "Madikeri",
+      "state": "Karnataka",
+      "latitude": 12.4262,
+      "longitude": 75.7382,
+      "distance_km": 245,
+      "charger_types": ["AC", "DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 1, "power_kw": 50, "status": "Available" },
+        { "type": "Type 2", "plugs": 2, "power_kw": 22, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 3,
+      "pricing_per_kwh": 18,
+      "operator": "BESCOM",
+      "address": "College Road",
+      "last_updated": "2026-01-05T08:40:00Z"
+    },
+    {
+      "station_id": "EV051",
+      "name": "Udupi EV Hub",
+      "city": "Udupi",
+      "state": "Karnataka",
+      "latitude": 13.3389,
+      "longitude": 74.7451,
+      "distance_km": 385,
+      "charger_types": ["DC"],
+      "connectors": [
+        { "type": "CCS2", "plugs": 2, "power_kw": 100, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 2,
+      "pricing_per_kwh": 22,
+      "operator": "Tata Power",
+      "address": "Malpe Beach Road",
+      "last_updated": "2026-01-05T07:55:00Z"
+    },
+    {
+      "station_id": "EV052",
+      "name": "Karwar EV Station",
+      "city": "Karwar",
+      "state": "Karnataka",
+      "latitude": 14.8136,
+      "longitude": 74.1295,
+      "distance_km": 490,
+      "charger_types": ["AC"],
+      "connectors": [
+        { "type": "Type 2", "plugs": 2, "power_kw": 30, "status": "Available" }
+      ],
+      "status": "Available",
+      "available_ports": 2,
+      "pricing_per_kwh": 17,
+      "operator": "KPTCL",
+      "address": "Beach Road",
+      "last_updated": "2026-01-05T07:10:00Z"
     }
   ]
 }
-
