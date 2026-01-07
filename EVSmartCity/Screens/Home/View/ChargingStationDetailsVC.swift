@@ -9,7 +9,7 @@ import UIKit
 
 class ChargingStationDetailsVC: UIViewController {
 
-    var selectedStation: EVStation?
+    var stationId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()

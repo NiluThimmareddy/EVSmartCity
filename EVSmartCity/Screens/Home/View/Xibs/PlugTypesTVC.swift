@@ -28,9 +28,10 @@ class PlugTypesTVC: UITableViewCell {
         backgroundColor = .clear
     }
     
-    func configure(with viewModel: ConnectorCellViewModel) {
+    func configure(with connector: ConnectorCellViewModel) {
+        // Use the new ConnectorCellViewModel properties
         let connectorIcon: String
-        switch viewModel.connector.type {
+        switch connector.type {
         case "Type 2":
             connectorIcon = "🔌"
         case "CCS2":
@@ -40,10 +41,13 @@ class PlugTypesTVC: UITableViewCell {
         default:
             connectorIcon = "⚡"
         }
-        plugTypeLabel.text = "\(connectorIcon) \(viewModel.connector.type)"
-        plugsCountLabel.text = "\(viewModel.connector.plugs) plug\(viewModel.connector.plugs > 1 ? "s" : "")"
+        
+        plugTypeLabel.text = "\(connectorIcon) \(connector.type)"
+        plugsCountLabel.text = "\(connector.plugsCount) plug\(connector.plugsCount > 1 ? "s" : "")"
+        
+        // Use the statusColor from view model
         let backgroundColor: UIColor
-        switch viewModel.connector.status {
+        switch connector.status {
         case "Available":
             backgroundColor = UIColor.systemGreen.withAlphaComponent(0.1)
         case "Busy":
@@ -51,13 +55,28 @@ class PlugTypesTVC: UITableViewCell {
         default:
             backgroundColor = UIColor.systemGray5
         }
+        
         backView.backgroundColor = backgroundColor
+        
+        // Optional: Change border color based on status
+        let borderColor: UIColor
+        switch connector.status {
+        case "Available":
+            borderColor = UIColor.systemGreen.withAlphaComponent(0.3)
+        case "Busy":
+            borderColor = UIColor.systemOrange.withAlphaComponent(0.3)
+        default:
+            borderColor = UIColor.systemGray4
+        }
+        
+        backView.layer.borderColor = borderColor.cgColor
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         plugTypeLabel.text = nil
         plugsCountLabel.text = nil
+        backView.backgroundColor = .clear
         backView.layer.borderColor = UIColor.systemGray4.cgColor
     }
 }

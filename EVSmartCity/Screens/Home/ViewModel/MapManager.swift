@@ -7,39 +7,43 @@
 
 import MapKit
 
-class MapManager: NSObject, ObservableObject {
-    @Published var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 12.9716, longitude: 77.5946),
-        span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
-    )
+class MapManager {
+    private(set) var currentRegion: MKCoordinateRegion
+    private let defaultCenter = CLLocationCoordinate2D(latitude: 12.9716, longitude: 77.5946)
+    private let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
     
-    var annotations: [EVStationAnnotation] = [] {
-        didSet {
-            updateVisibleAnnotations()
-        }
+    let minZoomLevel: Double = 0.002
+    let maxZoomLevel: Double = 50.0
+    let zoomFactor: Double = 2.0
+    
+    init() {
+        self.currentRegion = MKCoordinateRegion(center: defaultCenter, span: defaultSpan)
     }
     
-    func centerOnLocation(latitude: Double, longitude: Double) {
-        region.center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    func updateRegion(_ region: MKCoordinateRegion) {
+        currentRegion = region
     }
     
-    func centerOnDefaultLocation() {
-        centerOnLocation(latitude: 12.9716, longitude: 77.5946)
+    func zoom(to coordinate: CLLocationCoordinate2D, span: MKCoordinateSpan? = nil) {
+        let newSpan = span ?? MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        currentRegion = MKCoordinateRegion(center: coordinate, span: newSpan)
     }
     
-    func zoomToFitAnnotations(_ annotations: [EVStationAnnotation]) {
+    func zoomToFitAnnotations(_ annotations: [EVStationAnnotationViewModel]) {
         guard !annotations.isEmpty else { return }
         
-        var minLat = annotations[0].coordinate.latitude
-        var maxLat = annotations[0].coordinate.latitude
-        var minLon = annotations[0].coordinate.longitude
-        var maxLon = annotations[0].coordinate.longitude
+        let coordinates = annotations.map { $0.coordinate }
         
-        for annotation in annotations {
-            minLat = min(minLat, annotation.coordinate.latitude)
-            maxLat = max(maxLat, annotation.coordinate.latitude)
-            minLon = min(minLon, annotation.coordinate.longitude)
-            maxLon = max(maxLon, annotation.coordinate.longitude)
+        var minLat = coordinates[0].latitude
+        var maxLat = coordinates[0].latitude
+        var minLon = coordinates[0].longitude
+        var maxLon = coordinates[0].longitude
+        
+        for coordinate in coordinates {
+            minLat = min(minLat, coordinate.latitude)
+            maxLat = max(maxLat, coordinate.latitude)
+            minLon = min(minLon, coordinate.longitude)
+            maxLon = max(maxLon, coordinate.longitude)
         }
         
         let center = CLLocationCoordinate2D(
@@ -52,11 +56,24 @@ class MapManager: NSObject, ObservableObject {
             longitudeDelta: (maxLon - minLon) * 1.3
         )
         
-        region = MKCoordinateRegion(center: center, span: span)
+        currentRegion = MKCoordinateRegion(center: center, span: span)
     }
     
-    private func updateVisibleAnnotations() {
-        // You can add logic here to filter annotations based on current region
-        // For example, only show annotations in the current visible region
+    func calculateZoomedRegion(zoomIn: Bool, from currentRegion: MKCoordinateRegion) -> MKCoordinateRegion {
+        let newLatitudeDelta = zoomIn ?
+            currentRegion.span.latitudeDelta / zoomFactor :
+            currentRegion.span.latitudeDelta * zoomFactor
+        
+        let newLongitudeDelta = zoomIn ?
+            currentRegion.span.longitudeDelta / zoomFactor :
+            currentRegion.span.longitudeDelta * zoomFactor
+        
+        let clampedLatDelta = max(minZoomLevel, min(maxZoomLevel, newLatitudeDelta))
+        let clampedLonDelta = max(minZoomLevel, min(maxZoomLevel, newLongitudeDelta))
+        
+        return MKCoordinateRegion(
+            center: currentRegion.center,
+            span: MKCoordinateSpan(latitudeDelta: clampedLatDelta, longitudeDelta: clampedLonDelta)
+        )
     }
 }

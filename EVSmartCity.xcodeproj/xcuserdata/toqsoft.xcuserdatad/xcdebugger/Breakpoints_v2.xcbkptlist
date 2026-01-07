@@ -16,52 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
-            landmarkName = "setupBindings()"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "686DA808-57FB-4F6F-A3F9-23C5E603FDB5 - 8ba674b13b0b21f1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "EVSmartCity.PlanTripViewController.setupBindings() -&gt; ()"
-                  moduleName = "EVSmartCity.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/toqsoft/Desktop/EVSmartCity/EVSmartCity/Screens/Home/View/PlanTripViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33">
-               </Location>
-               <Location
-                  uuid = "686DA808-57FB-4F6F-A3F9-23C5E603FDB5 - 3728ca9219c278bb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.String) -&gt; () in EVSmartCity.PlanTripViewController.setupBindings() -&gt; ()"
-                  moduleName = "EVSmartCity.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/toqsoft/Desktop/EVSmartCity/EVSmartCity/Screens/Home/View/PlanTripViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33">
-               </Location>
-               <Location
-                  uuid = "686DA808-57FB-4F6F-A3F9-23C5E603FDB5 - 898a3618ebec52db"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.String) -&gt; () in EVSmartCity.PlanTripViewController.setupBindings() -&gt; ()"
-                  moduleName = "EVSmartCity.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/toqsoft/Desktop/EVSmartCity/EVSmartCity/Screens/Home/View/PlanTripViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

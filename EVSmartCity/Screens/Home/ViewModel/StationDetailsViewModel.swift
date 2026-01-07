@@ -5,31 +5,24 @@
 //  Created by Toqsoft on 05/01/26.
 //
 
-// StationDetailsViewModel.swift
 import Foundation
 import UIKit
 
-class StationDetailsViewModel: ObservableObject {
-    @Published var station: EVStation
+struct StationDetailsViewModel {
+    private let station: EVStation
     
     init(station: EVStation) {
         self.station = station
     }
     
-    var stationName: String {
-        station.name
-    }
+    // MARK: - Computed Properties
+    var stationName: String { station.name }
+    var stationId: String { station.stationId }
+    var address: String { station.address }
+    var cityState: String { "\(station.city), \(station.state)" }
     
     var distanceText: String {
         String(format: "%.1f km away", station.distanceKm)
-    }
-    
-    var address: String {
-        station.address
-    }
-    
-    var cityState: String {
-        "\(station.city), \(station.state)"
     }
     
     var pricingText: String {
@@ -44,16 +37,26 @@ class StationDetailsViewModel: ObservableObject {
         "\(station.availablePorts) ports available"
     }
     
-    var statusText: String {
-        "Status: \(station.status)"
-    }
+    var statusText: String { station.status }
     
     var statusColor: UIColor {
-        station.status == "Available" ? .systemGreen : .systemOrange
+        switch station.status {
+        case "Available": return .systemGreen
+        case "Busy": return .systemOrange
+        default: return .systemRed
+        }
     }
     
     var lastUpdatedText: String {
-        formatDate(station.lastUpdated)
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        if let date = formatter.date(from: station.lastUpdated) {
+            let displayFormatter = DateFormatter()
+            displayFormatter.dateFormat = "MMM d, h:mm a"
+            return "Updated: \(displayFormatter.string(from: date))"
+        }
+        return "Updated: Recently"
     }
     
     var chargerTypesText: String {
@@ -61,19 +64,58 @@ class StationDetailsViewModel: ObservableObject {
     }
     
     var connectors: [ConnectorCellViewModel] {
-        station.connectors.map { ConnectorCellViewModel(connector: $0) }
+        station.connectors.map { ConnectorCellViewModel(from: $0) }
     }
     
-    private func formatDate(_ dateString: String) -> String {
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+    var plugScore: Int? {
+        calculatePlugScore()
+    }
+    
+    var plugScoreText: String? {
+        guard let score = plugScore else { return nil }
+        return "Plug Score: \(score)/10"
+    }
+    
+    var plugScoreColor: UIColor {
+        guard let score = plugScore else { return .clear }
+        return score >= 7 ? .systemGreen : (score >= 4 ? .systemOrange : .systemRed)
+    }
+    
+    // MARK: - Private Methods
+    private func calculatePlugScore() -> Int? {
+        var score = 0
+        var hasValidData = false
         
-        if let date = formatter.date(from: dateString) {
-            let displayFormatter = DateFormatter()
-            displayFormatter.dateFormat = "MMM d, h:mm a"
-            return "Updated: \(displayFormatter.string(from: date))"
+        if station.availablePorts > 0 {
+            if station.availablePorts >= 6 {
+                score += 4
+            } else if station.availablePorts >= 3 {
+                score += 3
+            } else if station.availablePorts >= 1 {
+                score += 2
+            }
+            hasValidData = true
         }
         
-        return "Updated: Recently"
+        if !station.chargerTypes.isEmpty {
+            if station.chargerTypes.contains("DC") {
+                score += 3
+            }
+            if station.chargerTypes.contains("AC") {
+                score += 1
+            }
+            hasValidData = true
+        }
+        
+        if !station.status.isEmpty {
+            if station.status == "Available" {
+                score += 2
+            } else if station.status == "Busy" {
+                score += 1
+            }
+            hasValidData = true
+        }
+        
+        return hasValidData ? min(score, 10) : nil
     }
 }
