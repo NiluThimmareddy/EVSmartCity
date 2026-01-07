@@ -18,9 +18,9 @@ class SplashViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     
     let SplashScreenDataArray = [
-        SplashScreenData(image: "car", title: "Title1", description: "Description1", continueButtonTitle: "NEXT"),
-        SplashScreenData(image: "car.fill", title: "Title2", description: "Description2", continueButtonTitle: "NEXT"),
-        SplashScreenData(image: "house.fill", title: "Title3", description: "Description3", continueButtonTitle: "CONTINUE")
+        SplashScreenData(image: "splash_1", title: "", description: "", continueButtonTitle: "NEXT"),
+        SplashScreenData(image: "splash_2", title: "", description: "", continueButtonTitle: "NEXT"),
+        SplashScreenData(image: "splash_3", title: "", description: "", continueButtonTitle: "CONTINUE")
     ]
     
     var currentPage = 0
@@ -68,7 +68,7 @@ extension SplashViewController {
     
     func updateContent(){
         let data = SplashScreenDataArray[currentPage]
-        imageView.image = UIImage(systemName: data.image)
+        imageView.image = UIImage(named: data.image)
         titleLabel.text = data.title
         descriptionLabel.text = data.description
         

@@ -242,6 +242,73 @@
             </objects>
             <point key="canvasLocation" x="-1566" y="18"/>
         </scene>
+        <!--Plan Trip View Controller-->
+        <scene sceneID="B4n-ww-Tc3">
+            <objects>
+                <viewController storyboardIdentifier="PlanTripViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="76V-wD-6jI" customClass="PlanTripViewController" customModule="EVSmartCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hmk-fB-YD3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="current location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ty5-4l-kZ9">
+                                <rect key="frame" x="10" y="50" width="373" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="omR-hi-r4A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="destination" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DGj-M6-ZDZ">
+                                <rect key="frame" x="10" y="120" width="373" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="gb1-Ug-0wl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDT-Vl-5dI">
+                                <rect key="frame" x="10" y="190" width="373" height="622"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4hc-Yy-DmJ">
+                                <rect key="frame" x="10" y="190" width="373" height="622"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="76V-wD-6jI" id="e1e-XF-dFK"/>
+                                    <outlet property="delegate" destination="76V-wD-6jI" id="KAZ-Zv-gLg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PkX-vd-0i8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4hc-Yy-DmJ" firstAttribute="trailing" secondItem="DGj-M6-ZDZ" secondAttribute="trailing" id="AyQ-aA-AGc"/>
+                            <constraint firstItem="ty5-4l-kZ9" firstAttribute="top" secondItem="PkX-vd-0i8" secondAttribute="top" constant="50" id="BLR-UY-Ya6"/>
+                            <constraint firstItem="LDT-Vl-5dI" firstAttribute="top" secondItem="DGj-M6-ZDZ" secondAttribute="bottom" constant="30" id="Din-MF-RMN"/>
+                            <constraint firstItem="PkX-vd-0i8" firstAttribute="trailing" secondItem="LDT-Vl-5dI" secondAttribute="trailing" constant="10" id="FQr-7Q-SfH"/>
+                            <constraint firstItem="PkX-vd-0i8" firstAttribute="bottom" secondItem="LDT-Vl-5dI" secondAttribute="bottom" constant="30" id="Kyi-DU-ePB"/>
+                            <constraint firstItem="PkX-vd-0i8" firstAttribute="bottom" secondItem="4hc-Yy-DmJ" secondAttribute="bottom" constant="30" id="NRk-SI-CbJ"/>
+                            <constraint firstItem="4hc-Yy-DmJ" firstAttribute="leading" secondItem="DGj-M6-ZDZ" secondAttribute="leading" id="OIn-i9-pWN"/>
+                            <constraint firstItem="LDT-Vl-5dI" firstAttribute="leading" secondItem="PkX-vd-0i8" secondAttribute="leading" constant="10" id="Ois-Hq-0dU"/>
+                            <constraint firstItem="DGj-M6-ZDZ" firstAttribute="leading" secondItem="ty5-4l-kZ9" secondAttribute="leading" id="Qkj-ih-ygg"/>
+                            <constraint firstItem="DGj-M6-ZDZ" firstAttribute="trailing" secondItem="ty5-4l-kZ9" secondAttribute="trailing" id="YsV-Zd-qih"/>
+                            <constraint firstItem="DGj-M6-ZDZ" firstAttribute="top" secondItem="ty5-4l-kZ9" secondAttribute="bottom" constant="30" id="aTG-sK-zya"/>
+                            <constraint firstItem="ty5-4l-kZ9" firstAttribute="leading" secondItem="PkX-vd-0i8" secondAttribute="leading" constant="10" id="cNr-w4-TJ4"/>
+                            <constraint firstItem="4hc-Yy-DmJ" firstAttribute="top" secondItem="DGj-M6-ZDZ" secondAttribute="bottom" constant="30" id="hUo-lD-1zD"/>
+                            <constraint firstItem="PkX-vd-0i8" firstAttribute="trailing" secondItem="ty5-4l-kZ9" secondAttribute="trailing" constant="10" id="vlc-FM-ioM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="destinationTextField" destination="DGj-M6-ZDZ" id="nmu-5g-GjV"/>
+                        <outlet property="locationTableView" destination="4hc-Yy-DmJ" id="IcF-YQ-pyC"/>
+                        <outlet property="mapView" destination="LDT-Vl-5dI" id="zHi-IN-kEv"/>
+                        <outlet property="sourceTextField" destination="ty5-4l-kZ9" id="Y8s-U5-AOJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Izd-3I-udD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4168.7022900763359" y="17.605633802816904"/>
+        </scene>
         <!--Charging Station DetailsVC-->
         <scene sceneID="2A9-RS-VLP">
             <objects>
@@ -284,8 +351,22 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RzO-w0-qKr">
+                                <rect key="frame" x="151.66666666666666" y="408.66666666666669" width="90" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Plan Trip"/>
+                                <connections>
+                                    <segue destination="76V-wD-6jI" kind="presentation" id="sml-dC-XX0"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RzO-w0-qKr" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="dHp-pk-ceB"/>
+                            <constraint firstItem="RzO-w0-qKr" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="pqI-EY-1j2"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="Yuv-20-Hnd"/>
                 </viewController>

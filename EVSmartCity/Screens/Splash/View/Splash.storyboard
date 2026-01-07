@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aTJ-T9-rOX">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="aP2-qt-GTK">
                                 <rect key="frame" x="30" y="69" width="73" height="30"/>
                                 <constraints>
@@ -25,51 +28,45 @@
                                     <action selector="pageControleAction:" destination="Y6W-OH-hqX" eventType="valueChanged" id="gg4-Vw-v7O"/>
                                 </connections>
                             </pageControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5t-Ym-bGU">
-                                <rect key="frame" x="319.33333333333331" y="69" width="53.666666666666686" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5t-Ym-bGU">
+                                <rect key="frame" x="288" y="69" width="85" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Y5D-W4-Ove"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Skip">
-                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
-                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                                    <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="skipButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ytp-HR-arC"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aTJ-T9-rOX">
-                                <rect key="frame" x="0.0" y="338" width="393" height="350"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="w6v-G6-Lg1"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNs-Xo-s10">
-                                <rect key="frame" x="10" y="170.66666666666663" width="373" height="137.33333333333337"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNs-Xo-s10">
+                                <rect key="frame" x="10" y="149" width="373" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNs-sb-8aH">
                                 <rect key="frame" x="46.666666666666657" y="768" width="300" height="40"/>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.47690795068027209" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="UNF-si-5Va"/>
                                     <constraint firstAttribute="height" constant="40" id="woW-kx-cZ8"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Continue">
-                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                    <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="continueButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Dxd-co-Iea"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0da-GQ-NxX">
-                                <rect key="frame" x="10" y="119.00000000000001" width="373" height="21.666666666666671"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0da-GQ-NxX">
+                                <rect key="frame" x="10" y="119" width="373" height="0.0"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -78,20 +75,20 @@
                         <constraints>
                             <constraint firstItem="TNs-Xo-s10" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="BwO-fE-GC2"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="HNs-sb-8aH" secondAttribute="bottom" constant="10" id="En5-AB-lBQ"/>
-                            <constraint firstItem="aTJ-T9-rOX" firstAttribute="top" secondItem="TNs-Xo-s10" secondAttribute="bottom" constant="30" id="NMI-oM-Thi"/>
                             <constraint firstItem="aP2-qt-GTK" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="R6K-Ed-yZE"/>
                             <constraint firstItem="HNs-sb-8aH" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ShD-GQ-Ktx"/>
                             <constraint firstItem="TNs-Xo-s10" firstAttribute="top" secondItem="0da-GQ-NxX" secondAttribute="bottom" constant="30" id="TR6-1W-X6Z"/>
                             <constraint firstItem="0da-GQ-NxX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="UgA-Ng-r28"/>
                             <constraint firstItem="aP2-qt-GTK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="ZBQ-8L-SHB"/>
+                            <constraint firstAttribute="bottom" secondItem="aTJ-T9-rOX" secondAttribute="bottom" id="eRS-gO-nSD"/>
                             <constraint firstItem="0da-GQ-NxX" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ewy-Jx-in1"/>
-                            <constraint firstItem="HNs-sb-8aH" firstAttribute="top" relation="lessThanOrEqual" secondItem="aTJ-T9-rOX" secondAttribute="bottom" constant="80" id="f5N-Sd-EIx"/>
                             <constraint firstItem="aTJ-T9-rOX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fmX-eC-eB0"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aTJ-T9-rOX" secondAttribute="trailing" id="gGE-ZA-Jr0"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="H5t-Ym-bGU" secondAttribute="trailing" constant="20" id="gea-jz-4qZ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0da-GQ-NxX" secondAttribute="trailing" constant="10" id="hcl-yO-d3u"/>
                             <constraint firstItem="H5t-Ym-bGU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="hhg-Eg-lR8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TNs-Xo-s10" secondAttribute="trailing" constant="10" id="oRw-PX-8eu"/>
+                            <constraint firstItem="aTJ-T9-rOX" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="x4Q-51-rl6"/>
                             <constraint firstItem="0da-GQ-NxX" firstAttribute="top" secondItem="aP2-qt-GTK" secondAttribute="bottom" constant="20" id="xKb-zl-Ulx"/>
                         </constraints>
                     </view>
@@ -110,11 +107,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
