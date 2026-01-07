@@ -17,6 +17,9 @@ class PlanTripViewController: UIViewController, UITextFieldDelegate{
     
     private let viewModel = PlanTripViewModel()
     private let locationViewModel = LocationSearchViewModel()
+    private var sourceCoordinate: CLLocationCoordinate2D?
+    private var destinationCoordinate: CLLocationCoordinate2D?
+    
     var activeTextField: UITextField?
     private var isSelectingSource = true
     
@@ -64,11 +67,20 @@ class PlanTripViewController: UIViewController, UITextFieldDelegate{
         locationViewModel.fetchCoordinates(from: completion) { coordinate in
             guard let coordinate else { return }
             
+            if isSource {
+                self.sourceCoordinate = coordinate
+            }else{
+                self.destinationCoordinate = coordinate
+            }
+            
             let recent = RecentLocation(title: completion.title, latitude: coordinate.latitude, longitude: coordinate.longitude, isSource: isSource, date: Date()
             )
             
             RecentSearchManager.shared.save(recent)
             
+            DispatchQueue.main.async {
+                self.addPi
+            }
             print("Saved location:", coordinate)
         }
     }
