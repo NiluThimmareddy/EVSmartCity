@@ -16,14 +16,16 @@ class PlanTripViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var locationTableView: UITableView!
     
     private let viewModel = PlanTripViewModel()
+    private let locationViewModel = LocationSearchViewModel()
     var activeTextField: UITextField?
+    private var isSelectingSource = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-    
+        setupUI()
+        viewModel.fetchCurrentLocation()
+        setupBindings()
     }
     
 
@@ -57,6 +59,19 @@ class PlanTripViewController: UIViewController, UITextFieldDelegate{
         viewModel.searchLocation(text: textField.text ?? "")
     }
 
+    func userSelectedLocation(_ completion: MKLocalSearchCompletion, isSource: Bool) {
+        
+        locationViewModel.fetchCoordinates(from: completion) { coordinate in
+            guard let coordinate else { return }
+            
+            let recent = RecentLocation(title: completion.title, latitude: coordinate.latitude, longitude: coordinate.longitude, isSource: isSource, date: Date()
+            )
+            
+            RecentSearchManager.shared.save(recent)
+            
+            print("Saved location:", coordinate)
+        }
+    }
 }
 
 extension PlanTripViewController : UITableViewDataSource, UITableViewDelegate{
@@ -76,7 +91,12 @@ extension PlanTripViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selected = viewModel.suggestion(at: indexPath.row)
         activeTextField?.text = "\(selected.title), \(selected.subtitle)"
+        
         tableView.isHidden = true
         view.endEditing(true)
+        
+//        let isSource = (activeTextField == sourceTextField)
+        
+//        userSelectedLocation(selected, isSource: isSource)
     }
 }

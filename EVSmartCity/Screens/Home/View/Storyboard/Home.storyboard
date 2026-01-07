@@ -47,6 +47,17 @@
                     <view key="view" contentMode="scaleToFill" id="RHi-LK-n7i">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SL8-hU-tb4">
+                                <rect key="frame" x="111" y="356" width="129" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Plan Your Trip"/>
+                                <connections>
+                                    <segue destination="zO2-Uj-xEt" kind="presentation" id="QpT-gQ-zLh"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vGQ-Ta-ZyI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -54,18 +65,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lB-UT-yes" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2389" y="18"/>
+            <point key="canvasLocation" x="-2390.0763358778627" y="17.605633802816904"/>
         </scene>
         <!--Plan Trip View Controller-->
         <scene sceneID="xsk-pZ-szn">
             <objects>
                 <viewController storyboardIdentifier="PlanTripViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zO2-Uj-xEt" customClass="PlanTripViewController" customModule="EVSmartCity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Yd-Zm-IFU">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzP-PS-mYp">
-                                <rect key="frame" x="0.0" y="59" width="393" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DqJ-3d-BuX"/>
@@ -75,7 +86,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system" title="Where are you going?" imagePadding="10"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXf-ZX-VjK">
-                                <rect key="frame" x="10" y="109" width="373" height="150"/>
+                                <rect key="frame" x="10" y="50" width="373" height="150"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Drop location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7rI-zr-urb">
                                         <rect key="frame" x="30" y="80" width="313" height="40"/>
@@ -106,7 +117,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mP2-by-VJl">
-                                <rect key="frame" x="10" y="269" width="373" height="539"/>
+                                <rect key="frame" x="10" y="210" width="373" height="622"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="zO2-Uj-xEt" id="2x2-yA-BRP"/>

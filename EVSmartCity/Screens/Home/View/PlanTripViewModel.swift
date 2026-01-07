@@ -5,10 +5,13 @@
 //  Created by Toqsoft on 05/01/26.
 //
 
+import MapKit
+
 final class PlanTripViewModel {
     
     private let locationService =  LocationService()
     private let searchService = SearchService()
+    private let completer = MKLocalSearchCompleter()
     
     var onSuggestionsUpdate: (([LocationSuggestion]) -> Void)?
     var onCurrentLocationUpdate: ((String)-> Void)?

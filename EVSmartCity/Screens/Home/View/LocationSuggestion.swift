@@ -14,3 +14,12 @@ struct LocationSuggestion
     let subtitle : String
     
 }
+
+
+struct RecentLocation: Codable {
+    let title : String
+    let latitude : Double
+    let longitude : Double
+    let isSource : Bool
+    let date : Date
+}

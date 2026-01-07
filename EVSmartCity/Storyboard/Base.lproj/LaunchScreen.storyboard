@@ -26,7 +26,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ftj-9p-w6g" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="939-eN-tfG"/>
                             <constraint firstItem="ftj-9p-w6g" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ZEC-wS-kdg"/>
@@ -40,8 +40,8 @@
     </scenes>
     <resources>
         <image name="ev.charger.fill" catalog="system" width="128" height="122"/>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
