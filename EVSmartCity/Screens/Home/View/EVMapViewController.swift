@@ -5,6 +5,7 @@
 //  Created by Toqsoft on 05/01/26.
 //
 
+
 import UIKit
 import MapKit
 import Combine
@@ -29,6 +30,7 @@ class EVMapViewController: UIViewController {
     @IBOutlet weak var tableViewheightConstraint: NSLayoutConstraint!
     @IBOutlet weak var getDirectionsButton: UIButton!
     @IBOutlet weak var currentLocationButton: UIButton!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     private var viewModel: any EVStationListViewModelProtocol
     private var mapManager: MapManager
@@ -40,6 +42,8 @@ class EVMapViewController: UIViewController {
     private var isShowingDirections = false
     private var isUserLocationInitialized = false
     private var shouldCenterOnUserLocation = false
+    private var searchResults: [EVStationAnnotationViewModel] = []
+    private var isSearching = false
     
     init?(coder: NSCoder, viewModel: any EVStationListViewModelProtocol) {
         self.viewModel = viewModel
@@ -61,6 +65,7 @@ class EVMapViewController: UIViewController {
         setupMapView()
         setupZoomButtons()
         setupLocationManager()
+        setupSearchBar()
         viewModel.loadStations()
     }
     
@@ -80,12 +85,13 @@ class EVMapViewController: UIViewController {
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         viewModel.deselectStation()
         clearRoute()
+        clearSearchIfNeeded()
     }
     
     @IBAction func filterButtonTapped(_ sender: UIBarButtonItem) {
         showFilterOptions()
     }
-    
+
     @IBAction func getDirectionsButtonAction(_ sender: Any) {
         if isShowingDirections {
             clearRoute()
@@ -104,6 +110,7 @@ class EVMapViewController: UIViewController {
             showAlert(title: "Location Required", message: "Please wait for location to load or enable location services")
             return
         }
+        hideStationDetails()
         
         showRoute(from: userLocation.coordinate, to: stationLocation)
     }
@@ -125,13 +132,16 @@ class EVMapViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleStationDetailsTap(_:)))
         stationDetailsView.addGestureRecognizer(tapGesture)
         stationDetailsView.isUserInteractionEnabled = true
-        
-        // Configure current location button
         currentLocationButton.backgroundColor = .white
         currentLocationButton.tintColor = .systemBlue
         currentLocationButton.layer.cornerRadius = 8
         currentLocationButton.layer.borderColor = UIColor.systemBlue.cgColor
         currentLocationButton.layer.borderWidth = 1
+        
+        // Add keyboard dismissal tap gesture
+        let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        viewTapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(viewTapGesture)
     }
     
     private func setupBindings() {
@@ -190,7 +200,7 @@ class EVMapViewController: UIViewController {
     private func setupMapView() {
         mapView.delegate = self
         mapView.showsUserLocation = true
-        mapView.userTrackingMode = .none // Don't follow user by default
+        mapView.userTrackingMode = .none
         mapView.setRegion(mapManager.currentRegion, animated: false)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMapTap(_:)))
@@ -223,12 +233,8 @@ class EVMapViewController: UIViewController {
     private func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 10 // Update only when moving 10 meters
-        
-        // Check current authorization status
+        locationManager.distanceFilter = 10
         checkLocationAuthorization()
-        
-        // Start location updates immediately if authorized
         if locationManager.authorizationStatus == .authorizedWhenInUse ||
            locationManager.authorizationStatus == .authorizedAlways {
             locationManager.startUpdatingLocation()
@@ -236,17 +242,54 @@ class EVMapViewController: UIViewController {
         }
     }
     
+    private func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.placeholder = "Search stations..."
+        searchBar.returnKeyType = .search
+        searchBar.enablesReturnKeyAutomatically = true
+        searchBar.showsCancelButton = true
+        
+        // Change to default or prominent style instead of minimal
+        searchBar.searchBarStyle = .default // or .prominent
+        
+        // Set background color to make it more visible
+        searchBar.backgroundColor = .white
+        searchBar.barTintColor = .white
+        
+        // Set text field background color
+        if #available(iOS 13.0, *) {
+            searchBar.searchTextField.backgroundColor = .white
+            searchBar.searchTextField.textColor = .black
+        } else {
+            // For older iOS versions
+            if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+                textField.backgroundColor = .white
+                textField.textColor = .black
+            }
+        }
+        
+        // Add border and corner radius for better visibility
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = UIColor.systemGray4.cgColor
+        searchBar.layer.cornerRadius = 8
+        searchBar.clipsToBounds = true
+        
+        // Set tint color
+        searchBar.tintColor = .systemBlue
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     private func checkLocationAuthorization() {
         switch locationManager.authorizationStatus {
         case .notDetermined:
-            // Request permission
             locationManager.requestWhenInUseAuthorization()
         case .authorizedWhenInUse, .authorizedAlways:
-            // Start updating location
             locationManager.startUpdatingLocation()
             mapView.showsUserLocation = true
         case .denied, .restricted:
-            // Show permission alert if user taps location button
             shouldCenterOnUserLocation = false
             print("Location access denied or restricted")
         @unknown default:
@@ -260,8 +303,6 @@ class EVMapViewController: UIViewController {
     
     private func centerMapOnUserLocation() {
         print("Center map button tapped")
-        
-        // Check if we have authorization
         switch locationManager.authorizationStatus {
         case .denied, .restricted:
             showLocationPermissionAlert()
@@ -274,14 +315,12 @@ class EVMapViewController: UIViewController {
             break
         }
         
-        // First try to use currentUserLocation (from location manager)
         if let userLocation = currentUserLocation {
             print("Using currentUserLocation: \(userLocation.coordinate)")
             centerMapOnUserLocation(at: userLocation.coordinate)
             return
         }
         
-        // If not available, try to use mapView's userLocation
         if let mapUserLocation = mapView.userLocation.location {
             print("Using mapView userLocation: \(mapUserLocation.coordinate)")
             currentUserLocation = mapUserLocation
@@ -289,22 +328,17 @@ class EVMapViewController: UIViewController {
             return
         }
         
-        // If still not available, start location updates and set flag
         print("No location available, starting updates...")
         shouldCenterOnUserLocation = true
         locationManager.startUpdatingLocation()
-        
-        // Show a temporary message
         showTemporaryMessage("Getting your location...")
     }
     
     private func centerMapOnUserLocation(at coordinate: CLLocationCoordinate2D) {
         print("Centering map at: \(coordinate)")
-        
-        // Use a reasonable zoom level for user location (around 500-1000 meters)
         let region = MKCoordinateRegion(
             center: coordinate,
-            latitudinalMeters: 1000,  // 1km radius
+            latitudinalMeters: 1000,
             longitudinalMeters: 1000
         )
         
@@ -314,7 +348,6 @@ class EVMapViewController: UIViewController {
     }
     
     private func showTemporaryMessage(_ message: String) {
-        // Create a temporary label
         let messageLabel = UILabel()
         messageLabel.text = message
         messageLabel.textColor = .white
@@ -324,11 +357,8 @@ class EVMapViewController: UIViewController {
         messageLabel.layer.cornerRadius = 8
         messageLabel.clipsToBounds = true
         messageLabel.alpha = 0
-        
-        // Add to view
         view.addSubview(messageLabel)
         
-        // Set constraints
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             messageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -336,8 +366,6 @@ class EVMapViewController: UIViewController {
             messageLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.8),
             messageLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
-        
-        // Animate in and out
         UIView.animate(withDuration: 0.3) {
             messageLabel.alpha = 1
         }
@@ -352,7 +380,6 @@ class EVMapViewController: UIViewController {
     }
     
     private func showUserLocationAnnotation(at coordinate: CLLocationCoordinate2D) {
-        // Remove any existing user annotation
         let userAnnotations = mapView.annotations.filter {
             $0.title == "You are here" || $0 is MKUserLocation
         }
@@ -363,11 +390,8 @@ class EVMapViewController: UIViewController {
         annotation.title = "You are here"
         annotation.subtitle = "Current location"
         mapView.addAnnotation(annotation)
-        
-        // Make sure it's selected to show callout
         mapView.selectAnnotation(annotation, animated: true)
         
-        // Remove after 3 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             if let index = self.mapView.annotations.firstIndex(where: { $0.title == "You are here" }) {
                 let annotationToRemove = self.mapView.annotations[index]
@@ -383,7 +407,6 @@ class EVMapViewController: UIViewController {
             self.currentLocationButton.tintColor = isActive ? .white : .systemBlue
             self.currentLocationButton.setImage(UIImage(systemName: isActive ? "dot.scope" : "dot.scope"), for: .normal)
             
-            // Add a pulse animation when centered
             if isActive {
                 let pulse = CABasicAnimation(keyPath: "transform.scale")
                 pulse.duration = 0.3
@@ -395,7 +418,6 @@ class EVMapViewController: UIViewController {
             }
         }
         
-        // Reset button state after 2 seconds
         if isActive {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.updateCurrentLocationButton(isActive: false)
@@ -436,11 +458,9 @@ class EVMapViewController: UIViewController {
                     return
                 }
                 
-                // Add route overlay
                 self.mapView.addOverlay(route.polyline, level: .aboveRoads)
                 self.routeOverlay = route.polyline
                 
-                // Add start and end annotations
                 let startAnnotation = MKPointAnnotation()
                 startAnnotation.coordinate = startCoordinate
                 startAnnotation.title = "Your Location"
@@ -453,10 +473,8 @@ class EVMapViewController: UIViewController {
                 self.mapView.addAnnotation(endAnnotation)
                 self.routeAnnotations.append(endAnnotation)
                 
-                // Find stations along the route
                 let stationsAlongRoute = self.findStationsAlongRoute(route: route, stations: observableVM.annotations)
                 
-                // Add stations along route as annotations
                 for station in stationsAlongRoute {
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = station.coordinate
@@ -466,12 +484,8 @@ class EVMapViewController: UIViewController {
                     self.routeAnnotations.append(annotation)
                 }
                 
-                // Zoom to show the entire route
                 self.zoomToShowRoute(route: route)
-                
-                // Show stations info
                 self.showStationsAlongRoute(stations: stationsAlongRoute)
-                
                 self.isShowingDirections = true
             }
         }
@@ -483,8 +497,6 @@ class EVMapViewController: UIViewController {
         for station in stations {
             let stationLocation = CLLocation(latitude: station.coordinate.latitude,
                                            longitude: station.coordinate.longitude)
-            
-            // Check if station is within max distance from route
             for coordinate in route.polyline.coordinates {
                 let routePoint = CLLocation(latitude: coordinate.latitude,
                                           longitude: coordinate.longitude)
@@ -563,15 +575,12 @@ class EVMapViewController: UIViewController {
             mapView.removeOverlay(overlay)
             routeOverlay = nil
         }
-        
         mapView.removeAnnotations(routeAnnotations)
         routeAnnotations.removeAll()
-        
         isShowingDirections = false
     }
     
     private func updateMapAnnotations(_ annotationVMs: [EVStationAnnotationViewModel]) {
-        // Remove only station annotations, keep user location and route annotations
         let annotationsToRemove = mapView.annotations.filter { annotation in
             !(annotation is MKUserLocation) &&
             !routeAnnotations.contains(where: { $0 === annotation }) &&
@@ -613,7 +622,6 @@ class EVMapViewController: UIViewController {
     private func updateStationDetailsUI(with viewModel: StationDetailsViewModel) {
         stationNameLabel.text = viewModel.stationName
         
-        // Update distance with user's current location
         if let userLocation = currentUserLocation,
            let observableVM = self.viewModel as? EVStationListViewModel,
            let stationAnnotation = observableVM.annotations.first(where: { $0.stationId == viewModel.stationId }) {
@@ -732,6 +740,142 @@ class EVMapViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    private func searchStations(with query: String) {
+        guard let observableVM = viewModel as? EVStationListViewModel else { return }
+        
+        if query.isEmpty {
+            clearSearch()
+            return
+        }
+        
+        isSearching = true
+        searchResults = observableVM.searchStations(with: query)
+        updateMapWithSearchResults()
+        handleSearchResults(for: query)
+    }
+
+    private func updateMapWithSearchResults() {
+        // Remove all non-essential annotations
+        let annotationsToRemove = mapView.annotations.filter { annotation in
+            !(annotation is MKUserLocation) &&
+            !routeAnnotations.contains(where: { $0 === annotation }) &&
+            annotation.title != "You are here" &&
+            !searchResults.contains(where: {
+                $0.coordinate.latitude == annotation.coordinate.latitude &&
+                $0.coordinate.longitude == annotation.coordinate.longitude
+            })
+        }
+        mapView.removeAnnotations(annotationsToRemove)
+        
+        // Add search result annotations
+        for station in searchResults {
+            let existingAnnotation = mapView.annotations.first { annotation in
+                annotation.coordinate.latitude == station.coordinate.latitude &&
+                annotation.coordinate.longitude == station.coordinate.longitude
+            }
+            
+            if existingAnnotation == nil {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = station.coordinate
+                annotation.title = station.title
+                annotation.subtitle = station.subtitle
+                mapView.addAnnotation(annotation)
+            }
+        }
+        
+        // Zoom to search results
+        if !searchResults.isEmpty {
+            zoomToSearchResults()
+        }
+    }
+
+    private func handleSearchResults(for query: String) {
+        // If only one result found, select and zoom to it
+        if searchResults.count == 1 {
+            let station = searchResults[0]
+            if let observableVM = viewModel as? EVStationListViewModel {
+                observableVM.selectStation(withId: station.stationId)
+                zoomToStation(station)
+            }
+        } else if searchResults.isEmpty {
+            // No results found
+            showNoResultsMessage(for: query)
+        }
+    }
+
+    private func zoomToStation(_ station: EVStationAnnotationViewModel) {
+        let region = MKCoordinateRegion(
+            center: station.coordinate,
+            latitudinalMeters: 500,
+            longitudinalMeters: 500
+        )
+        mapView.setRegion(region, animated: true)
+    }
+
+    private func zoomToSearchResults() {
+        guard !searchResults.isEmpty else { return }
+        
+        var minLat = searchResults[0].coordinate.latitude
+        var maxLat = searchResults[0].coordinate.latitude
+        var minLon = searchResults[0].coordinate.longitude
+        var maxLon = searchResults[0].coordinate.longitude
+        
+        for station in searchResults {
+            let lat = station.coordinate.latitude
+            let lon = station.coordinate.longitude
+            
+            minLat = min(minLat, lat)
+            maxLat = max(maxLat, lat)
+            minLon = min(minLon, lon)
+            maxLon = max(maxLon, lon)
+        }
+        
+        let center = CLLocationCoordinate2D(
+            latitude: (minLat + maxLat) / 2,
+            longitude: (minLon + maxLon) / 2
+        )
+        
+        let span = MKCoordinateSpan(
+            latitudeDelta: (maxLat - minLat) * 1.2, // Add 20% padding
+            longitudeDelta: (maxLon - minLon) * 1.2
+        )
+        
+        let region = MKCoordinateRegion(center: center, span: span)
+        mapView.setRegion(region, animated: true)
+    }
+
+    private func showNoResultsMessage(for query: String) {
+        let alert = UIAlertController(
+            title: "No Results",
+            message: "No stations found for '\(query)'",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        present(alert, animated: true)
+    }
+
+    private func clearSearch() {
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+        isSearching = false
+        searchResults.removeAll()
+        
+        if let observableVM = viewModel as? EVStationListViewModel {
+            // Reload all annotations
+            updateMapAnnotations(observableVM.annotations)
+        }
+        
+        view.endEditing(true)
+    }
+
+    private func clearSearchIfNeeded() {
+        if isSearching {
+            clearSearch()
+        }
+    }
+    
     @objc private func handleDoubleTapGesture(_ gesture: UITapGestureRecognizer) {
         let location = gesture.location(in: mapView)
         let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
@@ -752,6 +896,7 @@ class EVMapViewController: UIViewController {
         if tappedAnnotations.isEmpty {
             viewModel.deselectStation()
             clearRoute()
+            clearSearchIfNeeded()
         }
     }
     
@@ -776,26 +921,32 @@ class EVMapViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Show All", style: .default) { _ in
             self.viewModel.applyFilter(.all)
+            self.clearSearchIfNeeded()
         })
         
         alert.addAction(UIAlertAction(title: "Available Only", style: .default) { _ in
             self.viewModel.applyFilter(.available)
+            self.clearSearchIfNeeded()
         })
         
         alert.addAction(UIAlertAction(title: "DC Fast Chargers", style: .default) { _ in
             self.viewModel.applyFilter(.dcFast)
+            self.clearSearchIfNeeded()
         })
         
         alert.addAction(UIAlertAction(title: "AC Chargers", style: .default) { _ in
             self.viewModel.applyFilter(.ac)
+            self.clearSearchIfNeeded()
         })
         
         alert.addAction(UIAlertAction(title: "Sort by Distance", style: .default) { _ in
             self.viewModel.applyFilter(.sortedByDistance)
+            self.clearSearchIfNeeded()
         })
         
         alert.addAction(UIAlertAction(title: "Sort by Price", style: .default) { _ in
             self.viewModel.applyFilter(.sortedByPrice)
+            self.clearSearchIfNeeded()
         })
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -808,6 +959,7 @@ class EVMapViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension EVMapViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let observableVM = viewModel as? EVStationListViewModel {
@@ -832,14 +984,13 @@ extension EVMapViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK: - MKMapViewDelegate
 extension EVMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
-            // Use default user location view
             return nil
         }
         
-        // Check if it's the "You are here" annotation
         if annotation.title == "You are here" {
             let identifier = "CurrentLocation"
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
@@ -848,7 +999,6 @@ extension EVMapViewController: MKMapViewDelegate {
                 annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 annotationView?.canShowCallout = true
                 
-                // Customize the marker
                 if let markerView = annotationView as? MKMarkerAnnotationView {
                     markerView.markerTintColor = .systemBlue
                     markerView.glyphImage = UIImage(systemName: "location.fill")
@@ -861,7 +1011,6 @@ extension EVMapViewController: MKMapViewDelegate {
             return annotationView
         }
         
-        // Check if it's a route annotation (start/end points)
         if routeAnnotations.contains(where: { $0 === annotation }) {
             let identifier = "RoutePoint"
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
@@ -885,7 +1034,6 @@ extension EVMapViewController: MKMapViewDelegate {
             return annotationView
         }
         
-        // Handle station annotations
         guard let pointAnnotation = annotation as? MKPointAnnotation else {
             return nil
         }
@@ -908,7 +1056,17 @@ extension EVMapViewController: MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         
-        annotationView?.image = createAnnotationImage(for: annotationVM)
+        // Check if this annotation is in search results
+        let isSearchResult = searchResults.contains(where: {
+            $0.stationId == annotationVM.stationId
+        })
+        
+        if isSearching && isSearchResult {
+            // Highlight search results with a different color
+            annotationView?.image = createHighlightedAnnotationImage(for: annotationVM)
+        } else {
+            annotationView?.image = createAnnotationImage(for: annotationVM)
+        }
         
         if annotationVM.availablePorts > 0 {
             annotationView = addPortCountBadge(to: annotationView, count: annotationVM.availablePorts)
@@ -923,7 +1081,6 @@ extension EVMapViewController: MKMapViewDelegate {
               annotation.title != "You are here",
               let observableVM = viewModel as? EVStationListViewModel else { return }
         
-        // Check if it's a station annotation
         if let annotationVM = observableVM.annotations.first(where: {
             $0.coordinate.latitude == annotation.coordinate.latitude &&
             $0.coordinate.longitude == annotation.coordinate.longitude
@@ -951,18 +1108,15 @@ extension EVMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        // Update current user location when map updates user location
         if let location = userLocation.location {
             print("MapView updated user location: \(location.coordinate)")
             currentUserLocation = location
             
-            // If we were waiting to center on user location, do it now
             if shouldCenterOnUserLocation {
                 centerMapOnUserLocation(at: location.coordinate)
                 shouldCenterOnUserLocation = false
             }
             
-            // Update isUserLocationInitialized flag
             if !isUserLocationInitialized {
                 isUserLocationInitialized = true
             }
@@ -975,8 +1129,17 @@ extension EVMapViewController: MKMapViewDelegate {
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .bold)
         let symbol = UIImage(systemName: annotationVM.chargerSymbol, withConfiguration: symbolConfig)?
             .withTintColor(.white, renderingMode: .alwaysOriginal)
-        
         return createLocationPinImage(color: annotationVM.annotationColor, symbol: symbol, size: pinSize)
+    }
+    
+    private func createHighlightedAnnotationImage(for annotationVM: EVStationAnnotationViewModel) -> UIImage? {
+        let pinSize = CGSize(width: 45, height: 55) // Slightly larger for highlighted
+        
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .bold)
+        let symbol = UIImage(systemName: annotationVM.chargerSymbol, withConfiguration: symbolConfig)?
+            .withTintColor(.white, renderingMode: .alwaysOriginal)
+        
+        return createLocationPinImage(color: .systemOrange, symbol: symbol, size: pinSize)
     }
     
     private func createLocationPinImage(color: UIColor, symbol: UIImage?, size: CGSize) -> UIImage? {
@@ -1039,6 +1202,41 @@ extension EVMapViewController: MKMapViewDelegate {
     }
 }
 
+// MARK: - UISearchBarDelegate
+extension EVMapViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // Perform search as user types (with debounce if needed)
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(performSearch), object: searchBar)
+        perform(#selector(performSearch), with: searchBar, afterDelay: 0.5)
+    }
+    
+    @objc private func performSearch(_ searchBar: UISearchBar) {
+        guard let query = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        searchStations(with: query)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let query = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        searchStations(with: query)
+        view.endEditing(true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        clearSearch()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searchBar.text?.isEmpty ?? true {
+            searchBar.showsCancelButton = false
+        }
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
 extension EVMapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
@@ -1046,19 +1244,14 @@ extension EVMapViewController: CLLocationManagerDelegate {
         print("LocationManager did update location: \(location.coordinate)")
         currentUserLocation = location
         
-        // If we were waiting to center on user location, do it now
         if shouldCenterOnUserLocation {
             centerMapOnUserLocation(at: location.coordinate)
             shouldCenterOnUserLocation = false
         }
         
-        // Update isUserLocationInitialized flag
         if !isUserLocationInitialized {
             isUserLocationInitialized = true
         }
-        
-        // Optional: Stop updating location to save battery if we don't need continuous updates
-        // manager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -1066,18 +1259,13 @@ extension EVMapViewController: CLLocationManagerDelegate {
         
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
-            // Start updating location
             manager.startUpdatingLocation()
-            
-            // Enable user location on map
             mapView.showsUserLocation = true
             
-            // If we have a valid location, update it
             if let location = manager.location {
                 print("Got initial location after authorization: \(location.coordinate)")
                 currentUserLocation = location
                 
-                // If user tapped location button before authorization, center now
                 if shouldCenterOnUserLocation {
                     centerMapOnUserLocation(at: location.coordinate)
                     shouldCenterOnUserLocation = false
@@ -1089,13 +1277,11 @@ extension EVMapViewController: CLLocationManagerDelegate {
             }
             
         case .denied, .restricted:
-            // Show permission alert if user was trying to use location
             if shouldCenterOnUserLocation {
                 showLocationPermissionAlert()
                 shouldCenterOnUserLocation = false
             }
         case .notDetermined:
-            // Request authorization
             manager.requestWhenInUseAuthorization()
         @unknown default:
             break
@@ -1105,7 +1291,6 @@ extension EVMapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location manager failed with error: \(error.localizedDescription)")
         
-        // If we were waiting to center and got an error, show alert
         if shouldCenterOnUserLocation {
             showAlert(title: "Location Error", message: "Unable to get your location. Please check your settings.")
             shouldCenterOnUserLocation = false
@@ -1113,13 +1298,14 @@ extension EVMapViewController: CLLocationManagerDelegate {
     }
 }
 
+// MARK: - UIGestureRecognizerDelegate
 extension EVMapViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 }
 
-// Helper extension for MKPolyline coordinates
+// MARK: - Extensions
 extension MKPolyline {
     var coordinates: [CLLocationCoordinate2D] {
         var coords = [CLLocationCoordinate2D](repeating: kCLLocationCoordinate2DInvalid,
@@ -1129,7 +1315,6 @@ extension MKPolyline {
     }
 }
 
-// Helper extension for MKCoordinateRegion
 extension MKCoordinateRegion {
     init(mapRect: MKMapRect) {
         let center = CLLocationCoordinate2D(
@@ -1143,3 +1328,4 @@ extension MKCoordinateRegion {
         self.init(center: center, span: span)
     }
 }
+

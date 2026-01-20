@@ -25,7 +25,9 @@
     </dict>
     
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>We need your location to plan EV trip</string>
+    <string>This app needs your location to show nearby charging stations</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>This app needs your location to provide navigation to charging stations</string>
 
 </dict>
 </plist>

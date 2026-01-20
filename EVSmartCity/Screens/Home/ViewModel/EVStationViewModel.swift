@@ -107,4 +107,42 @@ class EVStationListViewModel: EVStationListViewModelProtocol {
             return stations.filter { $0.operatorName.lowercased().contains(operatorName.lowercased()) }
         }
     }
+    func searchStations(with query: String) -> [EVStationAnnotationViewModel] {
+        if query.isEmpty {
+            return annotations
+        }
+        
+        let lowercasedQuery = query.lowercased()
+        
+        return filteredStations.filter { station in
+            // Search in station name
+            if station.name.lowercased().contains(lowercasedQuery) {
+                return true
+            }
+            
+            // Search in address
+            if station.address.lowercased().contains(lowercasedQuery) {
+                return true
+            }
+            
+            // Search in city
+            if station.city.lowercased().contains(lowercasedQuery) {
+                return true
+            }
+            
+            // Search in operator name
+            if station.operatorName.lowercased().contains(lowercasedQuery) {
+                return true
+            }
+            
+            // Search in connector types
+            for connector in station.connectors {
+                if connector.type.lowercased().contains(lowercasedQuery) {
+                    return true
+                }
+            }
+            
+            return false
+        }.map { EVStationAnnotationViewModel(from: $0) }
+    }
 }

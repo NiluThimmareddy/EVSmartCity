@@ -194,7 +194,7 @@
             </objects>
             <point key="canvasLocation" x="-2391.6030534351144" y="17.605633802816904"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Stations-->
         <scene sceneID="4Kr-Rw-Hnh">
             <objects>
                 <viewController storyboardIdentifier="EVMapViewController" id="2az-HH-L5Z" customClass="EVMapViewController" customModule="EVSmartCity" customModuleProvider="target" sceneMemberID="viewController">
@@ -368,16 +368,29 @@
                                     <constraint firstAttribute="height" constant="120" id="xQf-t8-emQ"/>
                                 </constraints>
                             </stackView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="63j-SI-VfQ">
+                                <rect key="frame" x="20" y="123" width="313" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="fTq-9A-HRq"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2az-HH-L5Z" id="cKx-b1-3NT"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="k9o-m7-cOh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="63j-SI-VfQ" firstAttribute="top" secondItem="k9o-m7-cOh" secondAttribute="top" constant="20" id="2J2-y7-zki"/>
                             <constraint firstItem="5sb-tY-Mw6" firstAttribute="leading" secondItem="k9o-m7-cOh" secondAttribute="leading" id="5Gm-hC-VRe"/>
                             <constraint firstItem="jQb-Wu-jHg" firstAttribute="centerY" secondItem="5sb-tY-Mw6" secondAttribute="centerY" id="5lx-EX-DxO"/>
                             <constraint firstItem="s7A-Aq-pQw" firstAttribute="top" secondItem="k9o-m7-cOh" secondAttribute="top" constant="20" id="9qA-zy-Tkm"/>
+                            <constraint firstItem="63j-SI-VfQ" firstAttribute="leading" secondItem="k9o-m7-cOh" secondAttribute="leading" constant="20" id="Bld-v3-ydM"/>
                             <constraint firstItem="k9o-m7-cOh" firstAttribute="bottom" secondItem="5sb-tY-Mw6" secondAttribute="bottom" id="DQU-5c-dHU"/>
                             <constraint firstItem="jQb-Wu-jHg" firstAttribute="centerX" secondItem="5sb-tY-Mw6" secondAttribute="centerX" id="GvI-DO-esC"/>
                             <constraint firstItem="9qr-7c-ZNK" firstAttribute="leading" secondItem="k9o-m7-cOh" secondAttribute="leading" constant="10" id="JSa-gm-ohF"/>
+                            <constraint firstItem="s7A-Aq-pQw" firstAttribute="leading" secondItem="63j-SI-VfQ" secondAttribute="trailing" constant="20" id="Jl7-hh-fMT"/>
                             <constraint firstItem="5sb-tY-Mw6" firstAttribute="trailing" secondItem="k9o-m7-cOh" secondAttribute="trailing" id="Y9V-JT-Zhh"/>
                             <constraint firstItem="k9o-m7-cOh" firstAttribute="trailing" secondItem="9qr-7c-ZNK" secondAttribute="trailing" constant="10" id="dPQ-RS-Ka9"/>
                             <constraint firstItem="k9o-m7-cOh" firstAttribute="trailing" secondItem="s7A-Aq-pQw" secondAttribute="trailing" constant="5" id="hqd-ZL-sKP">
@@ -393,7 +406,7 @@
                             <constraint firstItem="9qr-7c-ZNK" firstAttribute="top" secondItem="jQb-Wu-jHg" secondAttribute="bottom" constant="10" id="vy0-Yu-oWz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="cDk-EX-FfF">
+                    <navigationItem key="navigationItem" title="Stations" id="cDk-EX-FfF">
                         <barButtonItem key="rightBarButtonItem" id="inz-U2-f3g">
                             <imageReference key="image" image="slider.horizontal.3" catalog="system" renderingMode="hierarchical-single">
                                 <hierarchicalColors>
@@ -421,6 +434,7 @@
                         <outlet property="plugTypesTableView" destination="XAI-3E-aKn" id="ncH-r2-WaZ"/>
                         <outlet property="plusButton" destination="m8p-nm-I8d" id="plT-ql-7tb"/>
                         <outlet property="priceLabel" destination="8wg-Ff-ERS" id="I5q-CN-umn"/>
+                        <outlet property="searchBar" destination="63j-SI-VfQ" id="Y9n-f6-x7W"/>
                         <outlet property="stationDetailsView" destination="SV4-M8-TO9" id="Xqh-53-omt"/>
                         <outlet property="stationDetailsViewHeightConstraint" destination="wru-ri-VQr" id="TG4-cY-brs"/>
                         <outlet property="stationNameLabel" destination="Xmg-Cd-y8i" id="diq-Rp-jzp"/>
@@ -450,16 +464,16 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
