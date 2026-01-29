@@ -76,6 +76,7 @@ class EVMapViewController: UIViewController {
     
     @IBAction func plusButtonAction(_ sender: Any) {
         zoomMap(zoomIn: true)
+        
     }
     
     @IBAction func minusButtonAction(_ sender: Any) {
@@ -112,7 +113,12 @@ class EVMapViewController: UIViewController {
         }
         hideStationDetails()
         
-        showRoute(from: userLocation.coordinate, to: stationLocation)
+        showMapOptions(
+                from: userLocation.coordinate,
+                to: stationLocation
+            )
+        
+//        showRoute(from: userLocation.coordinate, to: stationLocation)
     }
     
     @IBAction func currentLocationButtonTapped(_ sender: UIButton) {
@@ -429,7 +435,6 @@ class EVMapViewController: UIViewController {
         guard let observableVM = viewModel as? EVStationListViewModel else { return }
         
         clearRoute()
-        
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: startCoordinate))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: endCoordinate))
@@ -957,6 +962,72 @@ class EVMapViewController: UIViewController {
         
         present(alert, animated: true)
     }
+    
+    
+    func showMapOptions(
+        from start: CLLocationCoordinate2D,
+        to destination: CLLocationCoordinate2D
+    ) {
+        let alert = UIAlertController(
+            title: "Get Directions",
+            message: "Choose map application",
+            preferredStyle: .actionSheet
+        )
+        
+        alert.addAction(UIAlertAction(title: "View in App", style: .default) { _ in
+            MapNavigationHelper.open(
+                mapApp: .inApp,
+                from: start,
+                to: destination
+            ) {
+                self.showRoute(from: start, to: destination)
+            }
+        })
+        
+        alert.addAction(UIAlertAction(title: "Apple Maps", style: .default) { _ in
+            MapNavigationHelper.open(
+                mapApp: .appleMaps,
+                from: start,
+                to: destination
+            )
+        })
+        
+        if MapNavigationHelper.isGoogleMapsInstalled() {
+            alert.addAction(UIAlertAction(title: "Google Maps", style: .default) { _ in
+                MapNavigationHelper.open(
+                    mapApp: .googleMaps,
+                    from: start,
+                    to: destination
+                )
+            })
+        }
+        
+        if MapNavigationHelper.isWazeInstalled() {
+            alert.addAction(UIAlertAction(title: "Waze", style: .default) { _ in
+                MapNavigationHelper.open(
+                    mapApp: .waze,
+                    from: start,
+                    to: destination
+                )
+            })
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        // iPad fix
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = self.view
+            popover.sourceRect = CGRect(
+                x: self.view.bounds.midX,
+                y: self.view.bounds.midY,
+                width: 0,
+                height: 0
+            )
+            popover.permittedArrowDirections = []
+        }
+        
+        present(alert, animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -1327,5 +1398,7 @@ extension MKCoordinateRegion {
         )
         self.init(center: center, span: span)
     }
+    
+    
 }
 

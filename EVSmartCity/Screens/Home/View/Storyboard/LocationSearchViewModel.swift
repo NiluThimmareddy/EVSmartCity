@@ -21,8 +21,7 @@ class LocationSearchViewModel {
                 return
             }
             
-            let coordinate = response?.mapItems.first?.placemark.coordinate ?? nil
-            
+            let coordinate = response?.mapItems.first?.placemark.coordinate ?? nil            
             completionHandler(coordinate)
         }
         
