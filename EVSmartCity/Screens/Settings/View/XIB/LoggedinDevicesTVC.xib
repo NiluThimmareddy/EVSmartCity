@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="KGk-i7-Jjw" customClass="LoggedinDevicesTVC" customModule="EVSmartCity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="336" height="115"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="336" height="115"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zh6-QQ-Gww">
+                        <rect key="frame" x="0.0" y="15" width="336" height="100"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojb-zg-wae">
+                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3v0-ba-1sp">
+                                        <rect key="frame" x="12" y="12.333333333333332" width="20" height="19.333333333333339"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="PUb-qh-Hxw"/>
+                                            <constraint firstAttribute="width" secondItem="3v0-ba-1sp" secondAttribute="height" id="mMO-eb-hG2"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="0.10473808449999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ojb-zg-wae" secondAttribute="height" id="2uM-HD-hgH"/>
+                                    <constraint firstItem="3v0-ba-1sp" firstAttribute="centerX" secondItem="ojb-zg-wae" secondAttribute="centerX" id="Ebb-7n-hWG"/>
+                                    <constraint firstAttribute="height" constant="44" id="OKC-8n-Kic"/>
+                                    <constraint firstItem="3v0-ba-1sp" firstAttribute="centerY" secondItem="ojb-zg-wae" secondAttribute="centerY" id="olF-Ys-72b"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgo-fp-Kjj">
+                                <rect key="frame" x="49.000000000000007" y="0.0" width="106.66666666666669" height="20"/>
+                                <color key="backgroundColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="0.10473808449999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="PD1-b9-GTs"/>
+                                </constraints>
+                                <color key="tintColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="This device" imagePadding="5">
+                                    <imageReference key="image" image="sun.max" catalog="system" symbolScale="small"/>
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="11"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jo-t3-Hv3">
+                                <rect key="frame" x="311" y="0.0" width="25" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="4wm-I0-Hbk"/>
+                                    <constraint firstAttribute="width" constant="25" id="pTT-hd-FRY"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="trash" catalog="system" symbolScale="small"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="deleteDeviceButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hf3-xl-RYa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPhone 14 Pro" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="511-BK-fog">
+                                <rect key="frame" x="49" y="30" width="262" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS 17.4 • New York, USA" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOp-xV-aTZ">
+                                <rect key="frame" x="49" y="53" width="262" height="15.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yesterday, 10:30 AM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVm-xx-aXf">
+                                <rect key="frame" x="49" y="73.666666666666671" width="262" height="15.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4jo-t3-Hv3" secondAttribute="trailing" id="1U0-4p-blq"/>
+                            <constraint firstItem="511-BK-fog" firstAttribute="leading" secondItem="sgo-fp-Kjj" secondAttribute="leading" id="9C0-Wi-U6s"/>
+                            <constraint firstItem="rOp-xV-aTZ" firstAttribute="trailing" secondItem="511-BK-fog" secondAttribute="trailing" id="9FE-dE-aft"/>
+                            <constraint firstItem="511-BK-fog" firstAttribute="top" secondItem="sgo-fp-Kjj" secondAttribute="bottom" constant="10" id="FoT-0X-tKd"/>
+                            <constraint firstItem="rOp-xV-aTZ" firstAttribute="top" secondItem="511-BK-fog" secondAttribute="bottom" constant="5" id="GZo-K9-llq"/>
+                            <constraint firstItem="4jo-t3-Hv3" firstAttribute="top" secondItem="zh6-QQ-Gww" secondAttribute="top" id="JhE-d8-taf"/>
+                            <constraint firstItem="rOp-xV-aTZ" firstAttribute="leading" secondItem="511-BK-fog" secondAttribute="leading" id="LXV-SS-aEZ"/>
+                            <constraint firstItem="JVm-xx-aXf" firstAttribute="trailing" secondItem="rOp-xV-aTZ" secondAttribute="trailing" id="UJf-ls-meJ"/>
+                            <constraint firstItem="sgo-fp-Kjj" firstAttribute="leading" secondItem="ojb-zg-wae" secondAttribute="trailing" constant="5" id="YAq-oM-544"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JVm-xx-aXf" secondAttribute="bottom" constant="10" id="hHg-qw-h78"/>
+                            <constraint firstItem="ojb-zg-wae" firstAttribute="leading" secondItem="zh6-QQ-Gww" secondAttribute="leading" id="ieC-VB-MOX"/>
+                            <constraint firstItem="JVm-xx-aXf" firstAttribute="leading" secondItem="rOp-xV-aTZ" secondAttribute="leading" id="quG-3U-lm7"/>
+                            <constraint firstItem="sgo-fp-Kjj" firstAttribute="top" secondItem="ojb-zg-wae" secondAttribute="top" id="tQe-wi-Isz"/>
+                            <constraint firstAttribute="trailing" secondItem="511-BK-fog" secondAttribute="trailing" constant="25" id="ts0-En-Ztb"/>
+                            <constraint firstItem="JVm-xx-aXf" firstAttribute="top" secondItem="rOp-xV-aTZ" secondAttribute="bottom" constant="5" id="zz3-KL-XtV"/>
+                            <constraint firstItem="ojb-zg-wae" firstAttribute="top" secondItem="zh6-QQ-Gww" secondAttribute="top" id="zzI-RX-5Zg"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="zh6-QQ-Gww" secondAttribute="bottom" id="348-oo-bO1"/>
+                    <constraint firstItem="zh6-QQ-Gww" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="ZA6-5E-Ole"/>
+                    <constraint firstAttribute="trailing" secondItem="zh6-QQ-Gww" secondAttribute="trailing" id="mGc-QW-7Ic"/>
+                    <constraint firstItem="zh6-QQ-Gww" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nAK-WN-Qjg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="activeLabel" destination="JVm-xx-aXf" id="N0m-ia-vxO"/>
+                <outlet property="backView" destination="zh6-QQ-Gww" id="qbh-pI-z3X"/>
+                <outlet property="deleteDeviceButton" destination="4jo-t3-Hv3" id="XQV-l9-8Iy"/>
+                <outlet property="deviceImgView" destination="3v0-ba-1sp" id="btD-r0-RoY"/>
+                <outlet property="deviceNameLabel" destination="511-BK-fog" id="N5f-Oz-Sug"/>
+                <outlet property="deviceNameTopConstraint" destination="FoT-0X-tKd" id="ARH-8u-aBh"/>
+                <outlet property="osAndLocationLabel" destination="rOp-xV-aTZ" id="ksV-uC-AiT"/>
+                <outlet property="thisDeviceButton" destination="sgo-fp-Kjj" id="scu-om-GRQ"/>
+            </connections>
+            <point key="canvasLocation" x="132.82442748091603" y="119.01408450704226"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="iphone" catalog="system" width="112" height="128"/>
+        <image name="sun.max" catalog="system" width="128" height="125"/>
+        <image name="trash" catalog="system" width="117" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.21960784310000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

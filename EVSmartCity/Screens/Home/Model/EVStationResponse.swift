@@ -64,3 +64,7 @@ struct Connector: Codable {
         case status
     }
 }
+
+struct ConnectorType : Codable {
+    let connector : String
+}

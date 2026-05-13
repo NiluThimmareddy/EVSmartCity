@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SelectYourModelTVC" customModule="EVSmartCity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkh-iU-p3l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M0e-QY-pm9">
+                                <rect key="frame" x="10" y="12.666666666666664" width="64.666666666666671" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="M0e-QY-pm9" secondAttribute="height" multiplier="1.5:1" id="n0I-AS-246"/>
+                                    <constraint firstAttribute="height" constant="43" id="nyT-aA-DNs"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model 3" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DV9-Jw-goN">
+                                <rect key="frame" x="84.666666666666671" y="12.666666666666666" width="193.33333333333331" height="19.333333333333336"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CCS2 • AC ⚡ + DC ⚡⚡" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVz-kR-GDb">
+                                <rect key="frame" x="84.666666666666671" y="37" width="193.33333333333331" height="14.333333333333336"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYh-81-80m">
+                                <rect key="frame" x="288" y="23" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lYh-81-80m" secondAttribute="height" id="b3W-kf-VFv"/>
+                                    <constraint firstAttribute="height" constant="22" id="gEn-ed-myt"/>
+                                </constraints>
+                                <color key="tintColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="checkmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="checkMarkButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="z2x-lj-Kne"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="lYh-81-80m" secondAttribute="trailing" constant="10" id="5TJ-H9-8c8"/>
+                            <constraint firstItem="hVz-kR-GDb" firstAttribute="leading" secondItem="DV9-Jw-goN" secondAttribute="leading" id="85i-lu-BCD"/>
+                            <constraint firstItem="DV9-Jw-goN" firstAttribute="leading" secondItem="M0e-QY-pm9" secondAttribute="trailing" constant="10" id="8Iv-5W-Q7G"/>
+                            <constraint firstItem="hVz-kR-GDb" firstAttribute="top" secondItem="DV9-Jw-goN" secondAttribute="bottom" constant="5" id="NfV-7Z-1n9"/>
+                            <constraint firstItem="lYh-81-80m" firstAttribute="centerY" secondItem="M0e-QY-pm9" secondAttribute="centerY" id="YBD-8x-6qd"/>
+                            <constraint firstItem="M0e-QY-pm9" firstAttribute="leading" secondItem="rkh-iU-p3l" secondAttribute="leading" constant="10" id="YUR-Ic-pHi"/>
+                            <constraint firstItem="lYh-81-80m" firstAttribute="leading" secondItem="DV9-Jw-goN" secondAttribute="trailing" constant="10" id="bEY-Gr-sOe"/>
+                            <constraint firstItem="M0e-QY-pm9" firstAttribute="centerY" secondItem="rkh-iU-p3l" secondAttribute="centerY" id="hIN-9h-ehQ"/>
+                            <constraint firstItem="hVz-kR-GDb" firstAttribute="trailing" secondItem="DV9-Jw-goN" secondAttribute="trailing" id="vn0-XC-nXd"/>
+                            <constraint firstItem="DV9-Jw-goN" firstAttribute="top" secondItem="M0e-QY-pm9" secondAttribute="top" id="yfW-fj-lva"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="rkh-iU-p3l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="95W-S3-D2v"/>
+                    <constraint firstAttribute="trailing" secondItem="rkh-iU-p3l" secondAttribute="trailing" id="UrZ-Cb-7rj"/>
+                    <constraint firstAttribute="bottom" secondItem="rkh-iU-p3l" secondAttribute="bottom" id="WPP-sr-DsO"/>
+                    <constraint firstItem="rkh-iU-p3l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="nlh-UJ-fEx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="backView" destination="rkh-iU-p3l" id="mcM-Rl-mIf"/>
+                <outlet property="carModelImgView" destination="M0e-QY-pm9" id="Gio-wy-HiV"/>
+                <outlet property="checkMarkButton" destination="lYh-81-80m" id="jWZ-TW-YGU"/>
+                <outlet property="connectorTypesLabel" destination="hVz-kR-GDb" id="xnd-SM-nz8"/>
+                <outlet property="modelNameLabel" destination="DV9-Jw-goN" id="td8-OI-iYo"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="96"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

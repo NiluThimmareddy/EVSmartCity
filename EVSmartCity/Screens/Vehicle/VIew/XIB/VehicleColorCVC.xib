@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="VehicleColorCVC" customModule="EVSmartCity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ds3-LA-yOp">
+                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dhr-8A-r9M">
+                                <rect key="frame" x="5" y="5" width="30" height="30"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Dhr-8A-r9M" firstAttribute="top" secondItem="ds3-LA-yOp" secondAttribute="top" constant="5" id="ED2-7m-zQO"/>
+                            <constraint firstAttribute="trailing" secondItem="Dhr-8A-r9M" secondAttribute="trailing" constant="5" id="O7C-D2-r5i"/>
+                            <constraint firstAttribute="bottom" secondItem="Dhr-8A-r9M" secondAttribute="bottom" constant="5" id="VAH-6c-QPa"/>
+                            <constraint firstItem="Dhr-8A-r9M" firstAttribute="leading" secondItem="ds3-LA-yOp" secondAttribute="leading" constant="5" id="no3-8S-otU"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ds3-LA-yOp" secondAttribute="bottom" id="9Tt-Oo-1Yd"/>
+                <constraint firstItem="ds3-LA-yOp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bL4-6m-bPd"/>
+                <constraint firstItem="ds3-LA-yOp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fM0-eP-VvJ"/>
+                <constraint firstAttribute="trailing" secondItem="ds3-LA-yOp" secondAttribute="trailing" id="pmQ-GK-hDm"/>
+            </constraints>
+            <connections>
+                <outlet property="backView" destination="ds3-LA-yOp" id="fly-Yy-j8U"/>
+                <outlet property="colourView" destination="Dhr-8A-r9M" id="uUP-rt-FtJ"/>
+            </connections>
+            <point key="canvasLocation" x="115" y="96"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

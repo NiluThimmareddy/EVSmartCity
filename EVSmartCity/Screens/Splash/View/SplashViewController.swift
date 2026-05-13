@@ -37,7 +37,7 @@ class SplashViewController: UIViewController {
     
     
     @IBAction func skipButtonAction(_ sender: UIButton) {
-        openHomePage()
+        openLoginPage()
     }
     
     @IBAction func continueButtonAction(_ sender: UIButton) {
@@ -45,7 +45,7 @@ class SplashViewController: UIViewController {
             currentPage += 1
             updateContent()
         }else{
-            openHomePage()
+            openLoginPage()
         }
     }
 }
