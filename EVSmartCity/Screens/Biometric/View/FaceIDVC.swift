@@ -91,14 +91,14 @@ class FaceIDVC: UIViewController {
     }
     
     @IBAction func useFingerPrintButtonAction(_ sender: Any) {
-//        let storyboard = storyboard?.instantiateViewController(withIdentifier: "FingerprintVerificationVC") as! FingerprintVerificationVC
-//        storyboard.modalPresentationStyle = .fullScreen
-//        present(storyboard, animated: true)
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "FingerprintVerificationVC") as! FingerprintVerificationVC
+        storyboard.modalPresentationStyle = .fullScreen
+        present(storyboard, animated: true)
     }
     
     @IBAction func usePasscodeButtonAction(_ sender: Any) {
-//        let storyboard = storyboard?.instantiateViewController(withIdentifier: "EnterYourPasscodeVC") as! EnterYourPasscodeVC
-//        storyboard.modalPresentationStyle = .fullScreen
-//        present(storyboard, animated: true)
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "EnterYourPasscodeVC") as! EnterYourPasscodeVC
+        storyboard.modalPresentationStyle = .fullScreen
+        present(storyboard, animated: true)
     }
 }

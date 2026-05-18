@@ -3,110 +3,6 @@
 //  EVSmartCity
 //
 //  Created by Hitman on 11/05/26.
-/*
-import UIKit
-
-class ChangePasscodeVC: UIViewController {
-
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var changePasscodeLabel: UILabel!
-    @IBOutlet weak var keepYourAccountSecureLabel: UILabel!
-    @IBOutlet weak var chooseSecurePasswordLabel: UILabel!
-    @IBOutlet weak var enterNewPasswordTF: UITextField!
-    @IBOutlet weak var newPasswordEyeButton: UIButton!
-    @IBOutlet weak var retypePasswordTF: UITextField!
-    @IBOutlet weak var reTypePasswordEyeButton: UIButton!
-    @IBOutlet weak var passcodeRequirementLabel: UILabel!
-    @IBOutlet weak var oneUppercaseLetter: UILabel!
-    @IBOutlet weak var oneNumberLabel: UILabel!
-    @IBOutlet weak var eightCharactersLabel: UILabel!
-    @IBOutlet weak var changePasswordButton: UIButton!
-    @IBOutlet weak var newPasswordView: UIView!
-    @IBOutlet weak var retypePasswordView: UIView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        enterNewPasswordTF.isSecureTextEntry = true
-        retypePasswordTF.isSecureTextEntry = true
-        
-        setEyeButtonImage(button: newPasswordEyeButton, isSecure: true)
-        setEyeButtonImage(button: reTypePasswordEyeButton, isSecure: true)
-    }
-    
-    @IBAction func backButtonAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func newPassowrdEyeButtonAction(_ sender: Any) {
-        togglePasswordVisibility(textField: enterNewPasswordTF, button: newPasswordEyeButton)
-    }
-    
-    @IBAction func retypePasswordEyeButtonAction(_ sender: Any) {
-        togglePasswordVisibility(textField: retypePasswordTF, button: reTypePasswordEyeButton)
-    }
-    
-    @IBAction func changePasswordButtonAction(_ sender: Any) {
-        guard let newPassword = enterNewPasswordTF.text, !newPassword.isEmpty else {
-            showAlert(message: "Please enter a new password")
-            return
-        }
-        
-        guard let retypedPassword = retypePasswordTF.text, !retypedPassword.isEmpty else {
-            showAlert(message: "Please retype your password")
-            return
-        }
-        
-        guard newPassword == retypedPassword else {
-            showAlert(message: "Passwords do not match")
-            return
-        }
-        
-        guard validatePassword(newPassword) else {
-            showAlert(message: "Password does not meet requirements")
-            return
-        }
-        showAlert(message: "Password changed successfully!")
-    }
-    
-    private func togglePasswordVisibility(textField: UITextField, button: UIButton) {
-        textField.isSecureTextEntry.toggle()
-        setEyeButtonImage(button: button, isSecure: textField.isSecureTextEntry)
-    }
-    
-    private func setEyeButtonImage(button: UIButton, isSecure: Bool) {
-        let imageName = isSecure ? "eye.slash.fill" : "eye.fill"
-        let image = UIImage(systemName: imageName)
-        button.setImage(image, for: .normal)
-        button.tintColor = .gray
-    }
-    
-    private func validatePassword(_ password: String) -> Bool {
-        let hasEightCharacters = password.count >= 8
-        eightCharactersLabel.textColor = hasEightCharacters ? .green : .red
-        eightCharactersLabel.text = hasEightCharacters ? "✓ 8 characters minimum" : "✗ 8 characters minimum"
-        
-        let uppercaseRegex = ".*[A-Z]+.*"
-        let hasUppercase = NSPredicate(format: "SELF MATCHES %@", uppercaseRegex).evaluate(with: password)
-        oneUppercaseLetter.textColor = hasUppercase ? .green : .red
-        oneUppercaseLetter.text = hasUppercase ? "✓ One uppercase letter" : "✗ One uppercase letter"
-        
-        let numberRegex = ".*[0-9]+.*"
-        let hasNumber = NSPredicate(format: "SELF MATCHES %@", numberRegex).evaluate(with: password)
-        oneNumberLabel.textColor = hasNumber ? .green : .red
-        oneNumberLabel.text = hasNumber ? "✓ One number" : "✗ One number"
-        
-        return hasEightCharacters && hasUppercase && hasNumber
-    }
-    
-    private func showAlert(message: String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
-
-}
-*/
 
 import UIKit
 
@@ -174,7 +70,6 @@ class ChangePasscodeVC: UIViewController {
         }
         
         clearMismatchError()
-
         showAlert(message: "Password changed successfully!")
     }
     
@@ -218,10 +113,5 @@ class ChangePasscodeVC: UIViewController {
         button.setImage(image, for: .normal)
         button.tintColor = .gray
     }
-    
-    private func showAlert(message: String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
+
 }

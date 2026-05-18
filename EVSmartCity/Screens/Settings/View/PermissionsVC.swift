@@ -29,6 +29,7 @@ class PermissionsVC: UIViewController {
     }
 
     @IBAction func backButtonAction(_ sender: Any) {
+        self.dismiss(animated: true)
     }
     
     @IBAction func locationSwitchAction(_ sender: Any) {

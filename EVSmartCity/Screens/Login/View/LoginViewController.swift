@@ -44,7 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func arabicButtonAction(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "DeviceManagementVC") as! DeviceManagementVC
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
         storyboard.modalPresentationStyle = .fullScreen
         present(storyboard, animated: true)
     }

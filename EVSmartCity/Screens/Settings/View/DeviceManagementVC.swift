@@ -201,25 +201,6 @@ extension DeviceManagementVC: LoggedinDevicesTVCDelegate {
 //        }
     }
     
-    func showToast(message: String) {
-        let toast = UILabel()
-        toast.text = message
-        toast.textAlignment = .center
-        toast.backgroundColor = UIColor.black.withAlphaComponent(0.7)
-        toast.textColor = .white
-        toast.layer.cornerRadius = 8
-        toast.clipsToBounds = true
-        toast.font = UIFont.systemFont(ofSize: 14)
-        toast.frame = CGRect(x: 0, y: 0, width: 250, height: 40)
-        toast.center = view.center
-        view.addSubview(toast)
-        
-        UIView.animate(withDuration: 2.0, delay: 0.5, options: .curveEaseOut, animations: {
-            toast.alpha = 0
-        }) { _ in
-            toast.removeFromSuperview()
-        }
-    }
 }
 
 extension DeviceManagementVC {

@@ -703,8 +703,8 @@ device and is never shared.</string>
                                                     <action selector="backButtonAction:" destination="amk-fr-ytG" eventType="touchUpInside" id="VQ8-VT-O1Q"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fingerprint Verification" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOe-IW-9nq">
-                                                <rect key="frame" x="105.33333333333333" y="7.9999999999999982" width="182.66666666666669" height="20.333333333333329"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passcode Verification" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOe-IW-9nq">
+                                                <rect key="frame" x="110.66666666666667" y="7.9999999999999982" width="171.66666666666663" height="20.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.329999999999998" id="Qhu-Sj-1VV"/>
                                                 </constraints>

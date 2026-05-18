@@ -104,13 +104,7 @@ class AddAnotherVechileVC: UIViewController {
         }
         showAlert(message: "Vehicle saved successfully!")
     }
-    
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "Selection Required",message: message,preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
-    
+
     func navigateToAddYourVehicleVC() {
         let addYourVehicleVC = storyboard?.instantiateViewController(withIdentifier: "AddYourVehicleVC") as! AddYourVehicleVC
         addYourVehicleVC.modalPresentationStyle = .fullScreen

@@ -20,3 +20,4 @@ struct LoggedInDevicesResponse: Codable {
     let totalCount: Int
     let devices: [LoggedInDevice]
 }
+
