@@ -64,7 +64,6 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
         let item = settingsData[indexPath.section][indexPath.row]
         cell.configure(with: item)
         cell.delegate = self
-        
         return cell
     }
     
@@ -149,9 +148,8 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
         print("Open About version")
     }
     func handleTermsConditions() {
-        let storyboard = storyboard?.instantiateViewController(withIdentifier: "SupportAndHelpVC") as! SupportAndHelpVC
-        storyboard.modalPresentationStyle = .fullScreen
-        present(storyboard, animated: true)
+
+        print("Open Terms&Conditions")
     }
     
     func handlePrivacyPolicy() {
@@ -238,5 +236,8 @@ class SettingsHeaderView: UITableViewHeaderFooterView {
     func configure(title: String, iconName: String) {
         titleLabel.text = title
         iconImageView.image = UIImage(systemName: iconName)
+    }
+    func configure(title: String){
+        titleLabel.text = title
     }
 }

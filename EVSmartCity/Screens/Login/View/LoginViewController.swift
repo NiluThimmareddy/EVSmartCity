@@ -37,14 +37,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setUpUI()
     }
     
+//    @IBAction func englishButtonAction(_ sender: Any) {
+//        let storyboard = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuVC") as! LeftMenuVC
+//        storyboard.modalPresentationStyle = .overFullScreen
+//        self.present(storyboard, animated: true)
+//    }
+    
     @IBAction func englishButtonAction(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Biometric", bundle: nil).instantiateViewController(withIdentifier: "BiometricLoginVC") as! BiometricLoginVC
-        storyboard.modalPresentationStyle = .fullScreen
-        self.present(storyboard, animated: true)
+
+        let vc = UIStoryboard(name: "LeftMenu", bundle: nil)
+            .instantiateViewController(withIdentifier: "LeftMenuVC") as! LeftMenuVC
+
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .coverVertical
+
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = .push
+        transition.subtype = .fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+
+        view.window?.layer.add(transition, forKey: kCATransition)
+
+        present(vc, animated: false)
     }
     
     @IBAction func arabicButtonAction(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
+        let storyboard = UIStoryboard(name: "Biometric", bundle: nil).instantiateViewController(withIdentifier: "BiometricLoginVC") as! BiometricLoginVC
         storyboard.modalPresentationStyle = .fullScreen
         present(storyboard, animated: true)
     }

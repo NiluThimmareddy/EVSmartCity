@@ -69,8 +69,7 @@ class ChangePasscodeVC: UIViewController {
             return
         }
         
-        clearMismatchError()
-        showAlert(message: "Password changed successfully!")
+        clearMismatchError()      
     }
     
     @objc private func textFieldsDidChange() {

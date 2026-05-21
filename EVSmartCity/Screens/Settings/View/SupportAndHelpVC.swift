@@ -46,7 +46,6 @@ class SupportAndHelpVC: UIViewController {
         if let layout = quickHelpCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = .zero
         }
-        
         needMoreHelpTableView.register(UINib(nibName: "NeedMoreHelpTVC", bundle: nil), forCellReuseIdentifier: "NeedMoreHelpTVC")
         
     }
@@ -60,7 +59,6 @@ class SupportAndHelpVC: UIViewController {
         storyboard.modalPresentationStyle = .fullScreen
         present(storyboard, animated: true)
     }
-    
     
 }
 
@@ -84,6 +82,26 @@ extension SupportAndHelpVC : UICollectionViewDelegate, UICollectionViewDataSourc
         let itemHeight: CGFloat = 77
         return CGSize(width: itemWidth, height: itemHeight)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            let storyboard = storyboard?.instantiateViewController(withIdentifier: "FAQsVC") as! FAQsVC
+            storyboard.modalPresentationStyle = .fullScreen
+            present(storyboard, animated: true)
+        } else if indexPath.item == 1 {
+            let storyboard = storyboard?.instantiateViewController(withIdentifier: "UserGuideVC") as! UserGuideVC
+            storyboard.modalPresentationStyle = .fullScreen
+            present(storyboard, animated: true)
+        } else if indexPath.item == 2 {
+            let storyboard = storyboard?.instantiateViewController(withIdentifier: "BillingAndPaymentsVC") as! BillingAndPaymentsVC
+            storyboard.modalPresentationStyle = .fullScreen
+            present(storyboard, animated: true)
+        } else {
+            let storyboard = storyboard?.instantiateViewController(withIdentifier: "ChargingHelpVC") as! ChargingHelpVC
+            storyboard.modalPresentationStyle = .fullScreen
+            present(storyboard, animated: true)
+        }
+    }
 }
 
 extension SupportAndHelpVC : UITableViewDelegate, UITableViewDataSource {
@@ -100,5 +118,25 @@ extension SupportAndHelpVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let selectedItem = needHelpItems[indexPath.row]
+        switch selectedItem.title {
+        case "Contact Support", "Station Issue", "Payment Issue":
+            navigateToLiveChart()
+        case "Report an Issue":
+            let storyboard = storyboard?.instantiateViewController(withIdentifier: "ReportAnIssueVC") as! ReportAnIssueVC
+            storyboard.modalPresentationStyle = .fullScreen
+            present(storyboard, animated: true)
+        default:
+            break
+        }
+    }
+    
+    private func navigateToLiveChart() {
+        let liveChartVC = storyboard?.instantiateViewController(withIdentifier: "LiveChartVC") as! LiveChartVC
+        liveChartVC.modalPresentationStyle = .fullScreen
+        present(liveChartVC, animated: true)
     }
 }
