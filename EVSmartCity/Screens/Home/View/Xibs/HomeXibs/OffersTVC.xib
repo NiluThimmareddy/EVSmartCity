@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="OffersTVC" customModule="EVSmartCity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="370" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="370" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LnQ-Ln-m0T">
+                        <rect key="frame" x="0.0" y="0.0" width="370" height="74"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gift" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MnM-aa-gwx">
+                                <rect key="frame" x="10" y="19.333333333333329" width="35.333333333333336" height="34.666666666666657"/>
+                                <color key="tintColor" red="1" green="0.792156862745098" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35.340000000000003" id="RjK-Uj-2FY"/>
+                                    <constraint firstAttribute="width" secondItem="MnM-aa-gwx" secondAttribute="height" id="iar-pU-08t"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ramadan Offer — Ramadan Offer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9a-SX-SLu">
+                                <rect key="frame" x="55.333333333333343" y="19.333333333333332" width="272.66666666666663" height="17.999999999999996"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f70-0l-6bl">
+                                <rect key="frame" x="338" y="29.333333333333332" width="22" height="15.333333333333339"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="f70-0l-6bl" secondAttribute="height" id="XlY-q6-IIC"/>
+                                    <constraint firstAttribute="height" constant="22" id="kro-TV-pU4"/>
+                                </constraints>
+                                <imageReference key="image" image="chevron.right" catalog="system" symbolScale="small"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20% off fast charging this week. Use co…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7n-RC-7vz">
+                                <rect key="frame" x="55.333333333333343" y="42.333333333333336" width="272.66666666666663" height="14.333333333333336"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="I7n-RC-7vz" firstAttribute="trailing" secondItem="P9a-SX-SLu" secondAttribute="trailing" id="6F0-t3-Tzy"/>
+                            <constraint firstItem="I7n-RC-7vz" firstAttribute="top" secondItem="P9a-SX-SLu" secondAttribute="bottom" constant="5" id="85T-Od-XMb"/>
+                            <constraint firstItem="f70-0l-6bl" firstAttribute="leading" secondItem="P9a-SX-SLu" secondAttribute="trailing" constant="10" id="CSH-p6-PAW"/>
+                            <constraint firstItem="MnM-aa-gwx" firstAttribute="centerY" secondItem="LnQ-Ln-m0T" secondAttribute="centerY" id="cMN-Pj-3cI"/>
+                            <constraint firstAttribute="trailing" secondItem="f70-0l-6bl" secondAttribute="trailing" constant="10" id="dcS-5U-ZDv"/>
+                            <constraint firstItem="P9a-SX-SLu" firstAttribute="leading" secondItem="MnM-aa-gwx" secondAttribute="trailing" constant="10" id="fsQ-et-f4q"/>
+                            <constraint firstItem="I7n-RC-7vz" firstAttribute="leading" secondItem="P9a-SX-SLu" secondAttribute="leading" id="iDi-Li-Y08"/>
+                            <constraint firstItem="MnM-aa-gwx" firstAttribute="leading" secondItem="LnQ-Ln-m0T" secondAttribute="leading" constant="10" id="lbp-Ii-1FF"/>
+                            <constraint firstItem="P9a-SX-SLu" firstAttribute="top" secondItem="MnM-aa-gwx" secondAttribute="top" id="sLQ-kE-Zlf"/>
+                            <constraint firstItem="f70-0l-6bl" firstAttribute="centerY" secondItem="LnQ-Ln-m0T" secondAttribute="centerY" id="uOe-FE-WiZ"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="I7n-RC-7vz" secondAttribute="bottom" constant="5" id="wxh-37-9Op"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LnQ-Ln-m0T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="44m-dv-Aoa"/>
+                    <constraint firstAttribute="bottom" secondItem="LnQ-Ln-m0T" secondAttribute="bottom" id="8ow-gf-sDg"/>
+                    <constraint firstItem="LnQ-Ln-m0T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gwo-Hg-YGd"/>
+                    <constraint firstAttribute="trailing" secondItem="LnQ-Ln-m0T" secondAttribute="trailing" id="kpo-PO-gMY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="backView" destination="LnQ-Ln-m0T" id="OCI-Vk-DbS"/>
+                <outlet property="offerDescriptionlabel" destination="I7n-RC-7vz" id="daG-Jq-FbJ"/>
+                <outlet property="offerTitleLabel" destination="P9a-SX-SLu" id="gXL-f8-91i"/>
+            </connections>
+            <point key="canvasLocation" x="-15.267175572519083" y="95.774647887323951"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="gift" catalog="system" width="128" height="125"/>
+    </resources>
+</document>

@@ -376,7 +376,7 @@ from your account?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KM8-3M-fRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="131"/>
+            <point key="canvasLocation" x="3845" y="126"/>
         </scene>
     </scenes>
     <resources>

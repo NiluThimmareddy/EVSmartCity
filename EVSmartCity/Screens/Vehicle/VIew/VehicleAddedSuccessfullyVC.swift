@@ -18,11 +18,19 @@ class VehicleAddedSuccessfullyVC : UIViewController {
     @IBOutlet weak var stateNameLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var addAnotherVehicleButton: UIButton!
+    @IBOutlet weak var chargingPercentButton: UIButton!
+    @IBOutlet weak var primararyVehicleLabel: UILabel!
+    @IBOutlet weak var capacityLabel: UILabel!
+    @IBOutlet weak var rangeLabel: UILabel!
+    @IBOutlet weak var connectorTypeLabel: UILabel!
+    @IBOutlet weak var boltView: UIView!
+    @IBOutlet weak var readyForFastChargingLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         detailsView.applyShadow()
+        boltView.applyShadow()
     }
     
     @IBAction func backButtonAction(_ sender: Any) {

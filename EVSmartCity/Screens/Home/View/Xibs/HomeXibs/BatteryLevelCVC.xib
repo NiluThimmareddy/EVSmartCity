@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BatteryLevelCVC" customModule="EVSmartCity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="178" height="173"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="178" height="173"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbc-d0-NnH">
+                        <rect key="frame" x="5" y="5" width="168" height="163"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BATTERY LEVEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvu-Hr-zP0">
+                                <rect key="frame" x="10" y="20" width="148" height="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12.100000381469727"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70%" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tv4-5s-0tF">
+                                <rect key="frame" x="10" y="40" width="148" height="42.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35.299999237060547"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LB0-Gb-0qR">
+                                <rect key="frame" x="10" y="87.333333333333329" width="148" height="7.6666666666666714"/>
+                                <color key="tintColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="7.5" id="cZE-P9-h4s"/>
+                                </constraints>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range: 230 km left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQ6-CE-che">
+                                <rect key="frame" x="10" y="100" width="148" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13.199999809265137"/>
+                                <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Est. full: 1h 20m" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJm-em-FeL">
+                                <rect key="frame" x="10" y="121.00000000000001" width="148" height="14.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12.100000381469727"/>
+                                <color key="textColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TJm-em-FeL" secondAttribute="bottom" constant="5" id="3hx-Eg-VHe"/>
+                            <constraint firstItem="tv4-5s-0tF" firstAttribute="top" secondItem="Xvu-Hr-zP0" secondAttribute="bottom" constant="5" id="6IA-Fn-Vb7"/>
+                            <constraint firstItem="Xvu-Hr-zP0" firstAttribute="leading" secondItem="Rbc-d0-NnH" secondAttribute="leading" constant="10" id="9T8-pe-uYc"/>
+                            <constraint firstItem="LB0-Gb-0qR" firstAttribute="trailing" secondItem="tv4-5s-0tF" secondAttribute="trailing" id="ArE-cz-otA"/>
+                            <constraint firstAttribute="trailing" secondItem="Xvu-Hr-zP0" secondAttribute="trailing" constant="10" id="LQq-7g-RuK"/>
+                            <constraint firstItem="WQ6-CE-che" firstAttribute="top" secondItem="LB0-Gb-0qR" secondAttribute="bottom" constant="5" id="LT4-nK-jpD"/>
+                            <constraint firstItem="TJm-em-FeL" firstAttribute="top" secondItem="WQ6-CE-che" secondAttribute="bottom" constant="5" id="NAd-XI-Z7m"/>
+                            <constraint firstItem="LB0-Gb-0qR" firstAttribute="top" secondItem="tv4-5s-0tF" secondAttribute="bottom" constant="5" id="ThL-7C-Hs7"/>
+                            <constraint firstItem="WQ6-CE-che" firstAttribute="leading" secondItem="LB0-Gb-0qR" secondAttribute="leading" id="Z1a-TD-NHi"/>
+                            <constraint firstItem="TJm-em-FeL" firstAttribute="trailing" secondItem="WQ6-CE-che" secondAttribute="trailing" id="flc-2r-2B2"/>
+                            <constraint firstItem="WQ6-CE-che" firstAttribute="trailing" secondItem="LB0-Gb-0qR" secondAttribute="trailing" id="lgz-bl-Zqj"/>
+                            <constraint firstItem="TJm-em-FeL" firstAttribute="leading" secondItem="WQ6-CE-che" secondAttribute="leading" id="mbW-xK-O9Q"/>
+                            <constraint firstItem="tv4-5s-0tF" firstAttribute="trailing" secondItem="Xvu-Hr-zP0" secondAttribute="trailing" id="rZa-zr-6Bq"/>
+                            <constraint firstItem="tv4-5s-0tF" firstAttribute="leading" secondItem="Xvu-Hr-zP0" secondAttribute="leading" id="uzw-TL-fTn"/>
+                            <constraint firstItem="Xvu-Hr-zP0" firstAttribute="top" secondItem="Rbc-d0-NnH" secondAttribute="top" constant="20" id="vDK-2Y-4Tg"/>
+                            <constraint firstItem="LB0-Gb-0qR" firstAttribute="leading" secondItem="tv4-5s-0tF" secondAttribute="leading" id="yQe-3K-bfz"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" systemColor="systemGray5Color"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Rbc-d0-NnH" secondAttribute="bottom" constant="5" id="0vc-ac-AN7"/>
+                <constraint firstAttribute="trailing" secondItem="Rbc-d0-NnH" secondAttribute="trailing" constant="5" id="1Su-yx-dvx"/>
+                <constraint firstItem="Rbc-d0-NnH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="FM3-4Z-ZOO"/>
+                <constraint firstItem="Rbc-d0-NnH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="uMi-0I-ceg"/>
+            </constraints>
+            <connections>
+                <outlet property="backView" destination="Rbc-d0-NnH" id="Kyu-JO-t36"/>
+                <outlet property="batteryLevelLabel" destination="Xvu-Hr-zP0" id="655-8W-fNL"/>
+                <outlet property="batteryPercentLabel" destination="tv4-5s-0tF" id="7zR-tz-NEO"/>
+                <outlet property="estimateFullTimeLabel" destination="TJm-em-FeL" id="jjp-wc-Zl9"/>
+                <outlet property="progressView" destination="LB0-Gb-0qR" id="5HW-Fl-5U4"/>
+                <outlet property="rangeKMLeftLabel" destination="WQ6-CE-che" id="Oal-d8-apg"/>
+            </connections>
+            <point key="canvasLocation" x="31" y="96"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

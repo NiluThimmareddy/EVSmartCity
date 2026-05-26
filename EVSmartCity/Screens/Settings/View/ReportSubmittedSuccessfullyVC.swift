@@ -24,7 +24,7 @@ class ReportSubmittedSuccessfullyVC: UIViewController {
     }
     
     func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0,target: self,selector: #selector(updateTimer),userInfo: nil,repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     @objc func updateTimer() {
@@ -38,18 +38,27 @@ class ReportSubmittedSuccessfullyVC: UIViewController {
     }
     
     func navigateToLoginVC() {
-        self.dismiss(animated: true) {
-            if let reportAnIssueVC = self.presentingViewController as? ReportAnIssueVC {
+        if let reportAnIssueVC = self.presentingViewController as? ReportAnIssueVC {
+            self.dismiss(animated: true) {
                 reportAnIssueVC.dismiss(animated: true) {
-                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                    if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
-                        loginVC.modalPresentationStyle = .fullScreen
-                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                           let rootVC = windowScene.windows.first?.rootViewController {
-                            rootVC.present(loginVC, animated: true)
-                        }
-                    }
+                    self.presentLoginVC()
                 }
+            }
+        } else {
+            self.dismiss(animated: true) {
+                self.presentLoginVC()
+            }
+        }
+    }
+    
+    func presentLoginVC() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+            loginVC.modalPresentationStyle = .fullScreen
+            
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let rootVC = windowScene.windows.first?.rootViewController {
+                rootVC.present(loginVC, animated: true)
             }
         }
     }

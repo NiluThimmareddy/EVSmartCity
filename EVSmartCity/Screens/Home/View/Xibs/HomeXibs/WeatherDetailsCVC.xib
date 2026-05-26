@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="WeatherDetailsCVC" customModule="EVSmartCity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="178" height="173"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="178" height="173"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tda-wj-Q4Y">
+                        <rect key="frame" x="5" y="5" width="168" height="163"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tlp-NO-sKW">
+                                <rect key="frame" x="10.000000000000002" y="17" width="26.666666666666671" height="22.666666666666671"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Tlp-NO-sKW" secondAttribute="height" id="ScA-Gp-bQ9"/>
+                                    <constraint firstAttribute="height" constant="26.510000000000002" id="osL-ff-5wr"/>
+                                </constraints>
+                                <imageReference key="image" image="sun.max" catalog="system" symbolScale="small"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42°C" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYI-ux-9eV">
+                                <rect key="frame" x="10" y="51.666666666666657" width="148" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny - Riyadh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oV9-Sw-XXh">
+                                <rect key="frame" x="10" y="98.666666666666671" width="148" height="17.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14.300000190734863"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVv-Vo-TWn">
+                                <rect key="frame" x="10.000000000000007" y="120.99999999999999" width="118.66666666666669" height="23.333333333333329"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.19593075539568344" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23.5" id="0wz-Dg-Hde"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Battery alert" imagePadding="5">
+                                    <imageReference key="image" image="exclamationmark.triangle" catalog="system" symbolScale="small"/>
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="12.100000381469727"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.59607843137254901" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="hVv-Vo-TWn" firstAttribute="top" secondItem="oV9-Sw-XXh" secondAttribute="bottom" constant="5" id="1mk-2g-eB3"/>
+                            <constraint firstItem="hVv-Vo-TWn" firstAttribute="leading" secondItem="oV9-Sw-XXh" secondAttribute="leading" id="3sU-NI-3RY"/>
+                            <constraint firstItem="gYI-ux-9eV" firstAttribute="leading" secondItem="Tlp-NO-sKW" secondAttribute="leading" id="9Db-F1-dgk"/>
+                            <constraint firstItem="Tlp-NO-sKW" firstAttribute="leading" secondItem="Tda-wj-Q4Y" secondAttribute="leading" constant="10" id="9tH-5N-Wbm"/>
+                            <constraint firstAttribute="trailing" secondItem="gYI-ux-9eV" secondAttribute="trailing" constant="10" id="QBp-4o-D5S"/>
+                            <constraint firstItem="oV9-Sw-XXh" firstAttribute="leading" secondItem="gYI-ux-9eV" secondAttribute="leading" id="QaD-u1-hh3"/>
+                            <constraint firstItem="Tlp-NO-sKW" firstAttribute="top" secondItem="Tda-wj-Q4Y" secondAttribute="top" constant="15" id="TRq-zP-U0d"/>
+                            <constraint firstItem="oV9-Sw-XXh" firstAttribute="top" secondItem="gYI-ux-9eV" secondAttribute="bottom" constant="5" id="Vsh-2Y-Li4"/>
+                            <constraint firstItem="gYI-ux-9eV" firstAttribute="top" secondItem="Tlp-NO-sKW" secondAttribute="bottom" constant="10" id="nfy-dl-kp8"/>
+                            <constraint firstItem="oV9-Sw-XXh" firstAttribute="trailing" secondItem="gYI-ux-9eV" secondAttribute="trailing" id="zhD-y5-wCt"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Tda-wj-Q4Y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="GHf-66-hBS"/>
+                <constraint firstItem="Tda-wj-Q4Y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="KLg-Oa-311"/>
+                <constraint firstAttribute="bottom" secondItem="Tda-wj-Q4Y" secondAttribute="bottom" constant="5" id="MgO-3z-thH"/>
+                <constraint firstAttribute="trailing" secondItem="Tda-wj-Q4Y" secondAttribute="trailing" constant="5" id="xOh-6x-1Z8"/>
+            </constraints>
+            <connections>
+                <outlet property="backView" destination="Tda-wj-Q4Y" id="aS0-WY-Zak"/>
+                <outlet property="batteryAlertButton" destination="hVv-Vo-TWn" id="I1V-ES-aKP"/>
+                <outlet property="locationNameLabel" destination="oV9-Sw-XXh" id="MO5-h6-nKv"/>
+                <outlet property="temperatureLabel" destination="gYI-ux-9eV" id="6dH-y0-H66"/>
+            </connections>
+            <point key="canvasLocation" x="138.93129770992365" y="153.87323943661971"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="exclamationmark.triangle" catalog="system" width="128" height="109"/>
+        <image name="sun.max" catalog="system" width="128" height="125"/>
+    </resources>
+</document>

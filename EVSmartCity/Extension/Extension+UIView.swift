@@ -40,5 +40,28 @@ extension UIView {
         }
     }
     
+    func applyOrangeGradient() {
+        
+        let gradientLayer = CAGradientLayer()
+        
+        gradientLayer.colors = [
+            UIColor(hex: "#FF9800").cgColor,
+            UIColor(hex: "#F57C00").cgColor
+        ]
+        
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        
+        gradientLayer.frame = bounds
+        gradientLayer.cornerRadius = layer.cornerRadius
+        
+        if let sublayers = layer.sublayers {
+            for layer in sublayers where layer.name == "gradient" {
+                layer.removeFromSuperlayer()
+            }
+        }
+        gradientLayer.name = "gradient"
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
     
 }
