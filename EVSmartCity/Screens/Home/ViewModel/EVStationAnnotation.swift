@@ -22,7 +22,7 @@ struct EVStationAnnotationViewModel {
             longitude: station.longitude
         )
         self.title = station.name
-        self.subtitle = "₹\(station.pricingPerKwh)/kWh • \(station.availablePorts) ports"
+        self.subtitle = "\(station.pricingPerKwh)/kWh • \(station.availablePorts) ports"
         self.availablePorts = station.availablePorts
         self.status = station.status
         self.chargerTypes = station.chargerTypes

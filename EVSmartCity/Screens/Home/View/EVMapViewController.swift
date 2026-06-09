@@ -5,6 +5,10 @@
 //  Created by Toqsoft on 05/01/26.
 //
 
+enum MapsList {
+    case maps
+    case list
+}
 
 import UIKit
 import MapKit
@@ -16,14 +20,12 @@ class EVMapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var stationDetailsView: UIView!
     @IBOutlet weak var stationNameLabel: UILabel!
-    @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var plugScoreLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var plugTypesTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var filterButton: UIBarButtonItem!
+    @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var stationDetailsViewHeightConstraint: NSLayoutConstraint!
@@ -31,6 +33,10 @@ class EVMapViewController: UIViewController {
     @IBOutlet weak var getDirectionsButton: UIButton!
     @IBOutlet weak var currentLocationButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var stationsInMapButton: UIButton!
+    @IBOutlet weak var stationsListbutton: UIButton!
+    
+    var selectedType: MapsList = .maps
     
     private var viewModel: any EVStationListViewModelProtocol
     private var mapManager: MapManager
@@ -83,14 +89,24 @@ class EVMapViewController: UIViewController {
         zoomMap(zoomIn: false)
     }
     
-    @IBAction func dismissButtonTapped(_ sender: UIButton) {
-        viewModel.deselectStation()
-        clearRoute()
-        clearSearchIfNeeded()
+    @IBAction func stationInMapButtonAction(_ sender: Any) {
+        selectedType = .maps
+        selectMapButton()
     }
     
-    @IBAction func filterButtonTapped(_ sender: UIBarButtonItem) {
-        showFilterOptions()
+    @IBAction func stationsListButtonAction(_ sender: Any) {
+        selectedType = .list
+        selectListButton()
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "StationsListVC") as! StationsListVC
+        storyboard.delegate = self
+        storyboard.modalPresentationStyle = .fullScreen
+        present(storyboard, animated: true)
+    }
+    
+    @IBAction func filterButtonTapped(_ sender: UIButton) {
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "FilterPageVC") as! FilterPageVC
+        storyboard.modalPresentationStyle = .overFullScreen
+        present(storyboard, animated: true)
     }
 
     @IBAction func getDirectionsButtonAction(_ sender: Any) {
@@ -132,7 +148,6 @@ class EVMapViewController: UIViewController {
         stationDetailsView.layer.shadowOffset = CGSize(width: 0, height: 2)
         stationDetailsView.layer.shadowRadius = 4
         stationDetailsView.isHidden = true
-        dismissButton.layer.cornerRadius = 8
         errorLabel.isHidden = true
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleStationDetailsTap(_:)))
@@ -148,6 +163,24 @@ class EVMapViewController: UIViewController {
         let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         viewTapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(viewTapGesture)
+    }
+    
+    func selectMapButton() {
+        stationsInMapButton.backgroundColor = UIColor(hex: "#379D67")
+        stationsInMapButton.tintColor = .white
+        stationsInMapButton.setTitleColor(.white, for: .normal)
+        stationsListbutton.backgroundColor = .clear
+        stationsListbutton.tintColor = .darkGray
+        stationsListbutton.setTitleColor(.darkGray, for: .normal)
+    }
+
+    func selectListButton() {
+        stationsListbutton.backgroundColor = UIColor(hex: "#379D67")
+        stationsListbutton.tintColor = .white
+        stationsListbutton.setTitleColor(.white, for: .normal)
+        stationsInMapButton.backgroundColor = .clear
+        stationsInMapButton.tintColor = .label
+        stationsInMapButton.setTitleColor(.label, for: .normal)
     }
     
     private func setupBindings() {
@@ -250,19 +283,11 @@ class EVMapViewController: UIViewController {
     
     private func setupSearchBar() {
         searchBar.delegate = self
-        searchBar.placeholder = "Search stations..."
+        searchBar.placeholder = "Find Chargers, areas ..."
         searchBar.returnKeyType = .search
         searchBar.enablesReturnKeyAutomatically = true
-        searchBar.showsCancelButton = true
+        searchBar.searchBarStyle = .minimal
         
-        // Change to default or prominent style instead of minimal
-        searchBar.searchBarStyle = .default // or .prominent
-        
-        // Set background color to make it more visible
-        searchBar.backgroundColor = .white
-        searchBar.barTintColor = .white
-        
-        // Set text field background color
         if #available(iOS 13.0, *) {
             searchBar.searchTextField.backgroundColor = .white
             searchBar.searchTextField.textColor = .black
@@ -273,15 +298,6 @@ class EVMapViewController: UIViewController {
                 textField.textColor = .black
             }
         }
-        
-        // Add border and corner radius for better visibility
-        searchBar.layer.borderWidth = 1
-        searchBar.layer.borderColor = UIColor.systemGray4.cgColor
-        searchBar.layer.cornerRadius = 8
-        searchBar.clipsToBounds = true
-        
-        // Set tint color
-        searchBar.tintColor = .systemBlue
     }
     
     @objc private func dismissKeyboard() {
@@ -645,16 +661,7 @@ class EVMapViewController: UIViewController {
         
         priceLabel.isHidden = false
         priceLabel.text = viewModel.pricingText
-        priceLabel.textColor = .systemBlue
-        
-        if let scoreText = viewModel.plugScoreText {
-            plugScoreLabel.isHidden = false
-            plugScoreLabel.text = scoreText
-            plugScoreLabel.textColor = viewModel.plugScoreColor
-            plugScoreLabel.backgroundColor = viewModel.plugScoreColor.withAlphaComponent(0.1)
-        } else {
-            plugScoreLabel.isHidden = true
-        }
+        priceLabel.textColor = .label
         
         plugTypesTableView.reloadData()
     }
@@ -920,49 +927,6 @@ class EVMapViewController: UIViewController {
             self.navigationController?.pushViewController(detailsVC, animated: true)
         }
     }
-    
-    private func showFilterOptions() {
-        let alert = UIAlertController(title: "Filter Stations", message: nil, preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Show All", style: .default) { _ in
-            self.viewModel.applyFilter(.all)
-            self.clearSearchIfNeeded()
-        })
-        
-        alert.addAction(UIAlertAction(title: "Available Only", style: .default) { _ in
-            self.viewModel.applyFilter(.available)
-            self.clearSearchIfNeeded()
-        })
-        
-        alert.addAction(UIAlertAction(title: "DC Fast Chargers", style: .default) { _ in
-            self.viewModel.applyFilter(.dcFast)
-            self.clearSearchIfNeeded()
-        })
-        
-        alert.addAction(UIAlertAction(title: "AC Chargers", style: .default) { _ in
-            self.viewModel.applyFilter(.ac)
-            self.clearSearchIfNeeded()
-        })
-        
-        alert.addAction(UIAlertAction(title: "Sort by Distance", style: .default) { _ in
-            self.viewModel.applyFilter(.sortedByDistance)
-            self.clearSearchIfNeeded()
-        })
-        
-        alert.addAction(UIAlertAction(title: "Sort by Price", style: .default) { _ in
-            self.viewModel.applyFilter(.sortedByPrice)
-            self.clearSearchIfNeeded()
-        })
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.barButtonItem = filterButton
-        }
-        
-        present(alert, animated: true)
-    }
-    
     
     func showMapOptions(
         from start: CLLocationCoordinate2D,
@@ -1402,3 +1366,14 @@ extension MKCoordinateRegion {
     
 }
 
+extension EVMapViewController: StationsListVCDelegate {
+    func stationsListVCDidDismiss() {
+        selectedType = .maps
+        selectMapButton()
+    }
+    
+    func stationsListVCListButtonTapped() {
+        selectedType = .list
+        selectListButton()
+    }
+}

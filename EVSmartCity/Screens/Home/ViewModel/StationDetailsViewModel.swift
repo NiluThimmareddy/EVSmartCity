@@ -26,7 +26,7 @@ struct StationDetailsViewModel {
     }
     
     var pricingText: String {
-        "₹\(station.pricingPerKwh)/kWh"
+        "\(station.pricingPerKwh)/kWh"
     }
     
     var operatorText: String {

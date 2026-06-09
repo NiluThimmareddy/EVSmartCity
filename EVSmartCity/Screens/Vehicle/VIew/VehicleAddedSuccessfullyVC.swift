@@ -38,9 +38,6 @@ class VehicleAddedSuccessfullyVC : UIViewController {
     }
     
     @IBAction func doneButtonAction(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "FilterPageVC") as! FilterPageVC
-        storyboard.modalPresentationStyle = .fullScreen
-        present(storyboard, animated: true)
     }
     
     @IBAction func addAnotherVehicleButtonAction(_ sender: Any) {

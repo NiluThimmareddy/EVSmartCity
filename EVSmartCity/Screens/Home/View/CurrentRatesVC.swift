@@ -1,13 +1,13 @@
 //
-//  CarDetailsVC.swift
+//  CurrentRatesVC.swift
 //  EVSmartCity
 //
-//  Created by Hitman on 26/05/26.
+//  Created by Hitman on 03/06/26.
 //
 
 import UIKit
 
-class CarDetailsVC: UIViewController {
+class CurrentRatesVC: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var insideScrollView: UIView!
@@ -19,7 +19,7 @@ class CarDetailsVC: UIViewController {
 
     }
 
-    @IBAction func backButtonAction(_ sender: Any) {
+    @IBAction func backbuttonAction(_ sender: Any) {
         self.dismiss(animated: true)
     }
     

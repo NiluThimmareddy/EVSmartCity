@@ -64,4 +64,23 @@ extension UIView {
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func addDashedBorder(color: UIColor = .lightGray,lineWidth: CGFloat = 1.5,dashPattern: [NSNumber] = [6, 4],
+            cornerRadius: CGFloat = 8) {
+            layer.sublayers?.removeAll(where: { $0.name == "dashedBorder" })
+            let shapeLayer = CAShapeLayer()
+            shapeLayer.name = "dashedBorder"
+            shapeLayer.frame = bounds
+            shapeLayer.fillColor = UIColor.clear.cgColor
+            shapeLayer.strokeColor = color.cgColor
+            shapeLayer.lineWidth = lineWidth
+            shapeLayer.lineDashPattern = dashPattern
+
+            shapeLayer.path = UIBezierPath(
+                roundedRect: bounds,
+                cornerRadius: cornerRadius
+            ).cgPath
+
+            layer.addSublayer(shapeLayer)
+        }
+    
 }

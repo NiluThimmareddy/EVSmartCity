@@ -51,10 +51,10 @@ class HomeViewController: UIViewController {
     let items = ["Weather", "Battery"]
     
     let quickActions: [HomeFeaturesModel] = [
-        HomeFeaturesModel(title: "Find Charger", imageName: "map.fill"),
+        HomeFeaturesModel(title: "Find Charger", imageName: "ev.plug.ac.type.1"), // powerplug
         HomeFeaturesModel(title: "Plan Trip", imageName: "map.circle.fill"),
         HomeFeaturesModel(title: "Favourites", imageName: "heart"),
-        HomeFeaturesModel(title: "History", imageName: "clock.arrow.circlepath")
+        HomeFeaturesModel(title: "History", imageName: "list.clipboard")
     ]
     
     let chargingStations: [ChargingStationModel] = [
@@ -100,9 +100,16 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func allRatesButtonAction(_ sender: Any) {
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "CurrentRatesVC") as! CurrentRatesVC
+        storyboard.modalPresentationStyle = .fullScreen
+        present(storyboard, animated: true)
     }
     
     @IBAction func viewFullmapbuttonAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let weatherDetailsVC = storyboard.instantiateViewController(withIdentifier: "EVMapViewController") as! EVMapViewController
+        weatherDetailsVC.modalPresentationStyle = .fullScreen
+        present(weatherDetailsVC, animated: true)
     }
     
     
@@ -153,6 +160,35 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == weatherDetailsCollectionView {
+            if indexPath.item == 0 {
+                let storyboard = UIStoryboard(name: "Weather", bundle: nil)
+                let weatherDetailsVC = storyboard.instantiateViewController(withIdentifier: "WeatherDetailsVC") as! WeatherDetailsVC
+                weatherDetailsVC.modalPresentationStyle = .fullScreen
+                present(weatherDetailsVC, animated: true)
+            }
+        } else if collectionView == homeFeatureCollectionView {
+            if indexPath.item == 0 {
+                let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                let weatherDetailsVC = storyboard.instantiateViewController(withIdentifier: "EVMapViewController") as! EVMapViewController
+                weatherDetailsVC.modalPresentationStyle = .fullScreen
+                present(weatherDetailsVC, animated: true)
+            } else if indexPath.item == 1 {
+                let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                let weatherDetailsVC = storyboard.instantiateViewController(withIdentifier: "PlanTripViewController") as! PlanTripViewController
+                weatherDetailsVC.modalPresentationStyle = .fullScreen
+                present(weatherDetailsVC, animated: true)
+            } else if indexPath.item == 2 {
+                let storyboard = UIStoryboard(name: "Favourites", bundle: nil)
+                let weatherDetailsVC = storyboard.instantiateViewController(withIdentifier: "FavouritesVC") as! FavouritesVC
+                weatherDetailsVC.modalPresentationStyle = .fullScreen
+                present(weatherDetailsVC, animated: true)
+            }
+        }
+        
+    }
 }
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
@@ -189,6 +225,14 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
             return 80
         } else {
             return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == offersTableView {
+            let storyboard = UIStoryboard(name: "Offers", bundle: nil).instantiateViewController(withIdentifier: "OffersVC") as! OffersVC
+            storyboard.modalPresentationStyle = .fullScreen
+            present(storyboard, animated: true)
         }
     }
 }
