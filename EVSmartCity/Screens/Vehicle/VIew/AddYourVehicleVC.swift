@@ -16,6 +16,7 @@ class AddYourVehicleVC: UIViewController {
     @IBOutlet weak var vehicleSearchBar: UISearchBar!
     @IBOutlet weak var vehiclesListTableView: UITableView!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
     
     var vehicleDetails = [
         VehicleBrandModel(brandImage: "ic_Tesla", brandname: "Tesla", brandDescription: ""),
@@ -50,6 +51,11 @@ class AddYourVehicleVC: UIViewController {
             print("Please select a vehicle")
         }
     }
+    
+    @IBAction func skipButtonAction(_ sender: Any) {
+        openHomePage()
+    }
+    
 }
 
 extension AddYourVehicleVC: UITableViewDelegate, UITableViewDataSource {

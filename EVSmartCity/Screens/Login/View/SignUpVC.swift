@@ -102,23 +102,39 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func createAccountButtonAction(_ sender: Any) {
+
         guard let fullname = enterFullnameTF.text, !fullname.isEmpty else {
             showAlert(message: "Please enter your full name")
             return
         }
-        
-        guard let email = enterYourEmailTF.text, !email.isEmpty, isValidEmail(email) else {
+
+        guard let email = enterYourEmailTF.text,
+              !email.isEmpty,
+              isValidEmail(email) else {
             showAlert(message: "Please enter a valid email address")
             return
         }
-        
+
+        guard let mobileNumber = enterMobileNumberTF.text,
+              !mobileNumber.isEmpty else {
+            showAlert(message: "Please enter mobile number")
+            return
+        }
+
         guard isCheckmarkSelected else {
             showAlert(message: "Please agree to the Terms and Privacy Policy")
             return
         }
-        let storyboard = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        storyboard.modalPresentationStyle = .fullScreen
-        present(storyboard, animated: true)
+
+        let vc = storyboard?.instantiateViewController(withIdentifier: "OTPVerificationVC") as! OTPVerificationVC
+
+        vc.source = .signUp
+        vc.mobileNumber = mobileNumber
+        vc.rawMobileNumber = mobileNumber
+        vc.countryCode = countryCode
+
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {

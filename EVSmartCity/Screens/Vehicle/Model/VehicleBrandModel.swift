@@ -27,5 +27,6 @@ struct ConnectorTypes : Codable {
 }
 
 struct VehicleColour {
-    let colour: UIColor
+    let color: UIColor?
+    let isAddButton: Bool
 }

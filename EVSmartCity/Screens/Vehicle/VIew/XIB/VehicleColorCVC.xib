@@ -29,13 +29,23 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkf-nc-uZw">
+                                <rect key="frame" x="5" y="5" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="mkf-nc-uZw" firstAttribute="bottom" secondItem="Dhr-8A-r9M" secondAttribute="bottom" id="5Br-fO-qMM"/>
+                            <constraint firstItem="mkf-nc-uZw" firstAttribute="trailing" secondItem="Dhr-8A-r9M" secondAttribute="trailing" id="Ahg-ue-vU8"/>
                             <constraint firstItem="Dhr-8A-r9M" firstAttribute="top" secondItem="ds3-LA-yOp" secondAttribute="top" constant="5" id="ED2-7m-zQO"/>
                             <constraint firstAttribute="trailing" secondItem="Dhr-8A-r9M" secondAttribute="trailing" constant="5" id="O7C-D2-r5i"/>
                             <constraint firstAttribute="bottom" secondItem="Dhr-8A-r9M" secondAttribute="bottom" constant="5" id="VAH-6c-QPa"/>
+                            <constraint firstItem="mkf-nc-uZw" firstAttribute="top" secondItem="Dhr-8A-r9M" secondAttribute="top" id="XYK-ij-tq3"/>
                             <constraint firstItem="Dhr-8A-r9M" firstAttribute="leading" secondItem="ds3-LA-yOp" secondAttribute="leading" constant="5" id="no3-8S-otU"/>
+                            <constraint firstItem="mkf-nc-uZw" firstAttribute="leading" secondItem="Dhr-8A-r9M" secondAttribute="leading" id="qG2-0i-4kU"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -55,8 +65,9 @@
             <connections>
                 <outlet property="backView" destination="ds3-LA-yOp" id="fly-Yy-j8U"/>
                 <outlet property="colourView" destination="Dhr-8A-r9M" id="uUP-rt-FtJ"/>
+                <outlet property="plusLabel" destination="mkf-nc-uZw" id="5sy-pK-LWq"/>
             </connections>
-            <point key="canvasLocation" x="115" y="96"/>
+            <point key="canvasLocation" x="114.50381679389312" y="95.774647887323951"/>
         </collectionViewCell>
     </objects>
     <resources>

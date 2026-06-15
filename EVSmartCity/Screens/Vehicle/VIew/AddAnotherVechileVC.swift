@@ -6,7 +6,7 @@
 
 import UIKit
 
-class AddAnotherVechileVC: UIViewController {
+class AddAnotherVechileVC: UIViewController, UIColorPickerViewControllerDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var insideView: UIView!
@@ -41,6 +41,8 @@ class AddAnotherVechileVC: UIViewController {
     var selectedVehicleModel: String = ""
     var selectedBrandName: String = ""
     
+    var customSelectedColor: UIColor?
+    
     var vehicleDetails = [
         VehicleBrandModel(brandImage: "", brandname: "LUCID", brandDescription: "Air"),
         VehicleBrandModel(brandImage: "", brandname: "Tesla",brandDescription: "Model 3"),
@@ -56,19 +58,17 @@ class AddAnotherVechileVC: UIViewController {
         ConnectorTypes(connectorTypeImg: "ic_typeConnector", connectorName: "CHAdeMO", chargingType: "Legacy DC")
     ]
     
-    var vehicleColour = [
-        VehicleColour(colour: .systemBlue),
-        VehicleColour(colour: .systemRed),
-        VehicleColour(colour: .systemGreen),
-        VehicleColour(colour: .label),
-        VehicleColour(colour: .systemOrange),
-        VehicleColour(colour: .systemGray),
-        VehicleColour(colour: .white)
+    var vehicleColour: [VehicleColour] = [
+        VehicleColour(color: UIColor(hex: "#0A1F1A"), isAddButton: false),
+        VehicleColour(color: .white, isAddButton: false),
+        VehicleColour(color: .red, isAddButton: false),
+        VehicleColour(color: .systemBlue, isAddButton: false),
+        VehicleColour(color: .lightGray, isAddButton: false),
+        VehicleColour(color: nil, isAddButton: true)
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
       setUpUI()
     }
     
@@ -198,7 +198,25 @@ extension AddAnotherVechileVC: UICollectionViewDelegate, UICollectionViewDataSou
         } else if collectionView == vehicleColourCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VehicleColorCVC", for: indexPath) as! VehicleColorCVC
             let colour = vehicleColour[indexPath.row]
-            cell.colourView.backgroundColor = colour.colour
+            
+            if colour.isAddButton {
+                cell.colourView.backgroundColor = .clear
+                cell.colourView.layer.borderWidth = 1
+                cell.colourView.layer.borderColor = UIColor.lightGray.cgColor
+                cell.colourView.layer.cornerRadius = 20
+                cell.plusLabel.isHidden = false
+                cell.plusLabel.text = "+"
+                cell.plusLabel.textColor = .lightGray
+                cell.plusLabel.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+            } else {
+                cell.colourView.backgroundColor = colour.color
+                cell.colourView.layer.borderWidth = 0
+                cell.plusLabel.isHidden = true
+                if colour.color == .white {
+                    cell.colourView.layer.borderWidth = 1
+                    cell.colourView.layer.borderColor = UIColor.lightGray.cgColor
+                }
+            }
             
             if selectedColorIndex == indexPath.row {
                 cell.layer.borderWidth = 3
@@ -208,6 +226,7 @@ extension AddAnotherVechileVC: UICollectionViewDelegate, UICollectionViewDataSou
                 cell.layer.borderWidth = 0
                 cell.layer.borderColor = nil
             }
+            
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VehicleBrandCVC", for: indexPath) as! VehicleBrandCVC
@@ -253,6 +272,19 @@ extension AddAnotherVechileVC: UICollectionViewDelegate, UICollectionViewDataSou
             selectedConnectorIndex = indexPath.row
             connectorTypeCollectionView.reloadData()
         } else if collectionView == vehicleColourCollectionView {
+            
+            let colour = vehicleColour[indexPath.row]
+
+            if colour.isAddButton {
+
+                let colorPicker = UIColorPickerViewController()
+                colorPicker.delegate = self
+                colorPicker.selectedColor = .systemBlue
+                present(colorPicker, animated: true)
+
+                return
+            }
+
             selectedColorIndex = indexPath.row
             vehicleColourCollectionView.reloadData()
         }
@@ -287,5 +319,19 @@ extension AddAnotherVechileVC {
         vehicleModelButton.setTitle("Select Vehicle Model", for: .normal)
         vehicleModelButton.isEnabled = true
         vehicleModelButton.isUserInteractionEnabled = true
+    }
+    
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        customSelectedColor = viewController.selectedColor
+    }
+
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        let selectedColor = viewController.selectedColor
+        vehicleColour.insert(
+            VehicleColour(color: selectedColor, isAddButton: false),
+            at: vehicleColour.count - 1
+        )
+        selectedColorIndex = vehicleColour.count - 2
+        vehicleColourCollectionView.reloadData()
     }
 }

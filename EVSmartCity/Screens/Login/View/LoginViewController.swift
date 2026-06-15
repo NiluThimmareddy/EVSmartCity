@@ -132,6 +132,7 @@ extension LoginViewController : SelectCountryDelegate {
         otpVC.mobileNumber = mobileNumber
         otpVC.rawMobileNumber = rawMobileNumber
         otpVC.countryCode = self.countryCode
+        otpVC.source = .login
         otpVC.modalPresentationStyle = .fullScreen
         present(otpVC, animated: true)
     }

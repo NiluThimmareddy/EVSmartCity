@@ -35,6 +35,12 @@ extension UIViewController {
             self.present(tabBarVC, animated: true)
         }
     }
+    
+    func biometricAuthPage() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "BiometricAuthVC") as! BiometricAuthVC
+        storyboard.modalPresentationStyle = .fullScreen
+        present(storyboard, animated: true)
+    }
 }
 
 extension UIViewController {

@@ -5,6 +5,11 @@
 //  Created by Hitman on 30/04/26.
 //
 
+enum VerificationSource {
+    case login
+    case signUp
+}
+
 import UIKit
 
 class OTPVerificationVC: UIViewController {
@@ -22,8 +27,11 @@ class OTPVerificationVC: UIViewController {
     var mobileNumber: String = ""
     var rawMobileNumber: String = ""
     var countryCode: String?
+    var isErrorState = false
     
-    let dummyOTP = "9999"
+    var source: VerificationSource = .login
+    
+    let dummyOTP = "999999"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,17 +59,16 @@ class OTPVerificationVC: UIViewController {
             }
         }
         
-        if otpCode.count == 4 {
+        if otpCode.count == 6 {
             verifyOTP(mobileNumber: mobileNumber, otp: otpCode)
         } else {
-            showAlert("Please enter the complete 4-digit OTP")
-            shakeOTPFields()
+            showErrorOnOTPFields("Please enter the complete 6-digit OTP")
         }
         
     }
 }
 
-extension OTPVerificationVC :  UITextFieldDelegate {
+extension OTPVerificationVC : UITextFieldDelegate {
     func setUpUI() {
         setupResendLabel()
         setupOTPTextFields()
@@ -72,15 +79,14 @@ extension OTPVerificationVC :  UITextFieldDelegate {
     
     func setupMobileNumberDisplay() {
         let formattedNumber = formatMobileNumberForDisplay()
-        weHaveSentFourDigitCodeLabel.text = "We've sent a 4-digit code to your mobile number \(formattedNumber)"
+        weHaveSentFourDigitCodeLabel.text = "We've sent a 6-digit code to your mobile number \n\(formattedNumber)"
     }
     
     func formatMobileNumberForDisplay() -> String {
         let countryCodeWithPlus = countryCode ?? ""
         let number = rawMobileNumber
         let maskedNumber = maskMobileNumber(number)
-        let formattedNumber = "+\(countryCodeWithPlus)\(maskedNumber)"
-        
+        let formattedNumber = "+\(countryCodeWithPlus) \(maskedNumber)"
         return formattedNumber
     }
     
@@ -91,7 +97,7 @@ extension OTPVerificationVC :  UITextFieldDelegate {
         let lastThree = String(number.suffix(3))
         
         let asteriskCount = number.count - 4
-        let asterisks = String(repeating: "*", count: asteriskCount)
+        let asterisks = String(repeating: "x", count: asteriskCount)
         
         return "\(firstDigit)\(asterisks)\(lastThree)"
     }
@@ -107,6 +113,9 @@ extension OTPVerificationVC :  UITextFieldDelegate {
             textField.layer.cornerRadius = 8
             textField.tag = index
             textField.clipsToBounds = true
+            textField.backgroundColor = .clear
+            textField.textColor = .label
+            textField.tintColor = UIColor(hex: "#379D67")
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
     }
@@ -162,9 +171,15 @@ extension OTPVerificationVC :  UITextFieldDelegate {
         
         resendLabel.attributedText = attributedString
         resendLabel.isUserInteractionEnabled = true
+        isErrorState = false
     }
     
     func updateResendCountdownText() {
+        
+        if isErrorState {
+            return
+        }
+        
         let minutes = totalTime / 60
         let seconds = totalTime % 60
         let timeString = String(format: "%02d:%02d", minutes, seconds)
@@ -213,7 +228,6 @@ extension OTPVerificationVC :  UITextFieldDelegate {
         
         if resendTimer == nil || !resendTimer!.isValid {
             showLoading(true)
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
                 self?.showLoading(false)
                 self?.showAlert(resendMessage)
@@ -228,31 +242,91 @@ extension OTPVerificationVC :  UITextFieldDelegate {
         if otp == dummyOTP {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.showLoading(false)
-                self?.navigateToLocationScreen()
+                self?.navigateToPhoneVerifiedScreen()
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.showLoading(false)
-                self?.showAlert("Invalid OTP. Please try again. (Use: \(self?.dummyOTP ?? "9999"))")
-                self?.clearOTPFields()
+                self?.isErrorState = true
+                for tf in self?.otpTF ?? [] {
+                    tf.layer.borderColor = UIColor.red.cgColor
+                    tf.layer.borderWidth = 2
+                    tf.backgroundColor = .clear
+                    tf.textColor = .label
+                    tf.tintColor = .clear
+                }
+                self?.resendLabel.text = "Incorrect code. Please try again."
+                self?.resendLabel.textColor = .red
+                self?.resendLabel.font = UIFont.systemFont(ofSize: 13, weight: .medium)
                 self?.shakeOTPFields()
+                self?.clearOTPFields()
+                
+                self?.view.endEditing(true)
             }
         }
     }
+    
+    func showErrorOnOTPFields(_ errorMessage: String) {
+        isErrorState = true
+        for textField in otpTF {
+            textField.layer.borderColor = UIColor.red.cgColor
+            textField.layer.borderWidth = 2
+            textField.backgroundColor = .clear
+            textField.textColor = .label
+            textField.tintColor = .clear
+        }
+        resendLabel.text = errorMessage
+        resendLabel.textColor = UIColor.red
+        resendLabel.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+        resendLabel.isUserInteractionEnabled = false
+    }
+    
+    func resetOTPFieldsBorder() {
+        isErrorState = false
+        for textField in otpTF {
+            textField.layer.borderColor = UIColor.lightGray.cgColor
+            textField.layer.borderWidth = 1
+            textField.backgroundColor = .clear
+            textField.textColor = .label
+            textField.tintColor = UIColor(hex: "#379D67")
+        }
+        updateOTPFieldUI()
+    }
+    
+    func restoreResendLabel() {
+        if resendTimer != nil && resendTimer!.isValid {
+            updateResendCountdownText()
+        } else {
+            enableResendButton()
+        }
+        resendLabel.isUserInteractionEnabled = true
+    }
         
-    func navigateToLocationScreen() {
-        let vc = UIStoryboard(name: "Location", bundle: nil)
-            .instantiateViewController(withIdentifier: "SetLocationVC") as! SetLocationVC
-        
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+    func navigateToPhoneVerifiedScreen() {
+
+        let vc = storyboard?.instantiateViewController(withIdentifier: "PhoneVerifiedVC") as! PhoneVerifiedVC
+        let formattedNumber = formatMobileNumberForDisplay()
+        vc.verifiedMobileNumber = formattedNumber
+        vc.source = source
+        if let sheet = vc.sheetPresentationController {
+            vc.modalPresentationStyle = .pageSheet
+            sheet.detents = [
+                .custom { context in
+                    context.maximumDetentValue * 0.70
+                }
+            ]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 24
+        }
+        present(vc, animated: true)
     }
     
     func clearOTPFields() {
         for textField in otpTF {
             textField.text = ""
+            textField.backgroundColor = .clear
+            textField.textColor = .label
         }
-        otpTF.first?.becomeFirstResponder()
     }
     
     func shakeOTPFields() {
@@ -284,6 +358,12 @@ extension OTPVerificationVC :  UITextFieldDelegate {
         
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if otpTF.contains(textField) {
+            // Clear error state when user starts typing
+            if isErrorState {
+                resetOTPFieldsBorder()
+                restoreResendLabel()
+            }
+            
             if string.isEmpty {
                 if let currentText = textField.text, !currentText.isEmpty {
                     textField.text = ""
@@ -317,27 +397,50 @@ extension OTPVerificationVC :  UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.layer.borderColor = UIColor.systemBlue.cgColor
+
+        if isErrorState {
+
+            isErrorState = false
+
+            // Restore resend label
+            if resendTimer != nil && resendTimer!.isValid {
+                updateResendCountdownText()
+            } else {
+                enableResendButton()
+            }
+
+            // Reset all OTP fields
+            for tf in otpTF {
+                tf.layer.borderColor = UIColor.lightGray.cgColor
+                tf.layer.borderWidth = 1
+                tf.tintColor = UIColor(hex: "#379D67")
+            }
+        }
+
+        textField.layer.borderColor = UIColor(hex: "#379D67").cgColor
         textField.layer.borderWidth = 2
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.layer.borderColor = UIColor.lightGray.cgColor
-        textField.layer.borderWidth = 1
+        if !isErrorState {
+            textField.layer.borderColor = UIColor.lightGray.cgColor
+            textField.layer.borderWidth = 1
+        }
     }
     
     func updateOTPFieldUI() {
         let greenColor = UIColor(hex: "#379D67")
-        let defaultColor = UIColor.clear
         
-        for (index, textField) in otpTF.enumerated() {
-            
-            if let text = textField.text, !text.isEmpty {
-                textField.backgroundColor = greenColor
-                textField.textColor = .white
-            } else {
-                textField.backgroundColor = defaultColor
-                textField.textColor = .label
+        for textField in otpTF {
+            // Don't change UI if there's an error
+            if !isErrorState {
+                if let text = textField.text, !text.isEmpty {
+                    textField.backgroundColor = greenColor
+                    textField.textColor = .white
+                } else {
+                    textField.backgroundColor = .clear
+                    textField.textColor = .label
+                }
             }
         }
     }
