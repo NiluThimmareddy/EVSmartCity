@@ -303,22 +303,39 @@ extension OTPVerificationVC : UITextFieldDelegate {
     }
         
     func navigateToPhoneVerifiedScreen() {
-
-        let vc = storyboard?.instantiateViewController(withIdentifier: "PhoneVerifiedVC") as! PhoneVerifiedVC
-        let formattedNumber = formatMobileNumberForDisplay()
-        vc.verifiedMobileNumber = formattedNumber
-        vc.source = source
-        if let sheet = vc.sheetPresentationController {
-            vc.modalPresentationStyle = .pageSheet
-            sheet.detents = [
-                .custom { context in
-                    context.maximumDetentValue * 0.70
-                }
-            ]
-            sheet.prefersGrabberVisible = true
-            sheet.preferredCornerRadius = 24
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "PhoneVerifiedVC") as! PhoneVerifiedVC
+            let formattedNumber = formatMobileNumberForDisplay()
+            vc.verifiedMobileNumber = formattedNumber
+            vc.source = source
+            if let sheet = vc.sheetPresentationController {
+                vc.modalPresentationStyle = .pageSheet
+                sheet.detents = [
+                    .custom { context in
+                        context.maximumDetentValue * 0.85
+                    }
+                ]
+                sheet.prefersGrabberVisible = true
+                sheet.preferredCornerRadius = 24
+            }
+            present(vc, animated: true)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "PhoneVerifiedVC") as! PhoneVerifiedVC
+            let formattedNumber = formatMobileNumberForDisplay()
+            vc.verifiedMobileNumber = formattedNumber
+            vc.source = source
+            if let sheet = vc.sheetPresentationController {
+                vc.modalPresentationStyle = .pageSheet
+                sheet.detents = [
+                    .custom { context in
+                        context.maximumDetentValue * 0.70
+                    }
+                ]
+                sheet.prefersGrabberVisible = true
+                sheet.preferredCornerRadius = 24
+            }
+            present(vc, animated: true)
         }
-        present(vc, animated: true)
     }
     
     func clearOTPFields() {

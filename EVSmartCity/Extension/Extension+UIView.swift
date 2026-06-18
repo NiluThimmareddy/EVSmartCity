@@ -64,6 +64,21 @@ extension UIView {
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func applyGreenGradient() {
+        layer.sublayers?.removeAll(where: { $0.name == "gradient" })
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.name = "gradient"
+        gradientLayer.frame = bounds
+        gradientLayer.cornerRadius = layer.cornerRadius
+        gradientLayer.colors = [
+            UIColor(hex: "#1E6B58").cgColor,
+            UIColor(hex: "#00A977").cgColor
+        ]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint   = CGPoint(x: 1.0, y: 1.0)
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     func addDashedBorder(color: UIColor = .lightGray,lineWidth: CGFloat = 1.5,dashPattern: [NSNumber] = [6, 4],
             cornerRadius: CGFloat = 8) {
             layer.sublayers?.removeAll(where: { $0.name == "dashedBorder" })

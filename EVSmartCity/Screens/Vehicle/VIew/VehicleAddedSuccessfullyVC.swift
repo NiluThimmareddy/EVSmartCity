@@ -14,34 +14,49 @@ class VehicleAddedSuccessfullyVC : UIViewController {
     @IBOutlet weak var yourTeslaModelAddedLabel: UILabel!
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var modelNameLabel: UILabel!
-    @IBOutlet weak var numberplateLabel: UILabel!
-    @IBOutlet weak var stateNameLabel: UILabel!
-    @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var addAnotherVehicleButton: UIButton!
-    @IBOutlet weak var chargingPercentButton: UIButton!
     @IBOutlet weak var primararyVehicleLabel: UILabel!
-    @IBOutlet weak var capacityLabel: UILabel!
-    @IBOutlet weak var rangeLabel: UILabel!
-    @IBOutlet weak var connectorTypeLabel: UILabel!
     @IBOutlet weak var boltView: UIView!
     @IBOutlet weak var readyForFastChargingLabel: UILabel!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var insideScrollView: UIView!
+    @IBOutlet weak var carImgView: UIImageView!
+    @IBOutlet weak var electricLabel: UILabel!
+    @IBOutlet weak var batteryPercentageLabel: UILabel!
+    @IBOutlet weak var batteryStatusLabel: UILabel!
+    @IBOutlet weak var capacityTitleLabel: UILabel!
+    @IBOutlet weak var capacityLabel: UILabel!
+    @IBOutlet weak var rangeTitleLabel: UILabel!
+    @IBOutlet weak var rangeLabel: UILabel!
+    @IBOutlet weak var connectorTypeTitleLabel: UILabel!
+    @IBOutlet weak var connectorTypeLabel: UILabel!
+    @IBOutlet weak var chargingTitleLabel: UILabel!
+    @IBOutlet weak var chargingStatusLabel: UILabel!
+    @IBOutlet weak var readyToChargeButton: UIButton!
+    @IBOutlet weak var completeWithNearbyLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         detailsView.applyShadow()
         boltView.applyShadow()
+        carImgView.layer.cornerRadius = 20
+        carImgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        carImgView.clipsToBounds = true
+        primararyVehicleLabel.clipsToBounds = true
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
         self.dismiss(animated: true)
     }
     
-    @IBAction func doneButtonAction(_ sender: Any) {
+    @IBAction func readyToChargeButtonAction(_ sender: Any) {
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "VehicleManageVC") as! VehicleManageVC
+        storyboard.modalPresentationStyle = .fullScreen
+        present(storyboard, animated: true)
     }
     
     @IBAction func addAnotherVehicleButtonAction(_ sender: Any) {
-        let storyboard = storyboard?.instantiateViewController(withIdentifier: "AddAnotherVechileVC") as! AddAnotherVechileVC
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "AddYourVehicleVC") as! AddYourVehicleVC
         storyboard.modalPresentationStyle = .fullScreen
         self.present(storyboard, animated: true)
     }

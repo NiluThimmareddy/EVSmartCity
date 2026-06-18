@@ -22,14 +22,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="49"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E7l-s1-a8Z">
-                                <rect key="frame" x="0.0" y="0.0" width="3" height="49"/>
+                                <rect key="frame" x="0.0" y="0.0" width="5" height="49"/>
                                 <color key="backgroundColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="3" id="ai6-H4-y36"/>
+                                    <constraint firstAttribute="width" constant="5" id="ai6-H4-y36"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBv-mf-o9X">
-                                <rect key="frame" x="13" y="9.6666666666666643" width="30" height="30"/>
+                                <rect key="frame" x="15" y="9.6666666666666643" width="30" height="30"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="house" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="goV-SY-VKc">
                                         <rect key="frame" x="5" y="5.3333333333333321" width="20" height="19.333333333333336"/>
@@ -40,7 +40,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.9137254901960784" green="0.97647058823529409" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="UOm-lM-fl9"/>
                                     <constraint firstItem="goV-SY-VKc" firstAttribute="centerY" secondItem="MBv-mf-o9X" secondAttribute="centerY" id="a4p-e5-LC3"/>
@@ -54,21 +54,22 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oU3-WX-gc9">
-                                <rect key="frame" x="53" y="6.6666666666666679" width="182" height="17"/>
+                                <rect key="frame" x="55" y="6.6666666666666679" width="180" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNj-hf-1Eh">
-                                <rect key="frame" x="53" y="28.666666666666668" width="182" height="14.333333333333332"/>
+                                <rect key="frame" x="55" y="28.666666666666668" width="180" height="14.333333333333332"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SIR-Rq-C2H">
                                 <rect key="frame" x="275" y="20.333333333333332" width="15" height="8.3333333333333393"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="SIR-Rq-C2H" secondAttribute="height" id="H98-df-joD"/>
                                     <constraint firstAttribute="height" constant="15" id="MLr-Hh-p7v"/>
                                 </constraints>
                                 <imageReference key="image" image="chevron.right" catalog="system" symbolScale="small"/>
@@ -96,7 +97,6 @@
                             <constraint firstAttribute="bottom" secondItem="E7l-s1-a8Z" secondAttribute="bottom" id="3hw-6x-g2j"/>
                             <constraint firstItem="SIR-Rq-C2H" firstAttribute="centerY" secondItem="Onf-Do-6Dc" secondAttribute="centerY" id="4Pi-7a-S8Y"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NNj-hf-1Eh" secondAttribute="bottom" constant="3" id="4lA-RR-TGu"/>
-                            <constraint firstItem="SIR-Rq-C2H" firstAttribute="width" secondItem="SIR-Rq-C2H" secondAttribute="height" id="H98-df-joD"/>
                             <constraint firstItem="NNj-hf-1Eh" firstAttribute="leading" secondItem="oU3-WX-gc9" secondAttribute="leading" id="HHo-Uc-oCr"/>
                             <constraint firstItem="MBv-mf-o9X" firstAttribute="leading" secondItem="E7l-s1-a8Z" secondAttribute="trailing" constant="10" id="J4k-YC-OqQ"/>
                             <constraint firstItem="i6w-S9-Bfv" firstAttribute="leading" secondItem="oU3-WX-gc9" secondAttribute="trailing" constant="10" id="KEm-8E-SXk"/>
@@ -137,6 +137,9 @@
         <image name="house" catalog="system" width="128" height="104"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

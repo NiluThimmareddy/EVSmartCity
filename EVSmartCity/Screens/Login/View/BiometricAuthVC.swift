@@ -32,6 +32,7 @@ class BiometricAuthVC: UIViewController {
     }
     
     @IBAction func arabicLanguageButtonAction(_ sender: Any) {
+        openHomePage()
     }
     
     @IBAction func faceOrFingerprintButtonAction(_ sender: Any) {

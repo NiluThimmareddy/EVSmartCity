@@ -3,7 +3,6 @@
 //  EVSmartCity
 //
 //  Created by Hitman on 15/05/26.
-//
 
 import UIKit
 
@@ -13,59 +12,61 @@ class LeftMenuVC: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var userImgView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var whiteModeButton: UIButton!
-    @IBOutlet weak var darkModeButton: UIButton!
-    @IBOutlet weak var engLanguageButton: UIButton!
-    @IBOutlet weak var arabicLanguageButton: UIButton!
     @IBOutlet weak var leftMenuTableView: UITableView!
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var versionLabel: UILabel!
     
-    let mainMenuArray: [[SideMenuModel]] = [[
-        SideMenuModel(image: "house",title: "Home",description: "Dashboard overview"),
-        SideMenuModel(image: "location.circle",title: "Find Stations",description: "5 chargers near you"),
-        SideMenuModel(image: "clock.arrow.circlepath",title: "Charging History",description: "Sessions, cost, duration"),
-        SideMenuModel(image: "car",title: "My Car",description: "Battery, tyres, health"),
-        SideMenuModel(image: "map",title: "Plan a Trip",description: "Route with charging stops")
-    ],
-                                            
-    [
-      SideMenuModel(image: "creditcard",title: "Payments",description: "SAR 248.50 balance"),
-      SideMenuModel(image: "gearshape",title: "Settings",description: "Language, notifications"),
-      SideMenuModel(image: "questionmark.circle",title: "Support & Help",description: "24/7 English"),
-      SideMenuModel(image: "exclamationmark.triangle",title: "Report an Issue",description: "Broken charger, billing")
-    ]
-    ]
-    
+    var menuData: [[SideMenuModel]] = []
     var selectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMenuData()
         setupTableView()
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.6)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         backView.applyShadow()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        topView.applyGreenGradient()
+    }
+    
+    func setupMenuData() {
+        menuData = [
+            [
+                SideMenuModel(image: "house.fill", title: "Home", description: "Analytics & Insights"),
+                SideMenuModel(image: "clock.arrow.circlepath", title: "Charging History", description: "Sessions, Cost, Duration"),
+                SideMenuModel(image: "bolt.circle.fill", title: "Active Charging", description: "Live charging session"),
+                SideMenuModel(image: "wallet.bifold", title: "Payment & Wallet", description: "Payments, refunds...")
+            ],
+            [
+                SideMenuModel(image: "sun.max", title: "Appearance", description: "System", isPreference: true),
+                SideMenuModel(image: "globe.central.south.asia", title: "Language", description: "English", isPreference: true)
+            ],
+            [
+                SideMenuModel(image: "shield.pattern.checkered", title: "Security & Privacy", description: "MFA, trusted devices"),
+                SideMenuModel(image: "gearshape", title: "Settings", description: "App preferences"),
+                SideMenuModel(image: "headset", title: "Support & Help", description: "24/7 English")
+            ],
+        ]
     }
     
     func setupTableView() {
         leftMenuTableView.register(UINib(nibName: "LeftMenuTVC", bundle: nil), forCellReuseIdentifier: "LeftMenuTVC")
+        leftMenuTableView.register(UINib(nibName: "PreferenceItemTVC", bundle: nil), forCellReuseIdentifier: "PreferenceItemTVC")
         leftMenuTableView.register(SettingsHeaderView.self, forHeaderFooterViewReuseIdentifier: SettingsHeaderView.identifier)
+        
         leftMenuTableView.showsVerticalScrollIndicator = false
+        leftMenuTableView.separatorStyle = .none
+        leftMenuTableView.backgroundColor = .white
+        leftMenuTableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
+        leftMenuTableView.dataSource = self
+        leftMenuTableView.delegate = self
     }
 
     @IBAction func dismissButtonAction(_ sender: UIButton) {
         self.dismiss(animated: true)
-    }
-    
-    @IBAction func whiteModeButtonAction(_ sender: Any) {
-    }
-    
-    @IBAction func darkModeButtonAction(_ sender: Any) {
-    }
-    
-    @IBAction func englishLanguageButtonAction(_ sender: Any) {
-    }
-    
-    @IBAction func arabicLanguageButtonAction(_ sender: Any) {
     }
     
     @IBAction func signOutButtonAction(_ sender: Any) {
@@ -84,125 +85,143 @@ class LeftMenuVC: UIViewController {
 
 extension LeftMenuVC: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return mainMenuArray.count
+        return menuData.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mainMenuArray[section].count
+        return menuData[section].count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LeftMenuTVC") as! LeftMenuTVC
-        let item = mainMenuArray[indexPath.section][indexPath.row]
+        let item = menuData[indexPath.section][indexPath.row]
         let isSelected = (selectedIndexPath == indexPath)
-        let isFindStationsRow = (indexPath.section == 0 && indexPath.row == 1)
-        var stationCount: String? = nil
-        if isFindStationsRow {
-            let description = item.description
-            let numberString = description.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-            stationCount = numberString.isEmpty ? nil : numberString
+        
+        if item.isPreference == true {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PreferenceItemTVC") as! PreferenceItemTVC
+            cell.configure(image: item.image, title: item.title, description: item.description, isSelected: isSelected)
+            return cell
         }
-        cell.configure(model: item, isSelected: isSelected, showStationCount: isFindStationsRow, stationCount: stationCount)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LeftMenuTVC") as! LeftMenuTVC
+        cell.configure(model: item, isSelected: isSelected)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         tableView.reloadData()
-        let selectedItem = mainMenuArray[indexPath.section][indexPath.row]
         
-        let menuItem = "\(indexPath.section)-\(indexPath.row)"
-        switch menuItem {
-        case "0-0":
-            navigateToHome()
-        case "0-1":
-            navigateToFindStations()
-        case "0-2":
-            navigateToChargingHistory()
-        case "0-3":
-            navigateToMyCar()
-        case "0-4":
-            navigateToPlanTrip()
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        switch section {
+        case 0:
+            switch row {
+            case 0: navigateToHome()
+            case 1: navigateToChargingHistory()
+            case 2: navigateToActiveCharging()
+            case 3: navigateToPayments()
+            default: break
+            }
             
-        case "1-0":
-            navigateToPayments()
-        case "1-1":
-            navigateToSettings()
-        case "1-2":
-            navigateToSupport()
-        case "1-3":
-            navigateToReportIssue()
+        case 1:
+            switch row {
+            case 0: navigateToAppearance()
+            case 1: navigateToLanguage()
+            default: break
+            }
             
-        default:
-            break
+        case 2:
+            switch row {
+            case 0: navigateToSecurity()
+            case 1: navigateToSettings()
+            case 2: navigateToSupport()
+            default: break
+            }
+            
+        default: break
         }
     }
-
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 45
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SettingsHeaderView.identifier) as? SettingsHeaderView
         
-        let sectionType = SettingsSection(rawValue: section)
-        switch sectionType {
-        case .securityPrivacy:
-            header?.configure(title: "Main")
-        case .aboutApp:
-            header?.configure(title: "Account")
+        switch section {
+        case 1:
+            header?.configure(title: "PREFERENCES")
+            return header
         default:
-            break
+            return nil
         }
-        return header
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        switch section {
+        case 1:
+            return 40
+        default:
+            return 0
+        }
     }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == menuData.count - 1 {
+            return 0
+        }
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
+    
+    // MARK: - Navigation Methods
     
     private func navigateToHome() {
         print("Tapped Home")
     }
-
-    private func navigateToFindStations() {
-        print("Tapped FindStations")
-    }
-
+    
     private func navigateToChargingHistory() {
         print("Tapped Charging History")
     }
-
-    private func navigateToMyCar() {
-        print("Tapped Car")
+    
+    private func navigateToActiveCharging() {
+        print("Tapped Active Charging")
     }
-
-    private func navigateToPlanTrip() {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "PlanTripViewController") as! PlanTripViewController
-        storyboard.modalPresentationStyle = .fullScreen
-        present(storyboard, animated: true)
-    }
-
+    
     private func navigateToPayments() {
-        print("Tapped Payment")
+        print("Tapped Payment & Wallet")
     }
-
+    
+    private func navigateToAppearance() {
+        print("Tapped Appearance")
+    }
+    
+    private func navigateToLanguage() {
+        print("Tapped Language")
+    }
+    
+    private func navigateToSecurity() {
+        print("Tapped Security & Privacy")
+    }
+    
     private func navigateToSettings() {
-        let storyboard = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(identifier: "SettingsVC") as! SettingsVC
-        storyboard.modalPresentationStyle = .fullScreen
-        present(storyboard, animated: true)
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "SettingsVC") as! SettingsVC
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
-
+    
     private func navigateToSupport() {
-        let storyboard = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(identifier: "SupportAndHelpVC") as! SupportAndHelpVC
-        storyboard.modalPresentationStyle = .fullScreen
-        present(storyboard, animated: true)
-    }
-
-    private func navigateToReportIssue() {
-        let storyboard = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "ReportAnIssueVC") as! ReportAnIssueVC
-        storyboard.modalPresentationStyle = .fullScreen
-        present(storyboard, animated: true)
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "SupportAndHelpVC") as! SupportAndHelpVC
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }

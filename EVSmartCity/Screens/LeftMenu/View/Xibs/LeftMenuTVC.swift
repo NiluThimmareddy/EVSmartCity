@@ -29,26 +29,23 @@ class LeftMenuTVC: UITableViewCell {
         lineColourView.isHidden = true
         stationCountLabel.isHidden = true
         backView.backgroundColor = .clear
+        menuImgView.tintColor = .darkGray
     }
     
-    func configure(model: SideMenuModel, isSelected: Bool = false, showStationCount: Bool = false, stationCount: String? = nil) {
+    func configure(model: SideMenuModel, isSelected: Bool = false) {
         menuImgView.image = UIImage(systemName: model.image)
+        menuImgView.tintColor = .darkGray
         menuTitleLabel.text = model.title
         menuDiscriptionLabel.text = model.description
-        
-        if showStationCount {
-            stationCountLabel.isHidden = false
-            stationCountLabel.text = stationCount
-        } else {
-            stationCountLabel.isHidden = true
-        }
         
         if isSelected {
             backView.backgroundColor = UIColor(hex: "#379D67").withAlphaComponent(0.1)
             lineColourView.isHidden = false
+            menuImgView.tintColor = UIColor(hex: "#379D67")
         } else {
             backView.backgroundColor = .clear
             lineColourView.isHidden = true
+            menuImgView.tintColor = .darkGray
         }
     }
 }
