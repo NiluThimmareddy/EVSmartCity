@@ -2721,7 +2721,7 @@ and manage your vehicle better.</string>
                                                 <color key="textColor" red="0.058823529411764705" green="0.090196078431372548" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6b9-Da-6NT">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6b9-Da-6NT">
                                                 <rect key="frame" x="16" y="578.33333333333337" width="361" height="42"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -2734,6 +2734,10 @@ and manage your vehicle better.</string>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="N6g-7B-fkK" id="W93-q7-Qm4"/>
+                                                    <outlet property="delegate" destination="N6g-7B-fkK" id="6xE-y5-6R5"/>
+                                                </connections>
                                             </collectionView>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daj-7w-gqz">
                                                 <rect key="frame" x="16" y="650.33333333333337" width="361" height="56"/>
@@ -2958,6 +2962,7 @@ and manage your vehicle better.</string>
                         <outlet property="otherVehiclesLabel" destination="b8P-YD-CLX" id="o6F-k7-ZPQ"/>
                         <outlet property="plusButton" destination="1nw-uZ-mLP" id="rwb-S6-Bwp"/>
                         <outlet property="removeButton" destination="vho-lg-X8m" id="BK0-Rz-LHz"/>
+                        <outlet property="rfidCollectionViewHeightConstraint" destination="Wdf-jQ-bzJ" id="H9l-kN-NSg"/>
                         <outlet property="scrollview" destination="CRf-31-866" id="2Xr-HC-MKR"/>
                         <outlet property="setAsActiveButton" destination="2Qu-zi-snQ" id="N4A-fV-jHT"/>
                         <outlet property="vehicleInfoLabel" destination="fSB-6z-r8s" id="qf9-tc-xc4"/>

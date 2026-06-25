@@ -40,6 +40,15 @@ extension UIView {
         }
     }
     
+    func applyLightShadow(color: UIColor = .lightGray,alpha: Float = 0.5,x: CGFloat = 0,y: CGFloat = 1,blur: CGFloat = 4) {
+        layer.masksToBounds = false
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = alpha
+        layer.shadowOffset = CGSize(width: x, height: y)
+        layer.shadowRadius = blur / 2
+        layer.shadowPath = nil
+    }
+    
     func applyOrangeGradient() {
         
         let gradientLayer = CAGradientLayer()

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RFIDCollectionViewCell" customModule="EVSmartCity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="181" height="42"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="181" height="42"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODu-GK-03b">
+                        <rect key="frame" x="0.0" y="0.0" width="181" height="42"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line.3.horizontal.decrease.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="frH-UB-QOj">
+                                <rect key="frame" x="10" y="14.33333333333333" width="15" height="13.66666666666667"/>
+                                <color key="tintColor" red="0.058823529411764705" green="0.090196078431372548" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="601-b0-q6L"/>
+                                    <constraint firstAttribute="width" secondItem="frH-UB-QOj" secondAttribute="height" id="OMo-Uo-qRV"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ RFID-5482 ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6z-Zo-aBX">
+                                <rect key="frame" x="30" y="5" width="146" height="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="q6z-Zo-aBX" secondAttribute="trailing" constant="5" id="4PM-6u-McC"/>
+                            <constraint firstAttribute="bottom" secondItem="q6z-Zo-aBX" secondAttribute="bottom" constant="5" id="ZCh-Wc-anj"/>
+                            <constraint firstItem="q6z-Zo-aBX" firstAttribute="top" secondItem="ODu-GK-03b" secondAttribute="top" constant="5" id="fR8-xM-O9Y"/>
+                            <constraint firstItem="q6z-Zo-aBX" firstAttribute="leading" secondItem="frH-UB-QOj" secondAttribute="trailing" constant="5" id="frV-1a-I3b"/>
+                            <constraint firstItem="frH-UB-QOj" firstAttribute="leading" secondItem="ODu-GK-03b" secondAttribute="leading" constant="10" id="wAM-dY-9dj"/>
+                            <constraint firstItem="frH-UB-QOj" firstAttribute="centerY" secondItem="ODu-GK-03b" secondAttribute="centerY" id="yg6-DB-E1m"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="21"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" systemColor="systemGray4Color"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ODu-GK-03b" secondAttribute="trailing" id="PeO-0a-2l8"/>
+                <constraint firstItem="ODu-GK-03b" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="afk-s1-2bE"/>
+                <constraint firstItem="ODu-GK-03b" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="feD-bw-7af"/>
+                <constraint firstAttribute="bottom" secondItem="ODu-GK-03b" secondAttribute="bottom" id="fg5-VL-hoP"/>
+            </constraints>
+            <connections>
+                <outlet property="backView" destination="ODu-GK-03b" id="tEk-SH-kYV"/>
+                <outlet property="iconImageView" destination="frH-UB-QOj" id="k8F-f8-JbB"/>
+                <outlet property="rfidLabel" destination="q6z-Zo-aBX" id="aos-Yt-JIR"/>
+            </connections>
+            <point key="canvasLocation" x="8" y="96"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

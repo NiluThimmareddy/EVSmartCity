@@ -50,9 +50,6 @@ class VehicleAddedSuccessfullyVC : UIViewController {
     }
     
     @IBAction func readyToChargeButtonAction(_ sender: Any) {
-        let storyboard = storyboard?.instantiateViewController(withIdentifier: "VehicleManageVC") as! VehicleManageVC
-        storyboard.modalPresentationStyle = .fullScreen
-        present(storyboard, animated: true)
     }
     
     @IBAction func addAnotherVehicleButtonAction(_ sender: Any) {

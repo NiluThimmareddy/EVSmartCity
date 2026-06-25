@@ -15,6 +15,10 @@ class LeftMenuVC: UIViewController {
     @IBOutlet weak var leftMenuTableView: UITableView!
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var platinumMemberLabel: UILabel!
+    @IBOutlet weak var modelNameLabel: UILabel!
+    @IBOutlet weak var primaryEvLabel: UILabel!
+    @IBOutlet weak var manageButton: UIButton!
     
     var menuData: [[SideMenuModel]] = []
     var selectedIndexPath: IndexPath?
@@ -60,7 +64,6 @@ class LeftMenuVC: UIViewController {
         leftMenuTableView.showsVerticalScrollIndicator = false
         leftMenuTableView.separatorStyle = .none
         leftMenuTableView.backgroundColor = .white
-        leftMenuTableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         leftMenuTableView.dataSource = self
         leftMenuTableView.delegate = self
     }
@@ -70,17 +73,37 @@ class LeftMenuVC: UIViewController {
     }
     
     @IBAction func signOutButtonAction(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SignOutVC") as! SignOutVC
-        if let sheet = vc.sheetPresentationController {
-            let customDetent = UISheetPresentationController.Detent.custom { context in
-                return context.maximumDetentValue * 0.30
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "SignOutVC") as! SignOutVC
+            if let sheet = vc.sheetPresentationController {
+                let customDetent = UISheetPresentationController.Detent.custom { context in
+                    return context.maximumDetentValue * 0.50
+                }
+                sheet.detents = [customDetent]
+                sheet.prefersGrabberVisible = true
+                sheet.preferredCornerRadius = 20
             }
-            sheet.detents = [customDetent]
-            sheet.prefersGrabberVisible = true
-            sheet.preferredCornerRadius = 20
+            present(vc, animated: true)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "SignOutVC") as! SignOutVC
+            if let sheet = vc.sheetPresentationController {
+                let customDetent = UISheetPresentationController.Detent.custom { context in
+                    return context.maximumDetentValue * 0.30
+                }
+                sheet.detents = [customDetent]
+                sheet.prefersGrabberVisible = true
+                sheet.preferredCornerRadius = 20
+            }
+            present(vc, animated: true)
         }
-        present(vc, animated: true)
     }
+    
+    @IBAction func manageButtonAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Vehicle", bundle: nil).instantiateViewController(withIdentifier: "VehicleManageVC") as! VehicleManageVC
+        storyboard.modalPresentationStyle = .fullScreen
+        present(storyboard, animated: true, completion: nil)
+    }
+    
 }
 
 extension LeftMenuVC: UITableViewDataSource, UITableViewDelegate {
@@ -148,43 +171,48 @@ extension LeftMenuVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SettingsHeaderView.identifier) as? SettingsHeaderView
-        
-        switch section {
-        case 1:
+
+        if section == 1 {
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SettingsHeaderView.identifier) as? SettingsHeaderView
             header?.configure(title: "PREFERENCES")
             return header
-        default:
-            return nil
         }
+
+        return nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 1:
-            return 40
-        default:
-            return 0
+        if section == 1 {
+            return 30
         }
+
+        return CGFloat.leastNormalMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == menuData.count - 1 {
             return 0
         }
-        return 8
+        return 12
     }
-    
+
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
+
+        let containerView = UIView()
+        containerView.backgroundColor = .white
+
+        let lineView = UIView(frame: CGRect(x: 20,y: 20,width: tableView.frame.width - 40,height: 0.5))
+        lineView.backgroundColor = UIColor.systemGray2
+
+        containerView.addSubview(lineView)
+
+        return containerView
     }
-    
-    // MARK: - Navigation Methods
-    
+        
     private func navigateToHome() {
-        print("Tapped Home")
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "AnalyticsAndInsightsVC") as! AnalyticsAndInsightsVC
+        storyboard.modalPresentationStyle = .fullScreen
+        present(storyboard, animated: true)
     }
     
     private func navigateToChargingHistory() {
@@ -225,3 +253,5 @@ extension LeftMenuVC: UITableViewDataSource, UITableViewDelegate {
         present(vc, animated: true)
     }
 }
+
+
