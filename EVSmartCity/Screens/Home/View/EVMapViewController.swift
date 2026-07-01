@@ -104,7 +104,7 @@ class EVMapViewController: UIViewController {
     }
     
     @IBAction func filterButtonTapped(_ sender: UIButton) {
-        let storyboard = storyboard?.instantiateViewController(withIdentifier: "FilterPageVC") as! FilterPageVC
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "FiltersPageVC") as! FiltersPageVC
         storyboard.modalPresentationStyle = .overFullScreen
         present(storyboard, animated: true)
     }

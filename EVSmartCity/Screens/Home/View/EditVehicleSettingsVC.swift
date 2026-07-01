@@ -44,10 +44,11 @@ class EditVehicleSettingsVC: UIViewController {
     @IBOutlet weak var lowBatteryAlertsSwitch: UISwitch!
     @IBOutlet weak var saveChangesButton: UIButton!
     
-    
+    let connectorTypes = ["Type 1 (J1772)","Type 2 (Mennekes)","CCS 1","CCS 2","CHAdeMO","GB/T","Tesla NACS"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupConnectorMenu()
     }
 
     @IBAction func backButtonAction(_ sender: Any) {
@@ -57,4 +58,17 @@ class EditVehicleSettingsVC: UIViewController {
     @IBAction func saveChangesButtonAction(_ sender: Any) {
     }
     
+    func setupConnectorMenu() {
+        let actions = connectorTypes.map { connector in
+            UIAction(title: connector) { [weak self] _ in
+                self?.connectorTypesButton.setTitle(connector, for: .normal)
+            }
+        }
+        connectorTypesButton.menu = UIMenu(
+            title: "Select Connector Type",
+            children: actions
+        )
+        connectorTypesButton.showsMenuAsPrimaryAction = true
+        connectorTypesButton.changesSelectionAsPrimaryAction = false
+    }
 }
