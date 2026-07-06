@@ -40,11 +40,6 @@ class ConnectorTypesCVC: UICollectionViewCell {
         connectorTypeButton.layer.borderWidth = 1.5
         connectorTypeButton.layer.borderColor = UIColor.lightGray.cgColor
         connectorTypeButton.backgroundColor = .white
-        
-        connectorTypeButton.setImage(UIImage(named: "ic_connectorIcon"), for: .normal)
-        connectorTypeButton.semanticContentAttribute = .forceLeftToRight
-        connectorTypeButton.imageView?.contentMode = .scaleAspectFit
-
     }
     
     func configure(with title: String) {

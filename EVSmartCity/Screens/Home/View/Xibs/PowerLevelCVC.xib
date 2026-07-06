@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PowerLevelCVC" customModule="EVSmartCity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="158" height="74"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="158" height="74"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p69-R5-9hU">
+                        <rect key="frame" x="5" y="5" width="148" height="64"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slow AC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6N-RY-72d">
+                                <rect key="frame" x="10" y="15" width="128" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="≤7 kW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihl-Ar-FsK">
+                                <rect key="frame" x="10" y="35" width="128" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                <color key="textColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="N6N-RY-72d" firstAttribute="top" secondItem="p69-R5-9hU" secondAttribute="top" constant="15" id="39k-FR-RVO"/>
+                            <constraint firstItem="Ihl-Ar-FsK" firstAttribute="leading" secondItem="N6N-RY-72d" secondAttribute="leading" id="3D2-s4-Bdf"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ihl-Ar-FsK" secondAttribute="bottom" constant="5" id="5OJ-Ke-y94"/>
+                            <constraint firstItem="Ihl-Ar-FsK" firstAttribute="top" secondItem="N6N-RY-72d" secondAttribute="bottom" constant="2" id="Ms7-1A-qjx"/>
+                            <constraint firstAttribute="trailing" secondItem="N6N-RY-72d" secondAttribute="trailing" constant="10" id="PvU-ow-NMc"/>
+                            <constraint firstItem="N6N-RY-72d" firstAttribute="leading" secondItem="p69-R5-9hU" secondAttribute="leading" constant="10" id="WQA-9F-9B7"/>
+                            <constraint firstItem="Ihl-Ar-FsK" firstAttribute="trailing" secondItem="N6N-RY-72d" secondAttribute="trailing" id="bGO-Jy-DO3"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="p69-R5-9hU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="7hz-pv-P52"/>
+                <constraint firstAttribute="bottom" secondItem="p69-R5-9hU" secondAttribute="bottom" constant="5" id="7vy-mk-rC6"/>
+                <constraint firstAttribute="trailing" secondItem="p69-R5-9hU" secondAttribute="trailing" constant="5" id="FTN-xx-IZe"/>
+                <constraint firstItem="p69-R5-9hU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Utu-yL-bSA"/>
+            </constraints>
+            <connections>
+                <outlet property="backView" destination="p69-R5-9hU" id="O0j-Ob-q3g"/>
+                <outlet property="chargerPowerLabel" destination="Ihl-Ar-FsK" id="DbZ-Xa-Y9e"/>
+                <outlet property="chargerTypeLabel" destination="N6N-RY-72d" id="KlH-8Z-ofZ"/>
+            </connections>
+            <point key="canvasLocation" x="89" y="96"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
