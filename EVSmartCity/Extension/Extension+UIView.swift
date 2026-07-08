@@ -89,22 +89,38 @@ extension UIView {
     }
     
     func addDashedBorder(color: UIColor = .lightGray,lineWidth: CGFloat = 1.5,dashPattern: [NSNumber] = [6, 4],
-            cornerRadius: CGFloat = 8) {
-            layer.sublayers?.removeAll(where: { $0.name == "dashedBorder" })
-            let shapeLayer = CAShapeLayer()
-            shapeLayer.name = "dashedBorder"
-            shapeLayer.frame = bounds
-            shapeLayer.fillColor = UIColor.clear.cgColor
-            shapeLayer.strokeColor = color.cgColor
-            shapeLayer.lineWidth = lineWidth
-            shapeLayer.lineDashPattern = dashPattern
-
-            shapeLayer.path = UIBezierPath(
-                roundedRect: bounds,
-                cornerRadius: cornerRadius
-            ).cgPath
-
-            layer.addSublayer(shapeLayer)
-        }
+                         cornerRadius: CGFloat = 8) {
+        layer.sublayers?.removeAll(where: { $0.name == "dashedBorder" })
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.name = "dashedBorder"
+        shapeLayer.frame = bounds
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = color.cgColor
+        shapeLayer.lineWidth = lineWidth
+        shapeLayer.lineDashPattern = dashPattern
+        
+        shapeLayer.path = UIBezierPath(
+            roundedRect: bounds,
+            cornerRadius: cornerRadius
+        ).cgPath
+        
+        layer.addSublayer(shapeLayer)
+    }
+    
+    func applyLightGreenGradient() {
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+        
+        gradient.colors = [
+            UIColor(hex: "#059669").cgColor,
+            UIColor(hex: "#10B981").cgColor,
+            UIColor(hex: "#34D399").cgColor
+        ]
+        gradient.locations = [0.0, 0.5, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.cornerRadius = layer.cornerRadius
+        layer.insertSublayer(gradient, at: 0)
+    }
     
 }

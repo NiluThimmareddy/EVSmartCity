@@ -185,6 +185,10 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
                 let weatherDetailsVC = storyboard.instantiateViewController(withIdentifier: "FavouritesVC") as! FavouritesVC
                 weatherDetailsVC.modalPresentationStyle = .fullScreen
                 present(weatherDetailsVC, animated: true)
+            } else {
+                let storyboard = UIStoryboard(name: "SessionDetails", bundle: nil).instantiateViewController(withIdentifier: "StartChargingVC") as! StartChargingVC
+                storyboard.modalPresentationStyle = .fullScreen
+                present(storyboard, animated: true)
             }
         }
         
