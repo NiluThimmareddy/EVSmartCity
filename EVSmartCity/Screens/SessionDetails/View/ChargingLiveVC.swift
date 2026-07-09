@@ -103,4 +103,10 @@ class ChargingLiveVC: UIViewController {
         present(vc, animated: true)
     }
     
+    @IBAction func liveButtonAction(_ sender: Any) {
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "ChargingCompleteVC") as! ChargingCompleteVC
+        storyboard.modalPresentationStyle = .fullScreen
+        present(storyboard, animated: true)
+    }
+    
 }

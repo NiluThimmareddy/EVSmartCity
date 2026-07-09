@@ -24,7 +24,7 @@ class StopChargingVC: UIViewController {
     }
     
     @IBAction func stopChargingButtonAction(_ sender: Any) {
-        let storyboard = storyboard?.instantiateViewController(withIdentifier: "ChargingCompleteVC") as! ChargingCompleteVC
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "SessionStoppedVC") as! SessionStoppedVC
         storyboard.modalPresentationStyle = .fullScreen
         present(storyboard, animated: true)
     }
