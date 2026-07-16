@@ -23,6 +23,8 @@ class LeftMenuVC: UIViewController {
     var menuData: [[SideMenuModel]] = []
     var selectedIndexPath: IndexPath?
     
+    private let selectedLanguageKey = "SelectedLanguageIndex"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenuData()
@@ -31,9 +33,23 @@ class LeftMenuVC: UIViewController {
         backView.applyShadow()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupMenuData()
+        leftMenuTableView.reloadData()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         topView.applyGreenGradient()
+    }
+    
+    private func getSelectedLanguage() -> String {
+        let languages = ["English","العربية","हिन्दी","ಕನ್ನಡ","தமிழ்","తెలుగు"]
+        let selectedIndex = UserDefaults.standard.integer(
+            forKey: selectedLanguageKey
+        )
+        return selectedIndex < languages.count ? languages[selectedIndex] : "English"
     }
     
     func setupMenuData() {
@@ -46,7 +62,7 @@ class LeftMenuVC: UIViewController {
             ],
             [
                 SideMenuModel(image: "sun.max", title: "Appearance", description: "System", isPreference: true),
-                SideMenuModel(image: "globe.central.south.asia", title: "Language", description: "English", isPreference: true)
+                SideMenuModel(image: "globe.central.south.asia",title: "Language",description: getSelectedLanguage(),isPreference: true)
             ],
             [
                 SideMenuModel(image: "shield.pattern.checkered", title: "Security & Privacy", description: "MFA, trusted devices"),
@@ -232,7 +248,10 @@ extension LeftMenuVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     private func navigateToLanguage() {
-        print("Tapped Language")
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LanguagesVC") as! LanguagesVC
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     private func navigateToSecurity() {
@@ -241,7 +260,7 @@ extension LeftMenuVC: UITableViewDataSource, UITableViewDelegate {
     
     private func navigateToSettings() {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "SettingsVC") as! SettingsVC
+        let vc = storyboard.instantiateViewController(identifier: "SettingsViewController") as! SettingsViewController
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }

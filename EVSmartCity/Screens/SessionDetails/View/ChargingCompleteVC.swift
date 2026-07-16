@@ -92,6 +92,7 @@ class ChargingCompleteVC: UIViewController {
     @IBOutlet weak var sessionRefIDLabel: UILabel!
     @IBOutlet weak var pdfReceiptButton: UIButton!
     @IBOutlet weak var doneBackToHomeButton: UIButton!
+    @IBOutlet weak var goldTireLabel: UILabel!
     
     
     

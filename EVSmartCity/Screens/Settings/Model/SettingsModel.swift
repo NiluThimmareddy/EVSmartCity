@@ -34,3 +34,15 @@ enum SettingsSection: Int, CaseIterable {
     case securityPrivacy = 0
     case aboutApp = 1
 }
+
+
+struct SettingItem {
+    let title: String
+    let subtitle: String
+    let iconName: String
+}
+
+struct LanguageModel {
+    let nativeName: String
+    let englishName: String
+}

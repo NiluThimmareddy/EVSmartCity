@@ -123,4 +123,20 @@ extension UIView {
         layer.insertSublayer(gradient, at: 0)
     }
     
+    func applyGoldMemberGradient() {
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+
+        gradient.colors = [
+            UIColor(hex: "#343A40").cgColor,
+            UIColor(hex: "#6C757D").cgColor
+        ]
+
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
+
+        gradient.cornerRadius = layer.cornerRadius
+        layer.insertSublayer(gradient, at: 0)
+    }
 }

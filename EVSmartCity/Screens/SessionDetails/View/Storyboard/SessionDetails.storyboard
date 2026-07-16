@@ -1517,7 +1517,7 @@ spikes and resumes at lower peak-off hours.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7A7-Ke-ph6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="883.20610687022895" y="91.549295774647888"/>
+            <point key="canvasLocation" x="860" y="92"/>
         </scene>
         <!--Stop ChargingVC-->
         <scene sceneID="8Wx-ys-d8Z">
@@ -1639,7 +1639,7 @@ remain protected during the stop sequence.</string>
                                 <rect key="frame" x="0.0" y="118" width="393" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdr-xY-iU1">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1699"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1704"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ia6-a2-VeL">
                                                 <rect key="frame" x="16" y="10" width="20" height="20"/>
@@ -2503,13 +2503,13 @@ transaction</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hh3-zP-NX2">
-                                                <rect key="frame" x="16" y="1041" width="361" height="170"/>
+                                                <rect key="frame" x="16" y="1041" width="361" height="175"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tB3-7v-tto">
                                                         <rect key="frame" x="15" y="15" width="30" height="30"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JAC-lC-qHZ">
-                                                                <rect key="frame" x="7.6666666666666643" y="7.3333333333334094" width="15" height="14.666666666666661"/>
+                                                                <rect key="frame" x="7.6666666666666643" y="7.3333333333334085" width="15" height="14.666666666666663"/>
                                                                 <color key="tintColor" red="0.85098039215686272" green="0.46666666666666667" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="15" id="iJd-8a-zaG"/>
@@ -2580,21 +2580,27 @@ transaction</string>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gold Tier · 1,840 / 2,500 pts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEu-gM-CYf">
+                                                        <rect key="frame" x="15" y="55" width="152.66666666666666" height="13.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                                                        <color key="textColor" red="0.94117647058823528" green="0.95294117647058818" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjk-OD-1Ha">
-                                                        <rect key="frame" x="321.66666666666669" y="56.666666666666742" width="24.333333333333314" height="12"/>
+                                                        <rect key="frame" x="321.66666666666669" y="55.666666666666742" width="24.333333333333314" height="12"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                         <color key="textColor" red="0.058823529411764705" green="0.090196078431372548" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kZi-bz-COb">
-                                                        <rect key="frame" x="15" y="73.666666666666742" width="331" height="6"/>
+                                                        <rect key="frame" x="15" y="77.666666666666742" width="331" height="6"/>
                                                         <color key="tintColor" red="0.96078431372549022" green="0.61960784313725492" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="6" id="vD1-Bu-azn"/>
                                                         </constraints>
                                                     </progressView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4K-dX-3Re">
-                                                        <rect key="frame" x="15" y="89.666666666666742" width="331" height="24"/>
+                                                        <rect key="frame" x="15" y="93.666666666666742" width="331" height="24"/>
                                                         <string key="text">660 more points to reach Platinum Tier and unlock priority
 charging slots.</string>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
@@ -2602,7 +2608,7 @@ charging slots.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Xrq-cF-Jk4">
-                                                        <rect key="frame" x="15" y="123.66666666666674" width="331" height="25"/>
+                                                        <rect key="frame" x="15" y="127.66666666666674" width="331" height="25"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjp-NP-lul">
                                                                 <rect key="frame" x="0.0" y="0.0" width="107.66666666666667" height="25"/>
@@ -2649,18 +2655,20 @@ charging slots.</string>
                                                     <constraint firstItem="R4K-dX-3Re" firstAttribute="leading" secondItem="kZi-bz-COb" secondAttribute="leading" id="5VC-EO-HVW"/>
                                                     <constraint firstItem="Xrq-cF-Jk4" firstAttribute="top" secondItem="R4K-dX-3Re" secondAttribute="bottom" constant="10" id="62m-hl-kCw"/>
                                                     <constraint firstItem="kZi-bz-COb" firstAttribute="trailing" secondItem="kjk-OD-1Ha" secondAttribute="trailing" id="6BR-js-BQI"/>
-                                                    <constraint firstAttribute="height" constant="170" id="7oQ-Lr-GjZ"/>
+                                                    <constraint firstAttribute="height" constant="175" id="7oQ-Lr-GjZ"/>
                                                     <constraint firstAttribute="trailing" secondItem="tJE-iv-DEO" secondAttribute="trailing" constant="15" id="Chh-GL-3cK"/>
                                                     <constraint firstItem="ic0-nu-dyQ" firstAttribute="centerY" secondItem="tB3-7v-tto" secondAttribute="centerY" id="Cpv-l6-WqT"/>
-                                                    <constraint firstItem="kjk-OD-1Ha" firstAttribute="top" secondItem="tJE-iv-DEO" secondAttribute="bottom" constant="15" id="GLh-Z1-Msc"/>
+                                                    <constraint firstItem="yEu-gM-CYf" firstAttribute="top" secondItem="tB3-7v-tto" secondAttribute="bottom" constant="10" id="DqT-Ml-8aH"/>
                                                     <constraint firstItem="tJE-iv-DEO" firstAttribute="centerY" secondItem="ic0-nu-dyQ" secondAttribute="centerY" id="UIk-n6-GfV"/>
                                                     <constraint firstItem="kZi-bz-COb" firstAttribute="leading" secondItem="tB3-7v-tto" secondAttribute="leading" id="WIo-KD-e7a"/>
                                                     <constraint firstItem="R4K-dX-3Re" firstAttribute="trailing" secondItem="kZi-bz-COb" secondAttribute="trailing" id="a2W-9A-Sob"/>
                                                     <constraint firstItem="ic0-nu-dyQ" firstAttribute="leading" secondItem="tB3-7v-tto" secondAttribute="trailing" constant="10" id="bdU-sd-8tV"/>
+                                                    <constraint firstItem="kjk-OD-1Ha" firstAttribute="centerY" secondItem="yEu-gM-CYf" secondAttribute="centerY" id="hed-JL-X2K"/>
+                                                    <constraint firstItem="yEu-gM-CYf" firstAttribute="leading" secondItem="tB3-7v-tto" secondAttribute="leading" id="l3h-K4-LbA"/>
                                                     <constraint firstItem="Xrq-cF-Jk4" firstAttribute="leading" secondItem="R4K-dX-3Re" secondAttribute="leading" id="nnN-o7-GFu"/>
                                                     <constraint firstItem="kjk-OD-1Ha" firstAttribute="trailing" secondItem="tJE-iv-DEO" secondAttribute="trailing" id="pRg-Gt-CZF"/>
                                                     <constraint firstItem="R4K-dX-3Re" firstAttribute="top" secondItem="kZi-bz-COb" secondAttribute="bottom" constant="10" id="pxc-hb-tpC"/>
-                                                    <constraint firstItem="kZi-bz-COb" firstAttribute="top" secondItem="kjk-OD-1Ha" secondAttribute="bottom" constant="5" id="rtV-cw-9HJ"/>
+                                                    <constraint firstItem="kZi-bz-COb" firstAttribute="top" secondItem="kjk-OD-1Ha" secondAttribute="bottom" constant="10" id="rtV-cw-9HJ"/>
                                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Xrq-cF-Jk4" secondAttribute="bottom" constant="18.329999999999998" id="uCF-9h-9XE"/>
                                                     <constraint firstItem="tB3-7v-tto" firstAttribute="top" secondItem="hh3-zP-NX2" secondAttribute="top" constant="15" id="yq9-Ld-tQS"/>
                                                 </constraints>
@@ -2671,19 +2679,19 @@ charging slots.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RATE THIS STATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trF-eO-te5">
-                                                <rect key="frame" x="16" y="1241" width="361" height="12"/>
+                                                <rect key="frame" x="16" y="1246" width="361" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="10"/>
                                                 <color key="textColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cn-en-hvU">
-                                                <rect key="frame" x="16" y="1273" width="361" height="254"/>
+                                                <rect key="frame" x="16" y="1278" width="361" height="254"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ADg-c4-d9K">
                                                         <rect key="frame" x="15" y="15" width="30" height="30"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iix-0D-ZgA">
-                                                                <rect key="frame" x="7.6666666666666643" y="7.3333333333334094" width="15" height="14.666666666666661"/>
+                                                                <rect key="frame" x="7.6666666666666643" y="7.3333333333334085" width="15" height="14.666666666666663"/>
                                                                 <color key="tintColor" red="0.96078431372549022" green="0.61960784313725492" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="iix-0D-ZgA" secondAttribute="height" id="jBB-H7-R8b"/>
@@ -2928,7 +2936,7 @@ charging slots.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VY-vY-cHY">
-                                                <rect key="frame" x="0.0" y="1547" width="393" height="152"/>
+                                                <rect key="frame" x="0.0" y="1552" width="393" height="152"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session Ref:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7E-FA-Q3d">
                                                         <rect key="frame" x="128" y="15" width="57" height="11"/>
@@ -3103,6 +3111,7 @@ charging slots.</string>
                         <outlet property="finalSocPercentLabel" destination="sgS-DD-cUf" id="Yhf-Uk-Wlv"/>
                         <outlet property="fixedLabel" destination="n6I-Be-htp" id="Sbp-bt-zQV"/>
                         <outlet property="goldMemberButton" destination="cjp-NP-lul" id="3HA-lM-GW8"/>
+                        <outlet property="goldTireLabel" destination="yEu-gM-CYf" id="YZs-kP-aya"/>
                         <outlet property="howWasYourExperienceLabel" destination="hH9-mK-qan" id="G8S-AD-MGy"/>
                         <outlet property="idleFeeConsumedLabel" destination="wD0-EL-FXU" id="NXx-zT-gOj"/>
                         <outlet property="idleFeeLabel" destination="YV0-He-1Ge" id="Eie-mm-e6f"/>
