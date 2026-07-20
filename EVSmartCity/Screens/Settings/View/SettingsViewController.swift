@@ -118,6 +118,38 @@ extension SettingsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 92
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let storyboard = storyboard?.instantiateViewController(withIdentifier: "RateAppVC") as! RateAppVC
+            storyboard.modalPresentationStyle = .overFullScreen
+            present(storyboard, animated: true)
+        } else if indexPath.row == 1 {
+            let storyboard = storyboard?.instantiateViewController(withIdentifier: "RateAppVC") as! RateAppVC
+            storyboard.modalPresentationStyle = .overFullScreen
+            present(storyboard, animated: true)
+        } else if indexPath.row == 2 {
+            let storyboard = storyboard?.instantiateViewController(withIdentifier: "RateAppVC") as! RateAppVC
+            storyboard.modalPresentationStyle = .overFullScreen
+            present(storyboard, animated: true)
+        } else if indexPath.row == 3 {
+            let storyboard = storyboard?.instantiateViewController(withIdentifier: "RateAppVC") as! RateAppVC
+            storyboard.modalPresentationStyle = .overFullScreen
+            present(storyboard, animated: true)
+        } else if indexPath.row == 4 {
+            let storyboard = storyboard?.instantiateViewController(withIdentifier: "RateAppVC") as! RateAppVC
+            storyboard.modalPresentationStyle = .overFullScreen
+            present(storyboard, animated: true)
+        } else if indexPath.row == 5 {
+            let storyboard = UIStoryboard(name: "SupportTicket", bundle: nil).instantiateViewController(withIdentifier: "SupportTicketVC") as! SupportTicketVC
+            storyboard.modalPresentationStyle = .fullScreen
+            present(storyboard, animated: true)
+        } else if indexPath.row == 6 {
+            let storyboard = storyboard?.instantiateViewController(withIdentifier: "RateAppVC") as! RateAppVC
+            storyboard.modalPresentationStyle = .overFullScreen
+            present(storyboard, animated: true)
+        }
+    }
 }
 
 extension SettingsViewController: SortOrderVCDelegate {

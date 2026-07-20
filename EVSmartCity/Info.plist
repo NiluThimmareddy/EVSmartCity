@@ -35,5 +35,7 @@
 	<string>This app needs your location to provide navigation to charging stations</string>
     <key>NSCameraUsageDescription</key>
     <string>We need camera access to show face preview</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Need photo library access to select evidence.</string>
 </dict>
 </plist>
